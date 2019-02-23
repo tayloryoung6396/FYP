@@ -1,13 +1,16 @@
-#ifndef LINEAR_POTENTIOMETER_HPP
-#define LINEAR_POTENTIOMETER_HPP
+#ifndef MODULE_LINEAR_POTENTIOMETER_HPP
+#define MODULE_LINEAR_POTENTIOMETER_HPP
+
+#include <stdint.h>
 
 namespace module {
 class LinearPot {
 public:
-  LinearPot();
+    LinearPot();
 
 private:
+    double contraction;
 };
-} // namespace module
+}  // namespace module
 
-#endif // LINEAR_POTENTIOMETER_HPP
+#endif  // MODULE_LINEAR_POTENTIOMETER_HPP
