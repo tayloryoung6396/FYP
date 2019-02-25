@@ -9,13 +9,15 @@
 namespace module {
 class Muscle {
 public:
-    Muscle(Valve& valve, PressureSensor& pressure_sensor);
+    Muscle(Valve& valve, PressureSensor& pressure_sensor, LinearPot& linear_pot, PID& pid);
+
+    void SetPosition(double set_point);
 
 private:
     Valve& valve;
     PressureSensor& pressure_sensor;
-    // LinearPot& linear_pot;
-    // PID& pid;
+    LinearPot& linear_pot;
+    PID& pid;
 };
 }  // namespace module
 

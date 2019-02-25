@@ -7,12 +7,16 @@
 #include "module/Valve/Valve.hpp"
 
 int main() {
-    std::cout << "Hello World!" << std::endl;
+    std::cout << "Welcome to PNEUbot" << std::endl;
 
-    module::Muscle test_muscle(module::Valve, module::pressure_sensor::p_01);
+    module::Muscle test_muscle1(module::valve1, module::Sensors::pressuresensor1, module::linearpot1, module::pid1);
+    module::Muscle test_muscle2(module::valve2, module::Sensors::pressuresensor2, module::linearpot2, module::pid2);
+
 
     while (1) {
         // Read in requested set position
+
+        test_muscle1.SetPosition(100);
         // Read sensors{
         // Read current position
         // Read current pressure

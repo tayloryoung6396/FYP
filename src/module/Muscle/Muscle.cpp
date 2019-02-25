@@ -1,6 +1,14 @@
 #include "Muscle.hpp"
+#include <iostream>
 
 namespace module {
 
-Muscle::Muscle(Valve& valve, PressureSensor& pressure_sensor) : valve(valve), pressure_sensor(pressure_sensor) {}
+Muscle::Muscle(Valve& valve, PressureSensor& pressure_sensor, LinearPot& linear_pot, PID& pid)
+    : valve(valve), pressure_sensor(pressure_sensor), linear_pot(linear_pot), pid(pid) {}
+
+void Muscle::SetPosition(double set_point) {
+    std::cout << "Set Point " << set_point << std::endl;
+    double pressure = pressure_sensor.Read();
+    pid.Compute();
+}
 }  // namespace module

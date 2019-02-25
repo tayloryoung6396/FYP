@@ -2,7 +2,10 @@
 
 namespace module {
 
-Valve::Valve() {}
+Valve valve1 = Valve(1);
+Valve valve2 = Valve(2);
+
+Valve::Valve(uint32_t gpio) {}
 
 // // Get the pin state from the MCU for the pin and return it
 // Valve::operator bool() { return bool(GPIO_PinState(gpio_pin)); }

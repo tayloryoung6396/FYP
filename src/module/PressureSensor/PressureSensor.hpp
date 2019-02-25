@@ -6,15 +6,19 @@
 namespace module {
 class PressureSensor {
 public:
-    PressureSensor();
+    PressureSensor(uint32_t gpio);
+
+    double Read();
 
 private:
+    uint32_t gpio;
     uint32_t pressure;
 };
 
-namespace pressure_sensor {
-    extern PressureSensor p_01;
-}  // namespace pressure_sensor
+namespace Sensors {
+    extern PressureSensor pressuresensor1;
+    extern PressureSensor pressuresensor2;
+}  // namespace Sensors
 }  // namespace module
 
 #endif  // MODULE_PRESSURE_SENSOR_HPP

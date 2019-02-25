@@ -8,11 +8,19 @@ public:
 
     void Compute();
 
+    // operator bool();
+    // bool operator=(const bool& value);
+    // bool operator!();
+
+
 private:
     double proportional;
     double intergral;
     double differential;
 };
+
+extern PID pid1;
+extern PID pid2;
 }  // namespace module
 
 #endif  // MODULE_PID_HPP
