@@ -8,14 +8,10 @@ class LinearPot {
 public:
     LinearPot(uint32_t gpio);
 
-    // operator bool();
-    // bool operator=(const bool& value);
-    // bool operator!();
+    double GetPosition();
 
 private:
     uint32_t gpio;
-
-    double contraction;
 };
 
 extern LinearPot linearpot1;

@@ -8,7 +8,7 @@ class PressureSensor {
 public:
     PressureSensor(uint32_t gpio);
 
-    double Read();
+    double GetPressure();
 
 private:
     uint32_t gpio;

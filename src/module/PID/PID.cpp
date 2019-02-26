@@ -8,7 +8,7 @@ PID pid2 = PID();
 PID::PID() {}  // PressureSensor& pressure_sensor, LinearPot& linear_pot)
 //: pressure_sensor(pressure_sensor), linear_pot(linear_pot) {}
 
-void Compute() {}
+void PID::Compute() {}
 
 // // Get the pin state from the MCU for the pin and return it
 // PID::operator bool() { return bool(GPIO_PinState(gpio_pin)); }

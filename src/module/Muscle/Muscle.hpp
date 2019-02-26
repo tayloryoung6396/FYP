@@ -13,11 +13,17 @@ public:
 
     void SetPosition(double set_point);
 
+    double GetPosition();
+
+    double GetPressure();
+
 private:
     Valve& valve;
     PressureSensor& pressure_sensor;
     LinearPot& linear_pot;
     PID& pid;
+
+    double contraction;
 };
 }  // namespace module
 

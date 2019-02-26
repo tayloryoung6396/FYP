@@ -9,7 +9,7 @@ namespace Sensors {
 }  // namespace Sensors
 PressureSensor::PressureSensor(uint32_t gpio) {}
 
-double PressureSensor::Read() {
+double PressureSensor::GetPressure() {
     pressure = 10;
     std::cout << "Pressure at " << pressure << std::endl;
     return pressure;

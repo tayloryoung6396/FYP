@@ -8,7 +8,14 @@ Muscle::Muscle(Valve& valve, PressureSensor& pressure_sensor, LinearPot& linear_
 
 void Muscle::SetPosition(double set_point) {
     std::cout << "Set Point " << set_point << std::endl;
-    double pressure = pressure_sensor.Read();
+
+    double pressure = pressure_sensor.GetPressure();
+    double position = linear_pot.GetPosition();
+
     pid.Compute();
 }
+
+double Muscle::GetPosition() { return linear_pot.GetPosition(); }
+
+double Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
 }  // namespace module

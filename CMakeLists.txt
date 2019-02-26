@@ -1,6 +1,6 @@
 # This must be after the crosscompile so it correctly uses the crosscompiler code
 cmake_minimum_required(VERSION 3.10)
-project(PNEUbot)
+project(PNEUbots)
 
 # Hide some useless cmake variables
 mark_as_advanced(CMAKE_INSTALL_PREFIX)
@@ -13,6 +13,8 @@ set(
 	src/module/PID/PID.cpp
 	src/module/PressureSensor/PressureSensor.cpp
 	src/module/Valve/Valve.cpp
+	src/module/Joint/OneAxis/OneAxis.cpp
+	src/module/Joint/TwoAxis/TwoAxis.cpp
 )
 
 # Add the main executable
