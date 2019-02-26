@@ -8,13 +8,13 @@ mark_as_advanced(CMAKE_INSTALL_PREFIX)
 set(
 	Src
 	src/main.cpp
-	src/module/Muscle/Muscle.cpp
-	src/module/LinearPotentiometer/LinearPotentiometer.cpp
-	src/module/PID/PID.cpp
-	src/module/PressureSensor/PressureSensor.cpp
-	src/module/Valve/Valve.cpp
-	src/module/Joint/OneAxis/OneAxis.cpp
-	src/module/Joint/TwoAxis/TwoAxis.cpp
+	src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp
+	src/module/HardwareIO/Joint/TwoAxis/TwoAxis.cpp
+	src/module/HardwareIO/Muscle/Muscle.cpp
+	src/module/HardwareIO/Valve/Valve.cpp
+	src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp
+	src/module/Sensors/PressureSensor/PressureSensor.cpp
+	src/shared/utility/PID/PID.cpp
 )
 
 # Add the main executable

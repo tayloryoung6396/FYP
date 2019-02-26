@@ -1,18 +1,24 @@
 #include "main.hpp"
 #include <iostream>
-#include "module/Joint/OneAxis/OneAxis.hpp"
-#include "module/Joint/TwoAxis/TwoAxis.hpp"
-#include "module/LinearPotentiometer/LinearPotentiometer.hpp"
-#include "module/Muscle/Muscle.hpp"
-#include "module/PID/PID.hpp"
-#include "module/PressureSensor/PressureSensor.hpp"
-#include "module/Valve/Valve.hpp"
+#include "module/HardwareIO/Joint/OneAxis/OneAxis.hpp"
+#include "module/HardwareIO/Joint/TwoAxis/TwoAxis.hpp"
+#include "module/HardwareIO/Muscle/Muscle.hpp"
+#include "module/HardwareIO/Valve/Valve.hpp"
+#include "module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
+#include "module/Sensors/PressureSensor/PressureSensor.hpp"
+#include "shared/utility/PID/PID.hpp"
 
 int main() {
     std::cout << "Welcome to PNEUbot" << std::endl;
 
-    module::Muscle test_muscle1(module::valve1, module::Sensors::pressuresensor1, module::linearpot1, module::pid1);
-    module::Muscle test_muscle2(module::valve2, module::Sensors::pressuresensor2, module::linearpot2, module::pid2);
+    module::HardwareIO::Muscle test_muscle1(module::HardwareIO::valve1,
+                                            module::Sensors::pressuresensor1,
+                                            module::Sensors::linearpot1,
+                                            shared::utility::pid1);
+    module::HardwareIO::Muscle test_muscle2(module::HardwareIO::valve2,
+                                            module::Sensors::pressuresensor2,
+                                            module::Sensors::linearpot2,
+                                            shared::utility::pid2);
 
 
     while (1) {
