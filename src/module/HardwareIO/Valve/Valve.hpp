@@ -12,6 +12,7 @@ namespace HardwareIO {
         // operator bool();
         // bool operator=(const bool& value);
         // bool operator!();
+
     private:
         uint32_t gpio;
     };

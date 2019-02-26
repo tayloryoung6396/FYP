@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include <iostream>
+
 #include "module/HardwareIO/Joint/OneAxis/OneAxis.hpp"
 #include "module/HardwareIO/Joint/TwoAxis/TwoAxis.hpp"
 #include "module/HardwareIO/Muscle/Muscle.hpp"
@@ -19,7 +20,6 @@ int main() {
                                             module::Sensors::pressuresensor2,
                                             module::Sensors::linearpot2,
                                             shared::utility::pid2);
-
 
     while (1) {
         // Read in requested set position
