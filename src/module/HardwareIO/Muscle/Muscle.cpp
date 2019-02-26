@@ -22,5 +22,8 @@ namespace HardwareIO {
     double Muscle::GetPosition() { return linear_pot.GetPosition(); }
 
     double Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
+
+    bool Muscle::GetValveState() {  // return (valve.bool());
+    }
 }  // namespace HardwareIO
 }  // namespace module

@@ -21,6 +21,8 @@ namespace HardwareIO {
 
         double GetPressure();
 
+        bool GetValveState();
+
     private:
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;
