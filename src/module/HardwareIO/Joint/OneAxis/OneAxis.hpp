@@ -6,7 +6,10 @@ namespace HardwareIO {
     namespace joint {
         class OneAxis {
         public:
-            OneAxis();
+            OneAxis(double r_1);
+
+        private:
+            double r_1;
         };
     }  // namespace joint
 }  // namespace HardwareIO
