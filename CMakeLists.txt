@@ -15,6 +15,8 @@ set(
 	src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp
 	src/module/Sensors/PressureSensor/PressureSensor.cpp
 	src/shared/utility/PID/PID.cpp
+	src/shared/utility/ADC/ADC.cpp
+	src/shared/utility/motion/InverseKinematics.cpp
 )
 
 # Add the main executable
