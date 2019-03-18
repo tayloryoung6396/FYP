@@ -1,9 +1,9 @@
-#ifndef UTILITY_MOTION_INVERSEKINEMATICS_HPP
-#define UTILITY_MOTION_INVERSEKINEMATICS_HPP
+#ifndef UTILITY_INVERSEKINEMATICS_HPP
+#define UTILITY_INVERSEKINEMATICS_HPP
 
 #include <vector>
 
-#include "utility/motion/ForwardKinematics.hpp"
+#include "ForwardKinematics.hpp"
 
 namespace utility {
 namespace motion {
@@ -14,11 +14,11 @@ namespace motion {
 
         bool legPoseValid();
 
-        std::vector<std::pair<ServoID, float>> calculateLegJoints();
+        // std::vector<std::pair<ServoID, float>> calculateLegJoints();
 
 
     }  // namespace kinematics
 }  // namespace motion
 }  // namespace utility
 
-#endif  // UTILITY_MOTION_INVERSEKINEMATICS_HPP
+#endif  // UTILITY_INVERSEKINEMATICS_HPP

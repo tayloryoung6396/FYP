@@ -1,5 +1,5 @@
-#ifndef MODULE_ADC_HPP
-#define MODULE_ADC_HPP
+#ifndef UTILITY_ADC_HPP
+#define UTILITY_ADC_HPP
 
 namespace shared {
 namespace utility {
@@ -11,4 +11,4 @@ namespace utility {
 }  // namespace utility
 }  // namespace shared
 
-#endif  // MODULE_ADC_HPP
+#endif  // UTILITY_ADC_HPP

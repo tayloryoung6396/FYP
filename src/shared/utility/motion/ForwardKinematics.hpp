@@ -1,5 +1,5 @@
-#ifndef UTILITY_MOTION_FORWARDKINEMATICS_HPP
-#define UTILITY_MOTION_FORWARDKINEMATICS_HPP
+#ifndef UTILITY_FORWARDKINEMATICS_HPP
+#define UTILITY_FORWARDKINEMATICS_HPP
 
 #include <vector>
 
@@ -10,13 +10,14 @@ namespace motion {
         // using LimbID  = utility::input::LimbID;
         // using ServoID = utility::input::ServoID;
 
-        inline std::map<ServoID, utility::math::matrix::Transform3D> calculateLegJointPosition() { return positions; }
+        // inline std::map<ServoID, utility::math::matrix::Transform3D> calculateLegJointPosition() { return positions;
+        // }
 
-        inline std::map<ServoID, utility::math::matrix::Transform3D> calculatePosition() {}
+        // inline std::map<ServoID, utility::math::matrix::Transform3D> calculatePosition() {}
+
     }  // namespace kinematics
 
 }  // namespace motion
 }  // namespace utility
-}  // namespace utility
 
-#endif  // UTILITY_MOTION_FORWARDKINEMATICS_HPP
+#endif  // UTILITY_FORWARDKINEMATICS_HPP
