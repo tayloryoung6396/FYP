@@ -5,7 +5,7 @@ namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        OneAxis::OneAxis(double r_1) {
+        OneAxis::OneAxis(std::vector<muscle_t> muscle, double r_1) {
 
             // module::HardwareIO::Muscle muscle_1(module::HardwareIO::valve1,
             //                                     module::Sensors::pressuresensor1,
