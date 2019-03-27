@@ -21,6 +21,8 @@ int main() {
                                             module::Sensors::linearpot2,
                                             shared::utility::pid2);
 
+    // module::HardwareIO::joint::OneAxis Knee(std::vector<muscle_t> muscle, 0.094);
+
     while (1) {
         // Read in requested set position
 

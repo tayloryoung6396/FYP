@@ -1,20 +1,22 @@
 #include "OneAxis.hpp"
 #include <iostream>
+#include "module/HardwareIO/Muscle/Muscle.hpp"
 
 namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        OneAxis::OneAxis(std::vector<muscle_t> muscle, double r_1) {
+        // OneAxis::OneAxis(std::vector<muscle_t> muscle, double r_1) {
+        OneAxis::OneAxis(double r_1) {
 
-            // module::HardwareIO::Muscle muscle_1(module::HardwareIO::valve1,
-            //                                     module::Sensors::pressuresensor1,
-            //                                     module::Sensors::linearpot1,
-            //                                     shared::utility::pid1);
-            // module::HardwareIO::Muscle muscle_2(module::HardwareIO::valve2,
-            //                                     module::Sensors::pressuresensor2,
-            //                                     module::Sensors::linearpot2,
-            //                                     shared::utility::pid2);
+            module::HardwareIO::Muscle muscle_1(module::HardwareIO::valve1,
+                                                module::Sensors::pressuresensor1,
+                                                module::Sensors::linearpot1,
+                                                shared::utility::pid1);
+            module::HardwareIO::Muscle muscle_2(module::HardwareIO::valve2,
+                                                module::Sensors::pressuresensor2,
+                                                module::Sensors::linearpot2,
+                                                shared::utility::pid2);
         }
 
         // Some sort of initial position, 0
