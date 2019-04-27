@@ -2,4 +2,4 @@
 .mxproject
 !.gitignore
 !CMakeLists.txt
-!NUSense.ioc
+!NUCLEO_F722ZE_TEST.ioc
