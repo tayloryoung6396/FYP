@@ -1,3 +1,0 @@
-/mnt/c/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/PNEUbots.dir
-/mnt/c/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/edit_cache.dir
