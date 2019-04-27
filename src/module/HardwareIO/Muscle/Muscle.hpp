@@ -9,12 +9,12 @@
 namespace module {
 namespace HardwareIO {
 
-    struct muscle_t {
-        Valve& valve;
-        Sensors::PressureSensor& pressure_sensor;
-        Sensors::LinearPot& linear_pot;
-        shared::utility::PID& pid;
-    };
+    // struct muscle_t {
+    //     Valve& valve;
+    //     Sensors::PressureSensor& pressure_sensor;
+    //     Sensors::LinearPot& linear_pot;
+    //     shared::utility::PID& pid;
+    // };
 
     class Muscle {
     public:
@@ -32,9 +32,14 @@ namespace HardwareIO {
         bool GetValveState();
 
     private:
-        muscle_t muscle_items;
+        // muscle_t muscle_items;
 
         double contraction;
+
+        Valve& valve;
+        Sensors::PressureSensor& pressure_sensor;
+        Sensors::LinearPot& linear_pot;
+        shared::utility::PID& pid;
     };
 }  // namespace HardwareIO
 }  // namespace module

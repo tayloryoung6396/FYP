@@ -1,6 +1,6 @@
 #include "OneAxis.hpp"
 #include <iostream>
-#include "module/HardwareIO/Muscle/Muscle.hpp"
+#include "../../Muscle/Muscle.hpp"
 
 namespace module {
 namespace HardwareIO {

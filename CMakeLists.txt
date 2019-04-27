@@ -17,6 +17,8 @@ set(
 	src/shared/utility/PID/PID.cpp
 	src/shared/utility/ADC/ADC.cpp
 	src/shared/utility/motion/InverseKinematics.cpp
+	src/shared/utility/clock/clock.cpp
+	
 )
 
 # Add the main executable

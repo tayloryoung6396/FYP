@@ -13,6 +13,7 @@ namespace Sensors {
 
     private:
         uint32_t gpio;
+        double position;
     };
 
     extern LinearPot linearpot1;

@@ -9,17 +9,21 @@
 #include "module/Sensors/PressureSensor/PressureSensor.hpp"
 #include "shared/utility/PID/PID.hpp"
 
+#include "nuclear/src/clock.hpp"
+
 int main() {
     std::cout << "Welcome to PNEUbot" << std::endl;
+
+    utility::clock::initialise();
 
     module::HardwareIO::Muscle test_muscle1(module::HardwareIO::valve1,
                                             module::Sensors::pressuresensor1,
                                             module::Sensors::linearpot1,
                                             shared::utility::pid1);
-    module::HardwareIO::Muscle test_muscle2(module::HardwareIO::valve2,
-                                            module::Sensors::pressuresensor2,
-                                            module::Sensors::linearpot2,
-                                            shared::utility::pid2);
+    // module::HardwareIO::Muscle test_muscle2(module::HardwareIO::valve2,
+    //                                         module::Sensors::pressuresensor2,
+    //                                         module::Sensors::linearpot2,
+    //                                         shared::utility::pid2);
 
     // module::HardwareIO::joint::OneAxis Knee(std::vector<muscle_t> muscle, 0.094);
 
@@ -35,5 +39,7 @@ int main() {
         // Input into moving control filter
         // Output PWM or time
         // Call valve timing function
+
+        NUClear::clock::now();
     }
 }

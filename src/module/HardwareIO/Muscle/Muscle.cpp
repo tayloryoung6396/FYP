@@ -16,7 +16,10 @@ namespace HardwareIO {
         double pressure = pressure_sensor.GetPressure();
         double position = linear_pot.GetPosition();
 
-        pid.Compute(set_point);
+        double value   = position;
+        double control = pid.Compute(set_point, value);
+
+        std::cout << "Control " << control << std::endl;
     }
 
     double Muscle::GetPosition() { return linear_pot.GetPosition(); }
