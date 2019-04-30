@@ -7,14 +7,14 @@ namespace module {
 namespace HardwareIO {
     class Valve {
     public:
-        Valve(uint32_t gpio);
+        Valve(uint16_t gpio_pin);
 
-        // operator bool();
-        // bool operator=(const bool& value);
-        // bool operator!();
+        operator bool();
+        bool operator=(const bool& value);
+        bool operator!();
 
     private:
-        uint32_t gpio;
+        uint32_t gpio_pin;
     };
 
     extern Valve valve1;

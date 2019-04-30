@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"Line",
+				"LinearAxis"
+			],
+			[
+				"L",
+				"LinearAxis"
+			],
+			[
+				"mus",
+				"muscle1"
+			],
+			[
+				"Pre",
+				"Pressure"
+			],
+			[
+				"ADC",
+				"ADC_IO"
+			],
+			[
 				"p",
 				"particle"
 			],
@@ -34,10 +54,6 @@
 			[
 				"X_",
 				"X_CO"
-			],
-			[
-				"mus",
-				"muscle_t"
 			],
 			[
 				"len",
@@ -396,10 +412,6 @@
 				"Left_Position"
 			],
 			[
-				"L",
-				"Left_Position"
-			],
-			[
 				"cur",
 				"curr_pos"
 			],
@@ -502,30 +514,18 @@
 			[
 				"SEN",
 				"SENSORS"
-			],
-			[
-				"Sta",
-				"Start_time"
-			],
-			[
-				"o",
-				"output_start"
-			],
-			[
-				"v",
-				"value"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/main.hpp",
+			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 54,
+				"buffer_size": 1766,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -618,35 +618,89 @@
 	"expanded_folders":
 	[
 		"/C/Users/fish_/Documents/FYP/FYP",
-		"/C/Users/fish_/Documents/FYP/FYP/src"
+		"/C/Users/fish_/Documents/FYP/FYP/src",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID"
 	],
 	"file_history":
 	[
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/adc.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section/critical_section.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/util/critical_section.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_it.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/UART.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/i2c.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usart.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/tim.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usb_otg.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeCache.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/.gitignore",
+		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/TargetDirectories.txt",
 		"/C/Users/fish_/Documents/FYP/FYP/Src/main.c",
 		"/C/Users/fish_/Documents/FYP/FYP/Inc/main.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/main.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
 		"/C/Users/fish_/Desktop/pid.hpp",
 		"/C/Users/fish_/Desktop/pid.cpp",
 		"/C/Users/fish_/Desktop/main.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.cpp",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ENGG_3440/Labs/Lab 2/Lab_2Gen.m",
 		"/C/Users/fish_/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/Scripts/Export_Step/Export_Step.py",
 		"/C/Users/fish_/Desktop/Igus_V5/COM.yaml",
@@ -684,7 +738,6 @@
 		"/C/Users/fish_/Documents/LTspiceXVII/lib/sym/Opamps/LF347.asy",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/ForwardKinematics.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.hpp",
@@ -714,52 +767,21 @@
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/LinearPotentiometer/LinearPotentiometer.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/Joint/TwoAxis/TwoAxis.hpp",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/FYP/Resources Folder/Parts_List.txt",
-		"/C/Users/fish_/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/fish_/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/startup/startup_stm32f407xx.s",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/usart.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/system_stm32f4xx.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/syscalls.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/stm32f4xx_it.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/stm32f4xx_hal_msp.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01-Q02.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01-Q01.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01-Q03.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01-Q04.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01-Q05.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/Ass-01.h",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/gpio.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/main_STM32.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Ass1/Ass-01/Src/main_WINNT.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Assignment_1_s1_2019/Ass-01/Src/main_STM32.c",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/ELEC3730_Assignment_1_s1_2019/Ass-01/Ass-01 WINNT.launch",
-		"/C/Users/fish_/Desktop/ELEC3730_Assignment_1_s1_2019/Ass-01/Src/main.c",
-		"/C/Users/fish_/Desktop/ELEC3730_Assignment_1_s1_2019/Ass-01/Src/main_WINNT.c",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/STM32F407VGTx_FLASH.ld",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/Ass-01-STM32.pdf",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/.project",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/.settings/language.settings.xml",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/startup/startup_stm32f407xx.s",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/.settings/org.eclipse.cdt.codan.core.prefs",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/.cproject",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment1/ELEC3730-2018s1-Ass-01-STM32-r1206/Ass-01-STM32/.mxproject",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Ass-01/Ass-01-Files/filterSB.bin",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Ass-01/Ass-01-Files/filterLP.bin",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Ass-01/Ass-01-Files/filterHP.bin",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Ass-01/Ass-01-Files/filterBP.bin",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/FYP/Resources Folder/Resources",
-		"/C/Users/fish_/Documents/NUbots/NUsense/NUsense/src/stm32/Inc/usbd_cdc_if.h"
+		"/C/Users/fish_/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap"
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
 		"height": 208.0,
 		"where_history":
 		[
+			"",
+			"C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\shared",
+			"C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\module",
+			""
 		]
 	},
 	"find_state":
@@ -767,6 +789,87 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"struct",
+			"test_muscle1",
+			"OneAxis",
+			"_ONE",
+			"OneAxis",
+			"Pressure",
+			"ADC_Common_TypeDef",
+			"TIM5_IRQHandler",
+			"#include \"stm32f722",
+			"APB1LENR",
+			"clock",
+			"util",
+			"HAL_ADC_IRQHandler",
+			"../",
+			"../../../shared/",
+			"ADC",
+			"ADC::",
+			"*/",
+			"GPIO_MODE_ANALOG",
+			"GPIO_InitStruct.Pin",
+			"|",
+			"Output Level */",
+			"G,\n    GPIO_PIN",
+			"HAL_GPIO_WritePin",
+			"GPIO_PIN_RESET",
+			"HAL_GPIO_WritePin",
+			"#error",
+			"H7",
+			"H7\t\t\t",
+			"STM32H7xx_HAL_Driver",
+			"NUsense",
+			"NU",
+			"NUsense",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
+			"H7",
+			"h7",
 			"step_time",
 			"PNEUClear",
 			"PNEUCLEAR_CLOCK_HPP",
@@ -813,81 +916,7 @@
 			"Area",
 			"- [",
 			"-",
-			"Area",
-			"Area: 0.024274000000000004\n  CoM:\n  - -0.0155\n  - 0.02199999999999991\n  - 0.020174311485495245\n  Tensor:\n  - - 193041.6666666668\n    - 1.7440896689797455e-11\n    - 0.0\n  - - 1.7440896689797455e-11\n    - 23416.66666666668\n    - 2.9068161149662423e-11\n  - - 0.0\n    - 2.9068161149662423e-11\n    - 185641.66666666672\n  Volume: 0.00019461800000000003\n  bBoxMax:\n  - 0.0\n  - 0.09499999999999992\n  - 0.04167431148549525\n  bBoxMin:\n  - -0.031\n  - -0.0510000000000001\n  - -0.0013256885145047548",
-			"Area: 0.016855820032296128\n  CoM:\n  - 3.6274022560518777e-06\n  - -0.01573294687984536\n  - 0.0004608525767583823\n  Tensor:\n  - - 47807.6284277773\n    - -1.8980882499913725\n    - 2.669968626257773\n  - - -1.8980882499913725\n    - 26660.294493654477\n    - -1227.6424221205946\n  - - 2.669968626257773\n    - -1227.6424221205946\n    - 37800.204435087195\n  Volume: 8.652817376524783e-05\n  bBoxMax:\n  - 0.020100000000000003\n  - 0.014499999999350503\n  - 0.0308\n  bBoxMin:\n  - -0.020100000000000003\n  - -0.050600000000000006\n  - -0.0245",
-			"filename",
-			"step_folder",
-			"defaultPath",
-			"stlOptions",
-			"                ",
-			"               ",
-			"              ",
-			"             ",
-			"            ",
-			"           ",
-			"          ",
-			"         ",
-			"        ",
-			"       ",
-			"      ",
-			"     ",
-			"    ",
-			"outputFolder",
-			"5n",
-			"1G",
-			"3p",
-			"p ",
-			"p",
-			"a_",
-			"a_0",
-			"a",
-			"P_m",
-			";",
-			" /",
-			"n^",
-			"f^",
-			".*",
-			" *",
-			"L^",
-			"/",
-			"E_RU",
-			"e_RU",
-			"E_RU",
-			"e_RU",
-			"E_RU",
-			"malloc",
-			"memcpy",
-			"rewind",
-			"3",
-			"L",
-			"12",
-			"Z",
-			"1J",
-			"s",
-			"%%",
-			"Z_2",
-			"Z_1",
-			"W_",
-			"W",
-			"UTILITY_MOTION_INVERSEKINEMATICS_HPP",
-			"UTILITY_STATIC_MODEL_HPP",
-			"MODEL_HPP",
-			"UTILITY_MOTION_FORWARDKINEMATICS_HPP",
-			"MODULE_ADC_HPP",
-			"MODULE_PID_HPP",
-			".*",
-			"./",
-			"%",
-			"R",
-			"time_25",
-			"w_25",
-			"Control",
-			"control",
-			"time",
-			"w_10",
-			"exp1_004",
-			"exp"
+			"Area"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -910,25 +939,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/main.hpp",
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 54,
+						"buffer_size": 1766,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1021,
+								1021
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -942,7 +972,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -983,7 +1013,7 @@
 	"project": "FYP.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -993,12 +1023,76 @@
 		"selected_items":
 		[
 			[
+				"one",
+				"src\\module\\HardwareIO\\Joint\\OneAxis\\OneAxis.hpp"
+			],
+			[
+				"mus",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
+			],
+			[
+				"val",
+				"src\\module\\HardwareIO\\Valve\\Valve.cpp"
+			],
+			[
+				"cmak",
+				"CMakeLists.txt"
+			],
+			[
+				"gpio",
+				"src\\shared\\utility\\io\\gpio.cpp"
+			],
+			[
+				"gpo",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
+				"gpoi",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
+				"mu",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
+			],
+			[
+				"vl",
+				"src\\module\\HardwareIO\\Valve\\Valve.cpp"
+			],
+			[
 				"lin",
 				"src\\module\\Sensors\\LinearPotentiometer\\LinearPotentiometer.hpp"
 			],
 			[
-				"one",
-				"src\\module\\HardwareIO\\Joint\\OneAxis\\OneAxis.cpp"
+				"pr",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.hpp"
+			],
+			[
+				"pre",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.hpp"
+			],
+			[
+				"line",
+				"src\\module\\Sensors\\LinearPotentiometer\\LinearPotentiometer.hpp"
+			],
+			[
+				"stm adc",
+				"src\\stm32\\Drivers\\STM32F7xx_HAL_Driver\\Inc\\stm32f7xx_hal_adc.h"
+			],
+			[
+				"adc",
+				"src\\stm32\\Inc\\adc.h"
+			],
+			[
+				"pres",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.hpp"
+			],
+			[
+				"pid",
+				"src\\shared\\utility\\PID\\PID.cpp"
+			],
+			[
+				"cmake",
+				"src\\nuclear\\CMakeLists.txt"
 			],
 			[
 				"li",
@@ -1009,20 +1103,8 @@
 				"src\\module\\PID\\PID.hpp"
 			],
 			[
-				"pid",
-				"src\\module\\PID\\PID.cpp"
-			],
-			[
-				"pre",
-				"src\\module\\PressureSensor\\PressureSensor.cpp"
-			],
-			[
 				"mu\t",
 				"src\\module\\Muscle\\Muscle.hpp"
-			],
-			[
-				"mus",
-				"src\\module\\Muscle\\Muscle.cpp"
 			],
 			[
 				"int",
@@ -1213,10 +1295,6 @@
 				"src\\nuclear\\src\\util\\CallbackGenerator.hpp"
 			],
 			[
-				"gpio",
-				"src\\stm32\\Src\\gpio.c"
-			],
-			[
 				"mai",
 				"src\\main.cpp"
 			],
@@ -1349,10 +1427,6 @@
 				"Project2Code\\MulDiv.sv"
 			],
 			[
-				"pr",
-				"Project2Code\\Program.sv"
-			],
-			[
 				"mac",
 				"Assembler\\machine_code.txt"
 			],
@@ -1459,50 +1533,6 @@
 			[
 				"ca",
 				"modules\\vision\\Camera\\src\\Camera.hpp"
-			],
-			[
-				"joy",
-				"modules\\input\\PS3Controller\\src\\v2\\Joystick.cpp"
-			],
-			[
-				"au",
-				"modules\\input\\AutonomousController\\src\\AutonomousControl.cpp"
-			],
-			[
-				"simp",
-				"modules\\behaviour\\src\\SimplePathPlanner.cpp"
-			],
-			[
-				"class",
-				"modules\\vision\\Classifier\\src\\Classifier.hpp"
-			],
-			[
-				"infr",
-				"modules\\vision\\InfraredSensor\\src\\InfraredSensor.hpp"
-			],
-			[
-				"kine",
-				"modules\\platform\\src\\Kinematics.cpp"
-			],
-			[
-				"dis",
-				"modules\\test_images\\Distance_test.cpp"
-			],
-			[
-				"F",
-				"modules\\vision\\Camera\\src\\FakeCamera.cpp"
-			],
-			[
-				"S",
-				"modules\\vision\\UltrasonicSensor\\src\\Sensors.cpp"
-			],
-			[
-				"dyna",
-				"modules\\platform\\src\\DynamixelProtocol.hpp"
-			],
-			[
-				"IK",
-				"modules\\motion\\src\\IKGripper.hpp"
 			]
 		],
 		"width": 0.0
@@ -1518,12 +1548,12 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 592.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1533,7 +1563,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 233.0,
+	"side_bar_width": 294.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

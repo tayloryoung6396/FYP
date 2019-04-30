@@ -16,40 +16,44 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef NUCLEAR_CLOCK_HPP
-#define NUCLEAR_CLOCK_HPP
-
-#include <chrono>
+#ifndef NUCLEAR_UTIL_CRITICAL_SECTION_HPP
+#define NUCLEAR_UTIL_CRITICAL_SECTION_HPP
 
 namespace NUClear {
+namespace util {
 
-struct clock {
-    using rep                       = uint32_t;
-    using period                    = std::ratio<1, 1000000>;
-    using duration                  = std::chrono::duration<rep, period>;
-    using time_point                = std::chrono::time_point<NUClear::clock>;
-    static constexpr bool is_steady = true;
 
-    static time_point now();
+    struct critical_section {
+    private:
+        static volatile int count;
 
-    static uint64_t clock_overflow;
-};
+        void aquire_lock();
+        void release_lock();
 
-struct timer {
-    using rep                       = uint32_t;
-    using period                    = std::ratio<1, 1000000>;
-    using duration                  = std::chrono::duration<rep, period>;
-    using time_point                = std::chrono::time_point<NUClear::clock>;
-    static constexpr bool is_steady = true;
+    public:
+        critical_section() : held(true) {
+            ++count;
+            if (count == 1) {
+                aquire_lock();
+            }
+        }
 
-    static void start(const NUClear::clock::duration& duration);
-};
+        ~critical_section() { release(); }
 
+        inline void release() {
+            if (held) {
+                if (--count == 0) {
+                    release_lock();
+                }
+                held = false;
+            }
+        }
+
+    private:
+        bool held;
+    };
+
+}  // namespace util
 }  // namespace NUClear
 
-namespace utility {
-namespace clock {
-    void initialise();
-}
-}  // namespace utility
-#endif  // NUCLEAR_CLOCK_HPP
+#endif  // NUCLEAR_UTIL_CRITICAL_SECTION_HPP

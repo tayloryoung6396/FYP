@@ -1,22 +1,19 @@
 #include "OneAxis.hpp"
 #include <iostream>
-#include "../../Muscle/Muscle.hpp"
+#include "HardwareIO/Muscle/Muscle.hpp"
 
 namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        // OneAxis::OneAxis(std::vector<muscle_t> muscle, double r_1) {
-        OneAxis::OneAxis(double r_1) {
+        OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle, double radius)
+            : muscle1(muscle[0]), radius(radius) {
 
-            module::HardwareIO::Muscle muscle_1(module::HardwareIO::valve1,
-                                                module::Sensors::pressuresensor1,
-                                                module::Sensors::linearpot1,
-                                                shared::utility::pid1);
-            module::HardwareIO::Muscle muscle_2(module::HardwareIO::valve2,
-                                                module::Sensors::pressuresensor2,
-                                                module::Sensors::linearpot2,
-                                                shared::utility::pid2);
+            muscle1.SetPosition(1);
+        }
+        void OneAxis::Compute(double angle) {
+            // Set the muscles related to the joint to the set position
+            // muscle1.SetPosition(angle);
         }
 
         // Some sort of initial position, 0
