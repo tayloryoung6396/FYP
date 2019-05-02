@@ -28,6 +28,7 @@ namespace utility {
 
         // double F_m = -pressure * delta_V + F_pe * delta_D - F_l;
         // double W_pma = W_vae + W_el;
+        return 0;
     }
 }  // namespace utility
 }  // namespace shared

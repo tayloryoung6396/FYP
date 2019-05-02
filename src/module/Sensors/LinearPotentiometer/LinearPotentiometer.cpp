@@ -1,10 +1,12 @@
 #include "LinearPotentiometer.hpp"
+#include <cmath>
 #include <iostream>
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace Sensors {
 
-    LinearPot linearpot1 = LinearPot(1);
+    LinearPot linearpot1 = LinearPot(1, 0.1);
     // LinearPot linearpot2  = LinearPot(2);
     // LinearPot linearpot3  = LinearPot(3);
     // LinearPot linearpot4  = LinearPot(4);
@@ -17,20 +19,19 @@ namespace Sensors {
     // LinearPot linearpot11 = LinearPot(11);
     // LinearPot linearpot12 = LinearPot(12);
 
-    LinearPot::LinearPot(uint32_t gpio) {}
+    LinearPot::LinearPot(uint32_t gpio, double length) : length(length) {}
 
     double LinearPot::GetPosition() {
         // Read gpio
-        position = 5;
-        std::cout << "Position at " << position << std::endl;
-        position = ConvertPotentiometer(shared::utility::adc_io.GetSensors(gpio));
+        double position = ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
+        utility::io::debug.out("Position at %lf\n", position);
         return position;
     }
 
-    double LinearPot::ConvertPotentiometer(double Potentiometer) {
-
-        Potentiometer = Potentiometer;  // TODO Scale by the adc ammount and then the length scale to m
-        return Potentiometer;
+    double LinearPot::ConvertPotentiometer(double position) {
+        double scale = std::pow(2, 12);
+        position     = position / scale * length;
+        return position;
     }
 }  // namespace Sensors
 }  // namespace module

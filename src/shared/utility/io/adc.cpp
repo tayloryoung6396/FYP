@@ -6,18 +6,16 @@
 extern "C" {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
     if (hadc == &hadc1) {
-        shared::utility::adc_io.FillSensors(&hadc1, 0);
+        utility::io::adc_io.FillSensors(&hadc1, 0);
     }
     else if (hadc == &hadc3) {
-        shared::utility::adc_io.FillSensors(&hadc3, 12);
+        utility::io::adc_io.FillSensors(&hadc3, 12);
     }
 }
-
-void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef* hadc) {}
 }
 
-namespace shared {
 namespace utility {
+namespace io {
 
     ADC_IO adc_io = ADC_IO();
 
@@ -35,12 +33,11 @@ namespace utility {
     }
 
     uint16_t ADC_IO::GetSensors(int port) {
-
         NUClear::util::critical_section lock;
         uint16_t data = raw_data.sensors[port];
         lock.release();
         return (data);
     }
 
+}  // namespace io
 }  // namespace utility
-}  // namespace shared

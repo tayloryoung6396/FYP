@@ -1,5 +1,6 @@
 #include "PressureSensor.hpp"
 #include <iostream>
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace Sensors {
@@ -20,13 +21,12 @@ namespace Sensors {
 
     double PressureSensor::GetPressure() {
         pressure = 10;
-        std::cout << "Pressure at " << pressure << std::endl;
-        pressure = ConvertPressure(shared::utility::adc_io.GetSensors(gpio));
+        utility::io::debug.out("Pressure at %lf\n", pressure);
+        pressure = ConvertPressure(utility::io::adc_io.GetSensors(gpio));
         return pressure;
     }
 
     double PressureSensor::ConvertPressure(double Pressure) {
-
         Pressure = Pressure;  // TODO Scale by the adc ammount and then the data sheet specification
         return Pressure;
     }

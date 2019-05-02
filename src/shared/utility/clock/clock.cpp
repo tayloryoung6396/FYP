@@ -42,8 +42,6 @@ namespace clock {
         RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
         RCC->APB1ENR |= RCC_APB1ENR_TIM5EN;
 
-        // NVIC_SetPriority(TIM2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0));
-        // NVIC_EnableIRQ(TIM2_IRQn);
         NVIC_SetPriority(TIM5_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0));
         NVIC_EnableIRQ(TIM5_IRQn);
 
@@ -79,6 +77,5 @@ void TIM5_IRQHandler() {
     using Timer = extension::hal::SFR<TIM_TypeDef, TIM5_BASE>;
 
     Timer::reg->SR = ~TIM_IT_UPDATE;
-    // NUClear::extension::timer_fired_interrupt();
 }
 }

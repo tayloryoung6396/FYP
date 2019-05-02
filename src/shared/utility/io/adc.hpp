@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include "stm32f7xx.h"
 
-namespace shared {
 namespace utility {
+namespace io {
     struct ADC_Sensors {
         uint16_t sensors[12];
     };
@@ -22,7 +22,7 @@ namespace utility {
 
     extern ADC_IO adc_io;
 
+}  // namespace io
 }  // namespace utility
-}  // namespace shared
 
 #endif  // UTILITY_ADC_HPP

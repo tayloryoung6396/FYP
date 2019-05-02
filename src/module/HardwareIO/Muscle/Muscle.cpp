@@ -1,5 +1,6 @@
 #include "Muscle.hpp"
 #include <iostream>
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace HardwareIO {
@@ -12,7 +13,7 @@ namespace HardwareIO {
         , length(muscle.length) {}
 
     void Muscle::SetPosition(double set_point) {
-        std::cout << "Set Point " << set_point << std::endl;
+        utility::io::debug.out("Set Point %lf\n", set_point);
 
         double pressure = pressure_sensor.GetPressure();
         double position = linear_pot.GetPosition();
@@ -20,7 +21,7 @@ namespace HardwareIO {
         double value   = position;
         double control = pid.Compute(set_point, value);
 
-        std::cout << "Control " << control << std::endl;
+        utility::io::debug.out("Control %lf\n", control);
 
         // From the control point decide how to act on the valve to reach a required state
     }

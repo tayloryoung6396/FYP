@@ -16,6 +16,7 @@ namespace HardwareIO {
         private:
             double radius;
             module::HardwareIO::Muscle muscle1;
+            module::HardwareIO::Muscle muscle2;
         };
 
     }  // namespace joint
