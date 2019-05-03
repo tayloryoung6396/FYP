@@ -1,4 +1,5 @@
 #include "uart.hpp"
+#include <cstdio>
 #include <cstring>
 #include "stm32f7xx.h"
 #include "usart.h"
@@ -12,9 +13,9 @@ namespace io {
     void UART::out(const char* fmt, ...) {
         va_list argp;
         va_start(argp, fmt);
-        char* string;
-        if (0 < vsprintf(string, fmt, argp)) {
-            HAL_UART_Transmit(&huart3, (uint8_t*) string, strlen(string), 0xFFFF);
+        char msg[256] = {0};
+        if (0 < vsprintf((char*) msg, fmt, argp)) {
+            HAL_UART_Transmit(&huart6, (uint8_t*) &msg, strlen((char*) msg), 0xFFFF);
         }
         va_end(argp);
     }

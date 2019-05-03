@@ -1,8 +1,9 @@
 #ifndef UTILITY_IO_UART_HPP
 #define UTILITY_IO_UART_HPP
 
-#include <stdarg.h>
 #include <stdint.h>
+#include <cstdarg>
+#include <cstdio>
 #include "stm32f7xx.h"
 
 namespace utility {

@@ -3,12 +3,12 @@ set(
   src
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c
-  Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c
-  Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c
-  Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c
+  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c
+  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c
+  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c
-  Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c
-  Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c
+  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c
+  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c
@@ -28,9 +28,9 @@ set(
   Src/stm32f7xx_hal_msp.c
   Src/system_stm32f7xx.c
   Src/gpio.c
-  Src/i2c.c
+  # Src/i2c.c
   Src/usart.c
-  Src/usb_otg.c
+  # Src/usb_otg.c
   Src/adc.c
   Src/tim.c startup_stm32f722xx.s
 )
@@ -40,7 +40,7 @@ add_library(stm32 OBJECT ${src})
 
 # Make the compile definitions
 target_compile_definitions(stm32 PUBLIC USE_HAL_DRIVER)
-target_compile_definitions(stm32 PUBLIC STM32F753xx)
+target_compile_definitions(stm32 PUBLIC STM32F722xx)
 
 # Include the directories as private unless they are needed elsewhere
 target_include_directories(

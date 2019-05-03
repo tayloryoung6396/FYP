@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include <chrono>
+#include <cstring>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,17 +13,19 @@
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"
 #include "gpio.h"
-#include "i2c.h"
+// #include "i2c.h"
 #include "main.h"
 #include "nuclear/src/clock.hpp"
 #include "stm32f7xx_hal_conf.h"
 #include "stm32f7xx_it.h"
 #include "tim.h"
 #include "usart.h"
-#include "usb_otg.h"
+// #include "usb_otg.h"
 #include "utility/PID/PID.hpp"
 #include "utility/io/adc.hpp"
 #include "utility/io/uart.hpp"
+
+#define COUNTOF(__BUFFER__) (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
 
 extern "C" {
 void SystemClock_Config(void);
@@ -41,12 +44,14 @@ int main() {
     MX_GPIO_Init();
     MX_ADC1_Init();
     MX_ADC3_Init();
-    MX_I2C1_Init();
-    MX_USART3_UART_Init();
-    MX_USB_OTG_FS_PCD_Init();
+    // MX_I2C1_Init();
+    // MX_USART2_UART_Init();
+    MX_USART6_UART_Init();
+    // MX_USB_OTG_FS_PCD_Init();
+
+    auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("Welcome to PNEUbot\n");
-    utility::io::adc_io.GetSensors(1);
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 
@@ -60,13 +65,72 @@ int main() {
 
     module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
 
+    int i = 0;
+
     while (1) {
+        i++;
         // Decide where i want the joint positions
         // Read ADC
         // Call all joint funtions to act upon the request
-        linear_muscle.Compute(100);
+        // linear_muscle.Compute(100);
 
+        HAL_GPIO_TogglePin(GPIOB, LD3_Pin);
+        HAL_GPIO_TogglePin(GPIOB, LD2_Pin);
+        auto now    = NUClear::clock::now();
+        double time = std::chrono::duration_cast<std::chrono::microseconds>(now - time_start).count();
+        utility::io::debug.out("Welcome to PNEUbot %lf\n", time);
 
-        NUClear::clock::now();
+        HAL_Delay(300);
     }
 }
+
+// int __io_putchar(int ch) {
+//     HAL_UART_Transmit(&huart6, (uint8_t*) &ch, 1, 0xFFFF);
+//     return ch;
+// }
+
+
+// // STEPIEN: Redirect input from serial port
+// //
+// int __io_getchar(void) {
+//     int ch = 0;
+//     HAL_UART_Receive(&huart6, (uint8_t*) &ch, 1, 0xffff);
+//     return ch;
+// }
+
+// RCC_OscInitTypeDef RCC_OscInitStruct         = {0};
+// RCC_ClkInitTypeDef RCC_ClkInitStruct         = {0};
+// RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+
+// /**Configure LSE Drive Capability
+//  */
+// HAL_PWR_EnableBkUpAccess();
+// /**Configure the main internal regulator output voltage
+//  */
+// __HAL_RCC_PWR_CLK_ENABLE();
+// __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+// /**Initializes the CPU, AHB and APB busses clocks
+//  */
+// RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI;
+// RCC_OscInitStruct.HSIState            = RCC_HSI_ON;
+// RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+// RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_NONE;
+// if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+//     Error_Handler();
+// }
+// /**Initializes the CPU, AHB and APB busses clocks
+//  */
+// RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+// RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_HSI;
+// RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+// RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+// RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+// if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK) {
+//     Error_Handler();
+// }
+// PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART6;
+// PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;
+// if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
+//     Error_Handler();
+// }
