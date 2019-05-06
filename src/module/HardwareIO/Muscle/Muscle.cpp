@@ -1,5 +1,7 @@
 #include "Muscle.hpp"
+#include <stdint.h>
 #include <iostream>
+#include "gpio.h"
 #include "utility/io/uart.hpp"
 
 namespace module {
@@ -15,15 +17,27 @@ namespace HardwareIO {
     void Muscle::SetPosition(double set_point) {
         utility::io::debug.out("Set Point %lf\n", set_point);
 
+        // Get our sensor data from raw sensors
         double pressure = pressure_sensor.GetPressure();
         double position = linear_pot.GetPosition();
 
+        // Decide how we want to act
         double value   = position;
         double control = pid.Compute(set_point, value);
 
         utility::io::debug.out("Control %lf\n", control);
 
         // From the control point decide how to act on the valve to reach a required state
+        if (control > 0) {
+            valve = true;
+            // TODO This should also set the time horizon variables
+            HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PinState(true));
+        }
+        else if (control < 0) {
+            valve = false;
+            // TODO This should also set the time horizon variables
+            HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PinState(false));
+        }
     }
 
     double Muscle::GetPosition() { return linear_pot.GetPosition(); }

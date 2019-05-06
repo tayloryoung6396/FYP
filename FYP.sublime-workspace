@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"time",
+				"time_start"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
 				"export",
 				"export_step"
 			],
@@ -506,58 +514,18 @@
 			[
 				"go",
 				"goal_pos"
-			],
-			[
-				"rev",
-				"rev_total"
-			],
-			[
-				"Map",
-				"Map_Image"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 558,
+				"buffer_size": 4268,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
-			"settings":
-			{
-				"buffer_size": 872,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/shared/utility/model/DynamicModel/DynamicModel.cpp",
-			"settings":
-			{
-				"buffer_size": 113,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/shared/utility/model/DynamicModel/DynamicModel.hpp",
-			"settings":
-			{
-				"buffer_size": 188,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/shared/utility/io/gpio.cpp",
-			"settings":
-			{
-				"buffer_size": 1310,
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -570,46 +538,28 @@
 			}
 		},
 		{
-			"file": "src/module/HardwareIO/Valve/Valve.cpp",
+			"file": "src/nuclear/src/clock.hpp",
 			"settings":
 			{
-				"buffer_size": 545,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
-			"settings":
-			{
-				"buffer_size": 608,
-				"encoding": "UTF-8",
+				"buffer_size": 2251,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/module/HardwareIO/Joint/TwoAxis/TwoAxis.cpp",
+			"file": "src/stm32/Src/tim.c",
 			"settings":
 			{
-				"buffer_size": 501,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/shared/utility/io/adc.cpp",
-			"settings":
-			{
-				"buffer_size": 1048,
+				"buffer_size": 5846,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "src/stm32/Src/gpio.c",
 			"settings":
 			{
-				"buffer_size": 2015,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 9685,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -621,102 +571,64 @@
 			}
 		},
 		{
-			"file": "src/shared/utility/model/StaticModel/StaticModel.cpp",
+			"file": "src/stm32/Src/main.c",
 			"settings":
 			{
-				"buffer_size": 975,
+				"buffer_size": 6102,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/shared/utility/model/StaticModel/StaticModel.hpp",
+			"file": "src/stm32/Src/usart.c",
 			"settings":
 			{
-				"buffer_size": 286,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/nuclear/src/util/critical_section.hpp",
-			"settings":
-			{
-				"buffer_size": 2031,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/shared/utility/PID/PID.cpp",
-			"settings":
-			{
-				"buffer_size": 1109,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/shared/utility/PID/PID.hpp",
-			"settings":
-			{
-				"buffer_size": 658,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/module/HardwareIO/Muscle/Muscle.cpp",
-			"settings":
-			{
-				"buffer_size": 1040,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/module/HardwareIO/Muscle/Muscle.hpp",
-			"settings":
-			{
-				"buffer_size": 1003,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/shared/utility/motion/InverseKinematics.cpp",
-			"settings":
-			{
-				"buffer_size": 342,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
-			"settings":
-			{
-				"buffer_size": 1206,
+				"buffer_size": 6796,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/module/Sensors/PressureSensor/PressureSensor.cpp",
+			"file": "src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
 			"settings":
 			{
-				"buffer_size": 1356,
+				"buffer_size": 8607,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
+			"file": "src/main.hpp",
 			"settings":
 			{
-				"buffer_size": 930,
+				"buffer_size": 55,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
+			"file": "src/shared/utility/io/uart.cpp",
 			"settings":
 			{
-				"buffer_size": 535,
-				"line_ending": "Unix"
+				"buffer_size": 524,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/shared/utility/io/uart.hpp",
+			"settings":
+			{
+				"buffer_size": 367,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -830,29 +742,82 @@
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Source",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Include",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src"
 	],
 	"file_history":
 	[
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/usart.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usart.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/Ass-02-Q01.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usb_otg.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_hal_conf.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_it.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section/critical_section.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.hpp",
+		"/C/Users/fish_/The University Of Newcastle/Alexandra Rendina - Lab 2/Lab_2_Servo_Results/Untitled.m",
+		"/C/Users/fish_/The University Of Newcastle/Alexandra Rendina - Lab 2/lab22redo.m",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/build/PNEUbots.map",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/TwoAxis/TwoAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/util/critical_section.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/ForwardKinematics.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usart.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c",
-		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
 		"/C/Users/fish_/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/Scripts/Export_Step/Export_Step.py",
 		"/C/Users/fish_/Documents/NUbots/NUbots/doc/Kinematics/Export_Step.py",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Ankle_Block_v4.yaml",
@@ -860,49 +825,21 @@
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Foot_Left_v7.yaml",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v10.yaml",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Upper_Left_v12.yaml",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/p1(2).sv",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/Assignment3.txt",
 		"/C/Users/fish_/The University Of Newcastle/Thomas Bailey - Assignment 2/Combined_SCP.sv",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/adc.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/adc.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section/critical_section.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/util/critical_section.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_it.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/UART.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/i2c.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/tim.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usb_otg.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/main.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeCache.txt",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/.gitignore",
 		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/TargetDirectories.txt",
@@ -945,29 +882,13 @@
 		"/C/Users/fish_/Desktop/Test.txt",
 		"/C/Users/fish_/Documents/LTspiceXVII/lib/sym/Opamps/LF347.asy",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.hpp",
 		"/C/Users/fish_/Downloads/assignment1.py",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ELEC_4210/Assignment 1/Assignment1.matlab",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ENGG_3440/Labs/Lab 1/Lab1_s2.m",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.cpp",
 		"/C/Users/fish_/workspace/Ass-01/Ass-01-Files/11k8bitpcm.wav",
-		"/C/Users/fish_/Documents/FYP/Nulceo_Test/NUCLEO_F722ZE_TEST/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
-		"/C/Users/fish_/Documents/FYP/Nulceo_Test/NUCLEO_F722ZE_TEST/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
-		"/C/Users/fish_/Documents/FYP/Nulceo_Test/NUCLEO_F722ZE_TEST/Src/main.c",
-		"/C/Users/fish_/Documents/FYP/Nulceo_Test/NUCLEO_F722ZE_TEST/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/FYP/Resources Folder/Resources.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Valve/Valve.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Valve/Valve.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/Milestones.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Muscle/Muscle.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/PID/PID.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/PID/PID.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Muscle/Muscle.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Joint/OneAxis/OneAxis.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Joint/TwoAxis/TwoAxis.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Joint/OneAxis/OneAxis.hpp"
+		"/C/Users/fish_/Documents/FYP/Nulceo_Test/NUCLEO_F722ZE_TEST/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c"
 	],
 	"find":
 	{
@@ -989,6 +910,42 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"::\n",
+			"};\n",
+			"string",
+			");\n",
+			"HAL_Toggl",
+			"thing",
+			"module/",
+			"shared::utility",
+			"{\n",
+			"'Tachometer Observed (36deg/V)'",
+			"(36deg / V)",
+			"'Tachometer (36deg / V)'",
+			"title",
+			"! ",
+			"V",
+			"'Tachometer Observed'",
+			"'Position 36deg / V Observed'",
+			"'Tachometer'",
+			"'Tachometer",
+			"'Reference 36deg / V'",
+			"'Position 36deg / V'",
+			"'Control",
+			"'Reference",
+			"'Position",
+			"figure",
+			"*",
+			"%",
+			"time_10",
+			"exp1_001",
+			"exp1_003",
+			"utility::",
+			"utility::io::debug",
+			"UTILITY_IO_GPIO",
+			"debug_print",
+			"std::cout",
+			"msg",
 			"Scale",
 			"Position",
 			"Potentiometer",
@@ -1080,43 +1037,7 @@
 			"H7",
 			"h7",
 			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"step_time",
-			"PNEUClear",
-			"PNEUCLEAR_CLOCK_HPP",
-			"NUCLEAR",
-			"NUClear",
-			"double",
-			",",
-			";\n",
-			",",
-			"Observer_tach",
-			"Observer_pos",
-			"Control",
-			"Tach",
-			"Position",
-			"Reference",
-			"Control",
-			"Tach",
-			"Position",
-			"Reference",
-			"Control",
-			"Tach",
-			"Position",
-			"Reference",
-			"time_25_ex2",
-			"time_10",
-			"]]",
-			"[[",
-			" [",
-			"      ,",
-			":",
-			"- - ",
-			"- -"
+			"h7"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1124,6 +1045,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"utility::debug"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1134,53 +1056,24 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 558,
+						"buffer_size": 4268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								508,
-								508
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 872,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								872,
-								872
+								2083,
+								2083
 							]
 						],
 						"settings":
@@ -1190,100 +1083,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 614.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/shared/utility/model/DynamicModel/DynamicModel.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 113,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/shared/utility/model/DynamicModel/DynamicModel.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 188,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/shared/utility/io/gpio.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1310,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 1,
 					"file": "src/shared/utility/clock/clock.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1295,8 +1102,8 @@
 						"selection":
 						[
 							[
-								1866,
-								1869
+								1764,
+								1764
 							]
 						],
 						"settings":
@@ -1306,27 +1113,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/module/HardwareIO/Valve/Valve.cpp",
+					"buffer": 2,
+					"file": "src/nuclear/src/clock.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 545,
+						"buffer_size": 2251,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1333,
+								1338
 							]
 						],
 						"settings":
@@ -1336,132 +1143,74 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 74.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
+					"buffer": 3,
+					"file": "src/stm32/Src/tim.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 608,
+						"buffer_size": 5846,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								487,
-								487
+								5015,
+								5015
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1232.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/module/HardwareIO/Joint/TwoAxis/TwoAxis.cpp",
+					"buffer": 4,
+					"file": "src/stm32/Src/gpio.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 501,
+						"buffer_size": 9685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3200,
+								3200
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/shared/utility/io/adc.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1048,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								853,
-								853
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 522.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2015,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1943,
-								1943
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 427.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
+					"buffer": 5,
 					"file": "src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c",
 					"semi_transient": false,
 					"settings":
@@ -1473,8 +1222,8 @@
 						"selection":
 						[
 							[
-								26981,
-								26981
+								26934,
+								26934
 							]
 						],
 						"settings":
@@ -1484,137 +1233,79 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9671.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/shared/utility/model/StaticModel/StaticModel.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 975,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								85,
-								96
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 9503.33333333,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "src/shared/utility/model/StaticModel/StaticModel.hpp",
+					"buffer": 6,
+					"file": "src/stm32/Src/main.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 286,
+						"buffer_size": 6102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								5091,
+								3511
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1257.33333333,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "src/nuclear/src/util/critical_section.hpp",
+					"buffer": 7,
+					"file": "src/stm32/Src/usart.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2031,
+						"buffer_size": 6796,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1844,
-								1844
+								3245,
+								3245
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/C++/C.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 518.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "src/shared/utility/PID/PID.cpp",
+					"buffer": 8,
+					"file": "src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1109,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								62,
-								163
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "src/shared/utility/PID/PID.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 658,
+						"buffer_size": 8607,
 						"regions":
 						{
 						},
@@ -1628,31 +1319,60 @@
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "src/module/HardwareIO/Muscle/Muscle.cpp",
+					"buffer": 9,
+					"file": "src/main.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1040,
+						"buffer_size": 55,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								272,
-								287
+								0,
+								55
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/shared/utility/io/uart.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 524,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								305,
+								305
 							]
 						],
 						"settings":
@@ -1669,160 +1389,40 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
-					"file": "src/module/HardwareIO/Muscle/Muscle.hpp",
+					"buffer": 11,
+					"file": "src/shared/utility/io/uart.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1003,
+						"buffer_size": 367,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								446,
-								449
+								68,
+								68
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
-					"file": "src/shared/utility/motion/InverseKinematics.cpp",
+					"buffer": 12,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 342,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								342,
-								342
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34,
-								34
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "src/module/Sensors/PressureSensor/PressureSensor.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1356,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1181,
-								1309
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 930,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								398,
-								398
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 535,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1835,13 +1435,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"default_dir": "C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\stm32\\Src",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1900,6 +1501,22 @@
 		"selected_items":
 		[
 			[
+				"ua",
+				"src\\shared\\utility\\io\\uart.cpp"
+			],
+			[
+				"adc",
+				"src\\shared\\utility\\io\\adc.hpp"
+			],
+			[
+				"uart",
+				"src\\shared\\utility\\io\\uart.hpp"
+			],
+			[
+				"gpio",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
 				"main",
 				"src\\main.cpp"
 			],
@@ -1918,10 +1535,6 @@
 			[
 				"clock",
 				"src\\shared\\utility\\clock\\clock.cpp"
-			],
-			[
-				"adc",
-				"src\\shared\\utility\\io\\adc.cpp"
 			],
 			[
 				"stm",
@@ -1974,10 +1587,6 @@
 			[
 				"cmak",
 				"CMakeLists.txt"
-			],
-			[
-				"gpio",
-				"src\\shared\\utility\\io\\gpio.cpp"
 			],
 			[
 				"gpo",
@@ -2084,10 +1693,6 @@
 				"src\\shared\\extension\\hal\\uart\\interrupt.cpp"
 			],
 			[
-				"uart",
-				"src\\shared\\extension\\hal\\uart\\uart_configuration.hpp"
-			],
-			[
 				"d",
 				"src\\module\\DynamixelComms\\DynamixelStream.hpp"
 			],
@@ -2106,10 +1711,6 @@
 			[
 				"usbd_cdc_if",
 				"src\\stm32\\Src\\usbd_cdc_if.c"
-			],
-			[
-				"ua",
-				"src\\shared\\extension\\hal\\uart\\uart_configuration.hpp"
 			],
 			[
 				"init",

@@ -12,7 +12,7 @@ namespace HardwareIO {
         }
 
         void LinearAxis::Compute(double position) {
-            // Set the muscles related to the joint to the set position
+            // Set each muscle related to the joint to the set position
             muscle1.SetPosition(position);
         }
 

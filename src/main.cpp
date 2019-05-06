@@ -9,6 +9,7 @@
 #include "HardwareIO/Joint/TwoAxis/TwoAxis.hpp"
 #include "HardwareIO/Muscle/Muscle.hpp"
 #include "HardwareIO/Valve/Valve.hpp"
+#include "Input/Controller/Controller.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"
@@ -24,8 +25,6 @@
 #include "utility/PID/PID.hpp"
 #include "utility/io/adc.hpp"
 #include "utility/io/uart.hpp"
-
-#define COUNTOF(__BUFFER__) (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
 
 extern "C" {
 void SystemClock_Config(void);
@@ -69,34 +68,18 @@ int main() {
 
     while (1) {
         i++;
-        // Decide where i want the joint positions
-        // Read ADC
-        // Call all joint funtions to act upon the request
-        // linear_muscle.Compute(100);
 
         HAL_GPIO_TogglePin(GPIOB, LD3_Pin);
-        HAL_GPIO_TogglePin(GPIOB, LD2_Pin);
+        HAL_Delay(300);
         auto now    = NUClear::clock::now();
         double time = std::chrono::duration_cast<std::chrono::microseconds>(now - time_start).count();
-        utility::io::debug.out("Welcome to PNEUbot %lf\n", time);
+        utility::io::debug.out("PNEUBot is running %lf\n", time);
 
-        HAL_Delay(300);
+        // This should probably be handled by ome controller
+        // Set the value to the position requested
+        linear_muscle.Compute(0.1);
     }
 }
-
-// int __io_putchar(int ch) {
-//     HAL_UART_Transmit(&huart6, (uint8_t*) &ch, 1, 0xFFFF);
-//     return ch;
-// }
-
-
-// // STEPIEN: Redirect input from serial port
-// //
-// int __io_getchar(void) {
-//     int ch = 0;
-//     HAL_UART_Receive(&huart6, (uint8_t*) &ch, 1, 0xffff);
-//     return ch;
-// }
 
 // RCC_OscInitTypeDef RCC_OscInitStruct         = {0};
 // RCC_ClkInitTypeDef RCC_ClkInitStruct         = {0};
