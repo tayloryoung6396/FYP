@@ -7,10 +7,8 @@ namespace HardwareIO {
     namespace joint {
 
         OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle, double radius)
-            : muscle1(muscle[0]), muscle2(muscle[1]), radius(radius) {
+            : muscle1(muscle[0]), muscle2(muscle[1]), radius(radius) {}
 
-            muscle1.SetPosition(1);
-        }
         void OneAxis::Compute(double angle) {
             // Set the muscles related to the joint to the set position
             // muscle1.SetPosition(angle);

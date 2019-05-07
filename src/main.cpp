@@ -30,6 +30,14 @@ extern "C" {
 void SystemClock_Config(void);
 }
 
+
+// struct PM_100{
+//     double nom_length;
+//     double contraction_percent;
+//     double diameter;
+// }
+
+
 int main() {
 
     // Initialise the HAL driver
@@ -48,36 +56,39 @@ int main() {
     MX_USART6_UART_Init();
     // MX_USB_OTG_FS_PCD_Init();
 
-    auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("Welcome to PNEUbot\n");
 
-    std::vector<module::HardwareIO::muscle_t> muscles;
+    // std::vector<module::HardwareIO::muscle_t> muscles;
 
-    module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
-                                            module::Sensors::pressuresensor1,
-                                            module::Sensors::linearpot1,
-                                            shared::utility::pid1,
-                                            0.1};
+    // module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
+    //                                         module::Sensors::pressuresensor1,
+    //                                         module::Sensors::linearpot1,
+    //                                         shared::utility::pid1,
+    //                                         0.1};
 
-    muscles.push_back(muscle1);
+    // muscles.push_back(muscle1);
 
-    module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
+    // module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
 
     int i = 0;
 
     while (1) {
         i++;
+        auto now = NUClear::clock::now();
+        HAL_Delay(1000);
+        auto time_start = NUClear::clock::now();
 
+        double time = std::chrono::duration_cast<std::chrono::microseconds>(time_start - now).count();
+
+        utility::io::debug.out("PNEUBot is running %lf\n", time / 1e6);
+
+        HAL_GPIO_TogglePin(GPIOB, LD2_Pin);
         HAL_GPIO_TogglePin(GPIOB, LD3_Pin);
-        HAL_Delay(300);
-        auto now    = NUClear::clock::now();
-        double time = std::chrono::duration_cast<std::chrono::microseconds>(now - time_start).count();
-        utility::io::debug.out("PNEUBot is running %lf\n", time);
 
         // This should probably be handled by ome controller
         // Set the value to the position requested
-        linear_muscle.Compute(0.1);
+        // linear_muscle.Compute(0.1);
     }
 }
 

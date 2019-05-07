@@ -29,10 +29,12 @@ namespace utility {
         double output = Pout + Iout + Dout;
 
         // Restrict to max/min
-        if (output > max)
+        if (output > max) {
             output = max;
-        else if (output < min)
+        }
+        else if (output < min) {
             output = min;
+        }
 
         // Save error to previous error
         pre_error = error;

@@ -25,7 +25,7 @@ namespace NUClear {
 
 struct clock {
     using rep                       = uint32_t;
-    using period                    = std::ratio<1, 1000000>;
+    using period                    = std::ratio<1, 485274>;
     using duration                  = std::chrono::duration<rep, period>;
     using time_point                = std::chrono::time_point<NUClear::clock>;
     static constexpr bool is_steady = true;
@@ -37,7 +37,7 @@ struct clock {
 
 struct timer {
     using rep                       = uint32_t;
-    using period                    = std::ratio<1, 1000000>;
+    using period                    = std::ratio<1, 485274>;
     using duration                  = std::chrono::duration<rep, period>;
     using time_point                = std::chrono::time_point<NUClear::clock>;
     static constexpr bool is_steady = true;

@@ -23,9 +23,9 @@ namespace clock {
         Timer::reg->EGR = TIM_EGR_UG;
 
         /// Reset the SMS, TS, ECE, ETPS and ETRF bits after which we will be using the internal clock
-        Timer::reg->SMCR =
-            Timer::reg->SMCR
-            & ~(TIM_SMCR_SMS | TIM_SMCR_MSM | TIM_SMCR_TS | TIM_SMCR_ETF | TIM_SMCR_ETPS | TIM_SMCR_ECE | TIM_SMCR_ETP);
+        Timer::reg->SMCR = Timer::reg->SMCR
+                           & ~(TIM_SMCR_SMS | TIM_SMCR_MSM | TIM_SMCR_TS | TIM_SMCR_ETF | TIM_SMCR_ETPS_0 | TIM_SMCR_ECE
+                               | TIM_SMCR_ETP);
 
         Timer::reg->CR2 &= ~(TIM_CR2_MMS);
 

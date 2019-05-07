@@ -6,10 +6,7 @@ namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        LinearAxis::LinearAxis(std::vector<module::HardwareIO::muscle_t>& muscle) : muscle1(muscle[0]) {
-
-            muscle1.SetPosition(1);
-        }
+        LinearAxis::LinearAxis(std::vector<module::HardwareIO::muscle_t>& muscle) : muscle1(muscle[0]) {}
 
         void LinearAxis::Compute(double position) {
             // Set each muscle related to the joint to the set position

@@ -32,11 +32,17 @@ namespace HardwareIO {
             valve = true;
             // TODO This should also set the time horizon variables
             HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PinState(true));
+            HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PinState(false));
         }
         else if (control < 0) {
             valve = false;
             // TODO This should also set the time horizon variables
             HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PinState(false));
+            HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PinState(true));
+        }
+        else {
+            HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PinState(true));
+            HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PinState(true));
         }
     }
 

@@ -31,7 +31,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 set(CMAKE_ASM_FLAGS "-x assembler-with-cpp")
 
 # Set the CPU flags
-set(CPU_FLAGS -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard)
+set(CPU_FLAGS -mcpu=cortex-m7 -mthumb -mfpu=fpv5-sp-d16 -mfloat-abi=hard)
 add_compile_options(${CPU_FLAGS})
 add_link_options(${CPU_FLAGS})
 
