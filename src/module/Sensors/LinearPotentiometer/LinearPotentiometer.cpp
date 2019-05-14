@@ -6,7 +6,7 @@
 namespace module {
 namespace Sensors {
 
-    LinearPot linearpot1 = LinearPot(1, 0.1);
+    LinearPot linearpot1 = LinearPot(3, 0.1);
     // LinearPot linearpot2  = LinearPot(2);
     // LinearPot linearpot3  = LinearPot(3);
     // LinearPot linearpot4  = LinearPot(4);
@@ -23,7 +23,8 @@ namespace Sensors {
 
     double LinearPot::GetPosition() {
         // Read gpio
-        double position = ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
+        double position =
+            utility::io::adc_io.GetSensors(gpio);  // ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
         utility::io::debug.out("Position at %lf\n", position);
         return position;
     }

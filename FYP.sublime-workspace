@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"HAL",
+				"HAL_GPIO_WritePin"
+			],
+			[
+				"H",
+				"HAL_OK"
+			],
+			[
+				"ADC",
+				"ADC_HandleTypeDef"
+			],
+			[
 				"time",
 				"time_msg"
 			],
@@ -54,10 +66,6 @@
 			[
 				"Pre",
 				"Pressure"
-			],
-			[
-				"ADC",
-				"ADC_IO"
 			],
 			[
 				"p",
@@ -296,16 +304,8 @@
 				"mpu_data"
 			],
 			[
-				"HAL",
-				"HAL_Delay"
-			],
-			[
 				"GP",
 				"GPIO_PIN_SET"
-			],
-			[
-				"H",
-				"HAL_Delay"
 			],
 			[
 				"Fan",
@@ -520,60 +520,50 @@
 	"buffers":
 	[
 		{
-			"file": "src/main.cpp",
+			"contents": "/**\n ******************************************************************************\n * File Name          : ADC.c\n * Description        : This file provides code for the configuration\n *                      of the ADC instances.\n ******************************************************************************\n ** This notice applies to any and all portions of this file\n * that are not between comment pairs USER CODE BEGIN and\n * USER CODE END. Other portions of this file, whether\n * inserted by the user or by software development tools\n * are owned by their respective copyright owners.\n *\n * COPYRIGHT(c) 2019 STMicroelectronics\n *\n * Redistribution and use in source and binary forms, with or without modification,\n * are permitted provided that the following conditions are met:\n *   1. Redistributions of source code must retain the above copyright notice,\n *      this list of conditions and the following disclaimer.\n *   2. Redistributions in binary form must reproduce the above copyright notice,\n *      this list of conditions and the following disclaimer in the documentation\n *      and/or other materials provided with the distribution.\n *   3. Neither the name of STMicroelectronics nor the names of its contributors\n *      may be used to endorse or promote products derived from this software\n *      without specific prior written permission.\n *\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n *\n ******************************************************************************\n */\n\n/* Includes ------------------------------------------------------------------*/\n#include \"adc.h\"\n\n/* USER CODE BEGIN 0 */\n\n/* USER CODE END 0 */\n\nADC_HandleTypeDef hadc1        = {0};\nADC_ChannelConfTypeDef sConfig = {0};\n/* ADC1 init function */\nvoid MX_ADC1_Init(void) {\n    /**Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)\n     */\n    hadc1.Instance = ADC1;\n    if (HAL_ADC_Init(&hadc1) != HAL_OK) {\n        Error_Handler();\n    }\n\n    hadc1.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV4;\n    hadc1.Init.Resolution            = ADC_RESOLUTION_12B;\n    hadc1.Init.ScanConvMode          = DISABLE;\n    hadc1.Init.ContinuousConvMode    = ENABLE;\n    hadc1.Init.DiscontinuousConvMode = DISABLE;\n    hadc1.Init.NbrOfDiscConversion   = 0;\n    hadc1.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;\n    hadc1.Init.ExternalTrigConv      = ADC_EXTERNALTRIGCONV_T1_CC1;\n    hadc1.Init.DataAlign             = ADC_DATAALIGN_RIGHT;\n    hadc1.Init.NbrOfConversion       = 1;\n    hadc1.Init.DMAContinuousRequests = DISABLE;\n    hadc1.Init.EOCSelection          = DISABLE;\n    if (HAL_ADC_Init(&hadc1) != HAL_OK) {\n        Error_Handler();\n    }\n    /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.\n     */\n    sConfig.Channel      = ADC_CHANNEL_10;\n    sConfig.Rank         = ADC_REGULAR_RANK_1;\n    sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;\n    sConfig.Offset       = 0;\n    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {\n        Error_Handler();\n    }\n    if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {\n        Error_Handler();\n    }\n}\n\nvoid HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle) {\n\n    GPIO_InitTypeDef GPIO_InitStruct = {0};\n    if (adcHandle->Instance == ADC1) {\n        /* USER CODE BEGIN ADC1_MspInit 0 */\n\n        /* USER CODE END ADC1_MspInit 0 */\n        /* ADC1 clock enable */\n        __HAL_RCC_ADC1_CLK_ENABLE();\n\n        __HAL_RCC_GPIOC_CLK_ENABLE();\n        /**ADC1 GPIO Configuration\n        PA3     ------> ADC1_IN3\n        */\n        GPIO_InitStruct.Pin  = GPIO_PIN_0;\n        GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n        GPIO_InitStruct.Pull = GPIO_NOPULL;\n        HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);\n\n        /* ADC1 interrupt Init */\n        HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);\n        HAL_NVIC_EnableIRQ(ADC_IRQn);\n        /* USER CODE BEGIN ADC1_MspInit 1 */\n\n        /* USER CODE END ADC1_MspInit 1 */\n    }\n    else {\n        Error_Handler();\n    }\n}\n\nvoid HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle) {\n\n    if (adcHandle->Instance == ADC1) {\n        /* USER CODE BEGIN ADC1_MspDeInit 0 */\n\n        /* USER CODE END ADC1_MspDeInit 0 */\n        /* Peripheral clock disable */\n        __HAL_RCC_ADC1_CLK_DISABLE();\n\n        /**ADC1 GPIO Configuration\n        PA3     ------> ADC1_IN3\n        */\n        HAL_GPIO_DeInit(GPIOC, GPIO_PIN_0);\n\n        /* ADC1 interrupt Deinit */\n        HAL_NVIC_DisableIRQ(ADC_IRQn);\n        /* USER CODE BEGIN ADC1_MspDeInit 1 */\n\n        /* USER CODE END ADC1_MspDeInit 1 */\n    }\n    else {\n        Error_Handler();\n    }\n}\n\n/* USER CODE BEGIN 1 */\n\n/* USER CODE END 1 */\n\n/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/\n",
+			"file": "src/stm32/Src/adc.c",
+			"file_size": 5659,
+			"file_write_time": 132023034373241001,
 			"settings":
 			{
-				"buffer_size": 4269,
+				"buffer_size": 5512,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "/* USER CODE BEGIN Header */\n/**\n ******************************************************************************\n * @file           : main.c\n * @brief          : Main program body\n ******************************************************************************\n ** This notice applies to any and all portions of this file\n * that are not between comment pairs USER CODE BEGIN and\n * USER CODE END. Other portions of this file, whether\n * inserted by the user or by software development tools\n * are owned by their respective copyright owners.\n *\n * COPYRIGHT(c) 2019 STMicroelectronics\n *\n * Redistribution and use in source and binary forms, with or without modification,\n * are permitted provided that the following conditions are met:\n *   1. Redistributions of source code must retain the above copyright notice,\n *      this list of conditions and the following disclaimer.\n *   2. Redistributions in binary form must reproduce the above copyright notice,\n *      this list of conditions and the following disclaimer in the documentation\n *      and/or other materials provided with the distribution.\n *   3. Neither the name of STMicroelectronics nor the names of its contributors\n *      may be used to endorse or promote products derived from this software\n *      without specific prior written permission.\n *\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n *\n ******************************************************************************\n */\n/* USER CODE END Header */\n\n/* Includes ------------------------------------------------------------------*/\n#include \"main.h\"\n#include \"adc.h\"\n#include \"gpio.h\"\n#include \"tim.h\"\n#include \"usart.h\"\n\n/* Private includes ----------------------------------------------------------*/\n/* USER CODE BEGIN Includes */\n\n/* USER CODE END Includes */\n\n/* Private typedef -----------------------------------------------------------*/\n/* USER CODE BEGIN PTD */\n\n/* USER CODE END PTD */\n\n/* Private define ------------------------------------------------------------*/\n/* USER CODE BEGIN PD */\n\n/* USER CODE END PD */\n\n/* Private macro -------------------------------------------------------------*/\n/* USER CODE BEGIN PM */\n\n/* USER CODE END PM */\n\n/* Private variables ---------------------------------------------------------*/\n\n/* USER CODE BEGIN PV */\n\n/* USER CODE END PV */\n\n/* Private function prototypes -----------------------------------------------*/\nvoid SystemClock_Config(void);\n/* USER CODE BEGIN PFP */\n\n/* USER CODE END PFP */\n\n/* Private user code ---------------------------------------------------------*/\n/* USER CODE BEGIN 0 */\n\n/* USER CODE END 0 */\n\n/**\n * @brief  The application entry point.\n * @retval int\n */\n\n/**\n * @brief System Clock Configuration\n * @retval None\n */\nvoid SystemClock_Config(void) {\n    RCC_OscInitTypeDef RCC_OscInitStruct         = {0};\n    RCC_ClkInitTypeDef RCC_ClkInitStruct         = {0};\n    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};\n\n    /**Configure LSE Drive Capability\n     */\n    // HAL_PWR_EnableBkUpAccess();\n    /**Configure the main internal regulator output voltage\n     */\n    __HAL_RCC_PWR_CLK_ENABLE();\n    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);\n    /**Initializes the CPU, AHB and APB busses clocks\n     */\n    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;\n    RCC_OscInitStruct.HSEState       = RCC_HSE_BYPASS;\n    RCC_OscInitStruct.HSIState       = RCC_HSE_OFF;\n    RCC_OscInitStruct.PLL.PLLState   = RCC_PLL_ON;\n    RCC_OscInitStruct.PLL.PLLSource  = RCC_PLLSOURCE_HSE;\n    RCC_OscInitStruct.PLL.PLLM       = 8;\n    RCC_OscInitStruct.PLL.PLLN       = 432;\n    RCC_OscInitStruct.PLL.PLLP       = RCC_PLLP_DIV2;\n    RCC_OscInitStruct.PLL.PLLQ       = 9;\n    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {\n        Error_Handler();\n    }\n    /**Activate the Over-Drive mode\n     */\n    if (HAL_PWREx_EnableOverDrive() != HAL_OK) {\n        Error_Handler();\n    }\n    /**Initializes the CPU, AHB and APB busses clocks\n     */\n    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;\n    RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;\n    RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;\n    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;\n    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;\n\n    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK) {\n        Error_Handler();\n    }\n    // PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART6;\n    // PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;\n    // if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {\n    //     Error_Handler();\n    // }\n}\n\n/* USER CODE BEGIN 4 */\n\n/* USER CODE END 4 */\n\n/**\n * @brief  This function is executed in case of error occurrence.\n * @retval None\n */\n// void Error_Handler(void)\n// {\n/* USER CODE BEGIN Error_Handler_Debug */\n/* User can add his own implementation to report the HAL error return state */\n\n/* USER CODE END Error_Handler_Debug */\n//}\n\n#ifdef USE_FULL_ASSERT\n/**\n * @brief  Reports the name of the source file and the source line number\n *         where the assert_param error has occurred.\n * @param  file: pointer to the source file name\n * @param  line: assert_param error line source number\n * @retval None\n */\nvoid assert_failed(uint8_t* file, uint32_t line) {\n    /* USER CODE BEGIN 6 */\n    /* User can add his own implementation to report the file name and line number,\n       tex: printf(\"Wrong parameters value: file %s on line %d\\r\\n\", file, line) */\n    /* USER CODE END 6 */\n}\n#endif /* USE_FULL_ASSERT */\n\n/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/\n",
+			"file": "src/stm32/Src/main.c",
+			"file_size": 6624,
+			"file_write_time": 132023028960518250,
+			"settings":
+			{
+				"buffer_size": 6449,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#include \"main.hpp\"\n#include <chrono>\n#include <cstring>\n#include <iostream>\n#include <string>\n#include <vector>\n#include \"HardwareIO/Joint/LinearAxis/LinearAxis.hpp\"\n#include \"HardwareIO/Joint/OneAxis/OneAxis.hpp\"\n#include \"HardwareIO/Joint/TwoAxis/TwoAxis.hpp\"\n#include \"HardwareIO/Muscle/Muscle.hpp\"\n#include \"HardwareIO/Valve/Valve.hpp\"\n#include \"Input/Controller/Controller.hpp\"\n#include \"Sensors/LinearPotentiometer/LinearPotentiometer.hpp\"\n#include \"Sensors/PressureSensor/PressureSensor.hpp\"\n#include \"adc.h\"\n#include \"gpio.h\"\n#include \"main.h\"\n#include \"nuclear/src/clock.hpp\"\n#include \"stm32f7xx_hal_conf.h\"\n#include \"stm32f7xx_it.h\"\n#include \"tim.h\"\n#include \"usart.h\"\n#include \"utility/PID/PID.hpp\"\n#include \"utility/io/adc.hpp\"\n#include \"utility/io/uart.hpp\"\n\nextern \"C\" {\nvoid SystemClock_Config(void);\n__IO uint16_t uhADCxConvertedValue = 0;\nvoid HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {\n    if (AdcHandle == &hadc1) {\n        uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);\n        utility::io::debug.out(\"Got ADC %d\\n\", uhADCxConvertedValue);\n        if (uhADCxConvertedValue < 2000) {\n            HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PIN_SET);\n\n            // HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_RESET);\n        }\n\n        else {\n            // HAL_GPIO_WritePin(GPIOB, LD2_Pin, GPIO_PIN_SET);\n            HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PIN_RESET);\n        }\n    }\n    utility::io::debug.out(\"Got ADC\\n\");\n}\n\n// **@brief This function is executed in case of error occurrence.* @retval None\n\nvoid Error_Handler(void) {\n    utility::io::debug.out(\"ERROR\\n\");\n    while (1) {\n    }\n}\n}\n\nint main() {\n\n    // Initialise the HAL driver\n    HAL_Init();\n\n    // Configure the system clock\n    SystemClock_Config();\n    utility::clock::initialise();\n\n    // Initialize all configured peripherals\n    MX_GPIO_Init();\n    MX_ADC1_Init();\n    MX_USART6_UART_Init();\n\n    utility::io::debug.out(\"Initialising ADC\\n\");\n\n    auto time_start = NUClear::clock::now();\n    // HAL_GPIO_WritePin(GPIOB, LD3_Pin, GPIO_PIN_SET);\n\n    // utility::io::debug.out(\"Welcome to PNEUbot\\n\");\n\n    // module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};\n    // module::HardwareIO::muscle_properties_t pm_220 = {0.20, 0.33, 0.02};\n\n    // std::vector<module::HardwareIO::muscle_t> muscles;\n\n    // module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,\n    //                                         module::Sensors::pressuresensor1,\n    //                                         module::Sensors::linearpot1,\n    //                                         shared::utility::pid1,\n    //                                         pm_280};\n\n    // muscles.push_back(muscle1);\n\n    // module::HardwareIO::joint::LinearAxis linear_muscle(muscles);\n\n\n    utility::io::debug.out(\"Initialisation Finished\\n\");\n\n    while (1) {\n        auto now = NUClear::clock::now();\n        HAL_Delay(1000);\n        double time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();\n\n        utility::io::debug.out(\"PNEUBot is running %lf\\n\", time / 1000);\n        HAL_GPIO_TogglePin(GPIOB, LD2_Pin);\n        HAL_GPIO_TogglePin(GPIOB, LD3_Pin);\n\n\n        // This should probably be handled by one controller\n        // Set the value to the position requested\n        // linear_muscle.Compute(0.1);\n    }\n}\n\n// RCC_OscInitTypeDef RCC_OscInitStruct         = {0};\n// RCC_ClkInitTypeDef RCC_ClkInitStruct         = {0};\n// RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};\n\n// /**Configure LSE Drive Capability\n//  */\n// HAL_PWR_EnableBkUpAccess();\n// /**Configure the main internal regulator output voltage\n//  */\n// __HAL_RCC_PWR_CLK_ENABLE();\n// __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);\n// /**Initializes the CPU, AHB and APB busses clocks\n//  */\n// RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI;\n// RCC_OscInitStruct.HSIState            = RCC_HSI_ON;\n// RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;\n// RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_NONE;\n// if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {\n//     Error_Handler();\n// }\n// /**Initializes the CPU, AHB and APB busses clocks\n//  */\n// RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;\n// RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_HSI;\n// RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;\n// RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;\n// RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;\n\n// if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK) {\n//     Error_Handler();\n// }\n// PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART6;\n// PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;\n// if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {\n//     Error_Handler();\n// }",
+			"file": "src/main.cpp",
+			"file_size": 4912,
+			"file_write_time": 132023022889654451,
+			"settings":
+			{
+				"buffer_size": 4912,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/shared/utility/io/uart.hpp",
+			"contents": "/**\n ******************************************************************************\n * File Name          : gpio.c\n * Description        : This file provides code for the configuration\n *                      of all used GPIO pins.\n ******************************************************************************\n ** This notice applies to any and all portions of this file\n * that are not between comment pairs USER CODE BEGIN and\n * USER CODE END. Other portions of this file, whether\n * inserted by the user or by software development tools\n * are owned by their respective copyright owners.\n *\n * COPYRIGHT(c) 2019 STMicroelectronics\n *\n * Redistribution and use in source and binary forms, with or without modification,\n * are permitted provided that the following conditions are met:\n *   1. Redistributions of source code must retain the above copyright notice,\n *      this list of conditions and the following disclaimer.\n *   2. Redistributions in binary form must reproduce the above copyright notice,\n *      this list of conditions and the following disclaimer in the documentation\n *      and/or other materials provided with the distribution.\n *   3. Neither the name of STMicroelectronics nor the names of its contributors\n *      may be used to endorse or promote products derived from this software\n *      without specific prior written permission.\n *\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n *\n ******************************************************************************\n */\n\n/* Includes ------------------------------------------------------------------*/\n#include \"gpio.h\"\n/* USER CODE BEGIN 0 */\n\n/* USER CODE END 0 */\n\n/*----------------------------------------------------------------------------*/\n/* Configure GPIO                                                             */\n/*----------------------------------------------------------------------------*/\n/* USER CODE BEGIN 1 */\n\n/* USER CODE END 1 */\n\n/** Configure pins as\n        * Analog\n        * Input\n        * Output\n        * EVENT_OUT\n        * EXTI\n        * Free pins are configured automatically as Analog (this feature is enabled through\n        * the Code Generation settings)\n     PD8   ------> USART3_TX\n     PD9   ------> USART3_RX\n     PA8   ------> USB_OTG_FS_SOF\n     PA9   ------> USB_OTG_FS_VBUS\n     PA10   ------> USB_OTG_FS_ID\n     PA11   ------> USB_OTG_FS_DM\n     PA12   ------> USB_OTG_FS_DP\n*/\nvoid MX_GPIO_Init(void) {\n\n    GPIO_InitTypeDef GPIO_InitStruct = {0};\n\n    /* GPIO Ports Clock Enable */\n    __HAL_RCC_GPIOE_CLK_ENABLE();\n    __HAL_RCC_GPIOC_CLK_ENABLE();\n    __HAL_RCC_GPIOF_CLK_ENABLE();\n    __HAL_RCC_GPIOH_CLK_ENABLE();\n    __HAL_RCC_GPIOA_CLK_ENABLE();\n    __HAL_RCC_GPIOB_CLK_ENABLE();\n    __HAL_RCC_GPIOG_CLK_ENABLE();\n    __HAL_RCC_GPIOD_CLK_ENABLE();\n\n    /*Configure GPIO pin Output Level */\n    // HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_10\n    // |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);\n\n    /*Configure GPIO pin Output Level */\n    // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_RESET);\n\n    /*Configure GPIO pin Output Level */\n    // HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_6, GPIO_PIN_RESET);\n\n    /*Configure GPIO pin Output Level */\n    // HAL_GPIO_WritePin(GPIOB, LD3_Pin|LD2_Pin, GPIO_PIN_RESET);\n\n    /*Configure GPIO pin Output Level */\n    // HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11, GPIO_PIN_RESET);\n\n    /*Configure GPIO pins : PE2 PE4 PE5 PE10\n                             PE12 PE13 PE14 PE15 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_10\n    //                         |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;\n    // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;\n    // HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PE3 PE6 PE7 PE8\n                             PE9 PE11 PE0 PE1 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8\n    //                         |GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_0|GPIO_PIN_1;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);\n\n    /*Configure GPIO pin : PC13 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_13;\n    // GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PF0 PF1 PF3 PF4\n                             PF5 PF6 PF7 PF8\n                             PF9 PF10 PF11 PF12\n                             PF13 PF14 PF15 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4\n    //                         |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8\n    //                         |GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12\n    //                         |GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);\n\n    /*Configure GPIO pin : PF2 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_2;\n    // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;\n    // HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PC0 PC1 PC2 PC3\n                             PC4 PC5 PC8 PC9\n                             PC10 PC11 PC12 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3\n    //                         |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_9\n    //                         |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PA0 PA1 PA2 PA4\n                             PA5 PA6 PA7 PA15 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4\n    //                         |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_15;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PB0 PB1 PB2 PB10\n                             PB11 PB12 PB13 PB15\n                             PB4 PB5 PB6 PB8\n                             PB9 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10\n    //                         |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_15\n    //                         |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8\n    //                         |GPIO_PIN_9;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PG0 PG2 PG4 PG5\n                             PG8 PG9 PG10 PG11\n                             PG12 PG13 PG14 PG15 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5\n    //                         |GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11\n    //                         |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PG1 PG3 PG6 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_6;\n    // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;\n    // HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PBPin PBPin */\n    GPIO_InitStruct.Pin   = LD3_Pin | LD2_Pin;\n    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;\n    GPIO_InitStruct.Pull  = GPIO_NOPULL;\n    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;\n    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PD8 PD9 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;\n    // GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;\n    // GPIO_InitStruct.Alternate = GPIO_AF7_USART3;\n    // HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PD10 PD12 PD13 PD14\n                             PD15 PD0 PD1 PD2\n                             PD3 PD4 PD5 PD6\n                             PD7 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14\n    //                         |GPIO_PIN_15|GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2\n    //                         |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6\n    //                         |GPIO_PIN_7;\n    // GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);\n\n    /*Configure GPIO pin : PD11 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_11;\n    // GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;\n    // HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);\n\n    /*Configure GPIO pin : PG7 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_7;\n    // GPIO_InitStruct.Mode = GPIO_MODE_INPUT;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);\n\n    /*Configure GPIO pins : PA8 PA10 PA11 PA12 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;\n    // GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;\n    // GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;\n    // HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);\n\n    /*Configure GPIO pin : PA9 */\n    // GPIO_InitStruct.Pin = GPIO_PIN_9;\n    // GPIO_InitStruct.Mode = GPIO_MODE_INPUT;\n    // GPIO_InitStruct.Pull = GPIO_NOPULL;\n    // HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);\n}\n\n/* USER CODE BEGIN 2 */\n\n/* USER CODE END 2 */\n\n/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/\n",
+			"file": "src/stm32/Src/gpio.c",
+			"file_size": 11032,
+			"file_write_time": 132023033900217097,
 			"settings":
 			{
-				"buffer_size": 367,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/shared/utility/io/uart.cpp",
-			"settings":
-			{
-				"buffer_size": 524,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/module/HardwareIO/Muscle/Muscle.cpp",
-			"settings":
-			{
-				"buffer_size": 1899,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/stm32/Src/tim.c",
-			"settings":
-			{
-				"buffer_size": 5537,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/stm32/Src/main.c",
-			"settings":
-			{
-				"buffer_size": 8187,
+				"buffer_size": 10785,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "struct PM_100{\n\tdouble nom_length;\n\tdouble contraction_percent;\n\tdouble diameter;\n}",
-			"settings":
-			{
-				"buffer_size": 83,
 				"line_ending": "Windows"
 			}
 		}
@@ -673,57 +663,90 @@
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/util",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src"
 	],
 	"file_history":
 	[
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/FYP/Code/Version2/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/main.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h",
+		"/C/Users/fish_/STM32Cube/Repository/STM32Cube_FW_F7_V1.14.0/Projects/STM32F722ZE-Nucleo/Examples/ADC/ADC_RegularConversion_Interrupt/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_it.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_it.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_hal_msp.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/tim.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c",
+		"/C/Users/fish_/Documents/FYP/FYP/Toolchain.cmake",
+		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/Makefile",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/main.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usart.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/tim.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/usart.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/Ass-02-Q01.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usb_otg.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/CMakeLists.txt",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_hal_conf.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_it.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section/critical_section.cpp",
@@ -743,8 +766,6 @@
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.cpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/ForwardKinematics.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/CMakeLists.txt",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c",
 		"/C/Users/fish_/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/Scripts/Export_Step/Export_Step.py",
 		"/C/Users/fish_/Documents/NUbots/NUbots/doc/Kinematics/Export_Step.py",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Ankle_Block_v4.yaml",
@@ -752,15 +773,10 @@
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Foot_Left_v7.yaml",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v10.yaml",
 		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Upper_Left_v12.yaml",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/p1(2).sv",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/Assignment3.txt",
 		"/C/Users/fish_/The University Of Newcastle/Thomas Bailey - Assignment 2/Combined_SCP.sv",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/adc.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/adc.h",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_it.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c",
-		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h",
 		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/UART.hpp",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c",
 		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/i2c.c",
@@ -800,21 +816,11 @@
 		"/C/Users/fish_/The University Of Newcastle/Alexandra Rendina - Lab 2/simout2.mat",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ENGG_3440/Labs/Lab 2/Lab_2.m",
 		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Assessments/Assignment 1/Submissions/Ass-01-c3256228-and-c3235869.txt",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Assessments/Assignment 1/Submissions/c3271498.txt",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ELEC_4210/Assignment 1/Assignment1.m",
-		"/C/Users/fish_/Documents/LTspiceXVII/lib/sym/npn.asy",
-		"/C/Users/fish_/Desktop/Test.txt",
-		"/C/Users/fish_/Documents/LTspiceXVII/lib/sym/Opamps/LF347.asy",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.hpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/ADC/ADC.cpp",
-		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.hpp",
-		"/C/Users/fish_/Downloads/assignment1.py",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ELEC_4210/Assignment 1/Assignment1.matlab",
-		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ENGG_3440/Labs/Lab 1/Lab1_s2.m"
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Assessments/Assignment 1/Submissions/c3271498.txt"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -832,6 +838,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"GPIO_PIN_0",
+			"GPIO_B",
+			"AdcHandle",
+			"adcHandle",
+			"AdcHandle",
+			"HADC1",
+			"AdcHandle",
+			");\n",
+			"BSP_LED_Toggle",
+			"BSP_LED_On",
+			"valve",
+			"hadc1->Lock",
+			"}\n",
+			"utility::io::debug.out(\"ERROR: Could not init ADC\\n\");",
+			"\n\n{",
+			" \n",
+			" ConfigureADC",
+			"SystemCoreClockUpdate",
+			" SystemCoreClockUpdate",
+			"HAL_ADC_IRQHandler",
+			"ADC_IT_EOC",
+			"EOCIE",
+			"hadc == &hadc3",
+			"Initialising ADC",
+			"ADC",
+			"led",
+			"led2",
+			"LD3_Pin",
+			"TIM_SMCR_MSM",
+			"TIM_SMCR_ETPS",
+			"TIM_SMCR_ETP",
+			"TIM_SMCR_ECE",
 			"FALSE",
 			"TRUE",
 			"\"\n",
@@ -927,38 +965,6 @@
 			"NUsense",
 			"NU",
 			"NUsense",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
-			"H7",
-			"h7",
 			"H7"
 		],
 		"highlight": true,
@@ -983,29 +989,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/main.cpp",
+					"file": "src/stm32/Src/adc.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4269,
+						"buffer_size": 5512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2398,
-								2398
+								4034,
+								4034
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/C++/C.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 574.0,
+						"translation.y": 1065.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1013,85 +1019,49 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/shared/utility/io/uart.hpp",
+					"file": "src/stm32/Src/main.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 367,
+						"buffer_size": 6449,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3859,
+								3859
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/shared/utility/io/uart.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 524,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								369,
-								442
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/C++/C.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1440.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/module/HardwareIO/Muscle/Muscle.cpp",
+					"buffer": 2,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1899,
+						"buffer_size": 4912,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								154,
-								112
-							],
-							[
-								1130,
-								1075
-							],
-							[
-								1199,
-								1143
+								679,
+								679
 							]
 						],
 						"settings":
@@ -1101,98 +1071,80 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/stm32/Src/tim.c",
+					"buffer": 3,
+					"file": "src/stm32/Src/gpio.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5537,
+						"buffer_size": 10785,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3868,
+								3793
+							],
+							[
+								3964,
+								3906
+							],
+							[
+								4063,
+								4005
+							],
+							[
+								4225,
+								4225
+							],
+							[
+								7895,
+								7878
+							],
+							[
+								9052,
+								8805
+							],
+							[
+								9624,
+								9265
+							],
+							[
+								9883,
+								9698
+							],
+							[
+								10086,
+								9955
+							],
+							[
+								10448,
+								10178
+							],
+							[
+								10651,
+								10520
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 11.0,
+						"translation.y": 2095.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/stm32/Src/main.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5232,
-								5232
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1830.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 83,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27,
-								27
-							]
-						],
-						"settings":
-						{
-							"default_dir": "C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\module\\HardwareIO\\Muscle",
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1200,7 +1152,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1241,7 +1193,7 @@
 	"project": "FYP.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1250,6 +1202,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ad",
+				"src\\stm32\\Src\\adc.c"
+			],
+			[
+				"mai",
+				"src\\stm32\\Src\\main.c"
+			],
+			[
+				"adc",
+				"src\\stm32\\Src\\adc.c"
+			],
+			[
+				"line",
+				"src\\module\\HardwareIO\\Joint\\LinearAxis\\LinearAxis.cpp"
+			],
+			[
+				"mu",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.cpp"
+			],
+			[
+				"mus",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
+			],
+			[
+				"main",
+				"src\\main.cpp"
+			],
 			[
 				"uart",
 				"src\\shared\\utility\\io\\uart.cpp"
@@ -1263,28 +1243,12 @@
 				"src\\module\\Input\\Controller\\Controller.hpp"
 			],
 			[
-				"mus",
-				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
-			],
-			[
 				"ua",
 				"src\\shared\\utility\\io\\uart.cpp"
 			],
 			[
-				"adc",
-				"src\\shared\\utility\\io\\adc.hpp"
-			],
-			[
 				"gpio",
 				"src\\shared\\utility\\io\\gpio.hpp"
-			],
-			[
-				"main",
-				"src\\main.cpp"
-			],
-			[
-				"line",
-				"src\\module\\Sensors\\LinearPotentiometer\\LinearPotentiometer.cpp"
 			],
 			[
 				"clock",
@@ -1321,10 +1285,6 @@
 			[
 				"musc",
 				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
-			],
-			[
-				"mu",
-				"src\\module\\HardwareIO\\Muscle\\Muscle.cpp"
 			],
 			[
 				"li",
@@ -1555,10 +1515,6 @@
 				"src\\nuclear\\src\\util\\CallbackGenerator.hpp"
 			],
 			[
-				"mai",
-				"src\\main.cpp"
-			],
-			[
 				"im",
 				"src\\modules\\IMUReader\\IMUReader.cpp"
 			],
@@ -1757,10 +1713,6 @@
 			[
 				"local",
 				"modules\\localisation\\src\\Localisation.cpp"
-			],
-			[
-				"camer",
-				"modules\\vision\\Camera\\src\\Camera.cpp"
 			]
 		],
 		"width": 0.0

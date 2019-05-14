@@ -9,12 +9,18 @@
 namespace module {
 namespace HardwareIO {
 
+    struct muscle_properties_t {
+        double nom_length;
+        double contraction_percent;
+        double diameter;
+    };
+
     struct muscle_t {
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;
         Sensors::LinearPot& linear_pot;
         shared::utility::PID& pid;
-        double length;
+        muscle_properties_t properties;
     };
 
     class Muscle {
@@ -36,7 +42,7 @@ namespace HardwareIO {
         Sensors::PressureSensor& pressure_sensor;
         Sensors::LinearPot& linear_pot;
         shared::utility::PID& pid;
-        double length;
+        muscle_properties_t properties;
     };
 }  // namespace HardwareIO
 }  // namespace module

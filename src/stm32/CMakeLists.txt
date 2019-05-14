@@ -23,15 +23,15 @@ set(
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c 
 
-  Src/main.c
+  # Src/main.c
   Src/stm32f7xx_it.c
   Src/stm32f7xx_hal_msp.c
   Src/system_stm32f7xx.c
-  Src/gpio.c
+  # Src/gpio.c
   # Src/i2c.c
   Src/usart.c
   # Src/usb_otg.c
-  Src/adc.c
+  # Src/adc.c
   Src/tim.c startup_stm32f722xx.s
 )
 
