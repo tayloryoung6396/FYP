@@ -26,19 +26,19 @@
 
 extern "C" {
 void SystemClock_Config(void) {
-    RCC_OscInitTypeDef RCC_OscInitStruct         = {0};
-    RCC_ClkInitTypeDef RCC_ClkInitStruct         = {0};
-    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+    RCC_OscInitTypeDef RCC_OscInitStruct;
+    RCC_ClkInitTypeDef RCC_ClkInitStruct;
+    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct;
 
-    /**Configure LSE Drive Capability
-     */
+
+    // Configure LSE Drive Capability
     HAL_PWR_EnableBkUpAccess();
-    /**Configure the main internal regulator output voltage
-     */
+
+    // Configure the main internal regulator output voltage
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-    /**Initializes the CPU, AHB and APB busses clocks
-     */
+
+    // Initializes the CPU, AHB and APB busses clocks
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState       = RCC_HSE_BYPASS;
     RCC_OscInitStruct.HSIState       = RCC_HSE_OFF;
@@ -51,13 +51,13 @@ void SystemClock_Config(void) {
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         Error_Handler();
     }
-    /**Activate the Over-Drive mode
-     */
+
+    // Activate the Over-Drive mode
     if (HAL_PWREx_EnableOverDrive() != HAL_OK) {
         Error_Handler();
     }
-    /**Initializes the CPU, AHB and APB busses clocks
-     */
+
+    // Initializes the CPU, AHB and APB busses clocks
     RCC_ClkInitStruct.ClockType =
         (RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
     RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;
@@ -74,13 +74,7 @@ void SystemClock_Config(void) {
         Error_Handler();
     }
 }
-// __IO uint16_t uhADCxConvertedValue = 0;
-// void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
-//     if (AdcHandle == &hadc1) {
-//         uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
-//         utility::io::debug.out("Got ADC %d\n", uhADCxConvertedValue);
-//     }
-// }
+
 void Error_Handler(void) { utility::io::debug.out("ERROR\n"); }
 }
 
@@ -116,7 +110,9 @@ int main() {
     // muscles.push_back(muscle1);
 
     // module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
-
+    // if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &pData, 2) != HAL_OK) {
+    //     Error_Handler();
+    // }
 
     utility::io::debug.out("Initialisation Finished\n");
 
@@ -126,6 +122,7 @@ int main() {
         double time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
 
         utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+
         if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
             Error_Handler();
         }
