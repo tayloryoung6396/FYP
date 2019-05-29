@@ -30,7 +30,6 @@ void SystemClock_Config(void) {
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_PeriphCLKInitTypeDef PeriphClkInitStruct;
 
-
     // Configure LSE Drive Capability
     HAL_PWR_EnableBkUpAccess();
 
@@ -86,49 +85,48 @@ int main() {
     // Configure the system clock
     SystemClock_Config();
     utility::clock::initialise();
+    MX_USART6_UART_Init();
 
     // Initialize all configured peripherals
     MX_GPIO_Init();
-    MX_ADC1_Init();
-    MX_USART6_UART_Init();
+    utility::io::adc_io.initialise();
 
     auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("Welcome to PNEUbot\n");
 
-    // module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
-    // module::HardwareIO::muscle_properties_t pm_220 = {0.20, 0.33, 0.02};
+    module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
+    module::HardwareIO::muscle_properties_t pm_220 = {0.20, 0.33, 0.02};
 
-    // std::vector<module::HardwareIO::muscle_t> muscles;
+    std::vector<module::HardwareIO::muscle_t> muscles;
 
-    // module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
-    //                                         module::Sensors::pressuresensor1,
-    //                                         module::Sensors::linearpot1,
-    //                                         shared::utility::pid1,
-    //                                         pm_280};
+    module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
+                                            module::Sensors::pressuresensor1,
+                                            module::Sensors::linearpot1,
+                                            shared::utility::pid1,
+                                            pm_280};
 
-    // muscles.push_back(muscle1);
+    muscles.push_back(muscle1);
 
-    // module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
-    // if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &pData, 2) != HAL_OK) {
-    //     Error_Handler();
-    // }
+    module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
 
     utility::io::debug.out("Initialisation Finished\n");
 
+    utility::io::adc_io.Start();
+
     while (1) {
-        auto now = NUClear::clock::now();
-        HAL_Delay(1000);
-        double time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
-
-        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
-
         if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
             Error_Handler();
         }
 
+        auto now = NUClear::clock::now();
+        HAL_Delay(500);
+        double time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
+
+        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+
         // This should probably be handled by one controller
         // Set the value to the position requested
-        // linear_muscle.Compute(0.1);
+        // linear_muscle.Compute(module::Sensors::linearpot2.GetPosition());
     }
 }

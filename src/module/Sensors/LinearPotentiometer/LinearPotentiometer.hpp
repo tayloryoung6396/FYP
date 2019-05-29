@@ -20,7 +20,7 @@ namespace Sensors {
     };
 
     extern LinearPot linearpot1;
-    // extern LinearPot linearpot2;
+    extern LinearPot linearpot2;
     // extern LinearPot linearpot3;
     // extern LinearPot linearpot4;
     // extern LinearPot linearpot5;

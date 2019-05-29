@@ -5,14 +5,19 @@
 #include "utility/io/uart.hpp"
 
 extern "C" {
-__IO uint16_t uhADCxConvertedValue = 0;
+__IO uint16_t uhADCxConvertedValue  = 0;
+__IO uint16_t uhADCxConvertedValue2 = 0;
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
     if (AdcHandle == &hadc1) {
         uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
-        utility::io::debug.out("Got ADC 1 %d\n", uhADCxConvertedValue);
-        uhADCxConvertedValue = 0;
-        uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
-        utility::io::debug.out("Got ADC 2 %d\n", uhADCxConvertedValue);
+
+
+        uhADCxConvertedValue2 = HAL_ADC_GetValue(AdcHandle);
+        utility::io::adc_io.FillSensors2(uhADCxConvertedValue, 0);
+        utility::io::adc_io.FillSensors2(uhADCxConvertedValue2, 1);
+
+        // utility::io::debug.out("Got ADC 1 %d\n", uhADCxConvertedValue);
+        // utility::io::debug.out("Got ADC 2 %d\n", uhADCxConvertedValue2);
         // utility::io::adc_io.FillSensors(&hadc1, 0);
     }
 }
@@ -37,9 +42,9 @@ void MX_ADC1_Init(void) {
     hadc1.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;
     hadc1.Init.ExternalTrigConv      = ADC_SOFTWARE_START;
     hadc1.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
-    hadc1.Init.NbrOfConversion       = 2;
+    hadc1.Init.NbrOfConversion       = 2;  // 12;
     hadc1.Init.DMAContinuousRequests = DISABLE;
-    hadc1.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;  // ADC_EOC_SEQ_CONV;
+    hadc1.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;
     if (HAL_ADC_Init(&hadc1) != HAL_OK) {
         Error_Handler();
     }
@@ -56,6 +61,56 @@ void MX_ADC1_Init(void) {
     if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
         Error_Handler();
     }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 3;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 4;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 5;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 6;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 7;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 8;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 9;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 10;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 11;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
+    // sConfig.Channel = ADC_CHANNEL_3;
+    // sConfig.Rank    = 12;
+    // if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
+    // Error_Handler();
+    // }
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle) {
@@ -112,22 +167,32 @@ namespace io {
 
     ADC_IO adc_io = ADC_IO();
 
-    ADC_IO::ADC_IO() {
+    ADC_IO::ADC_IO() {}
+
+    void ADC_IO::initialise() { MX_ADC1_Init(); }
+
+    void ADC_IO::Start() {
         if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
             utility::io::debug.out("ERROR: Could not initialise acd1\n");
         }
-        utility::io::debug.out("Initialising ADC\n");
     }
 
     void ADC_IO::FillSensors(ADC_HandleTypeDef* hadc, int offset) {
-        NUClear::util::critical_section lock;
-        for (int i = offset; i < offset + 12; i++) {
-            raw_data.sensors[i] = HAL_ADC_GetValue(hadc);
-            if (raw_data.sensors[i] != 0) {
-                utility::io::debug.out("Data found! Channel [%d] : %d\n", i, raw_data.sensors[i]);
-            }
-        }
-        lock.release();
+        // NUClear::util::critical_section lock;
+        // for (int i = offset; i < offset + 2;
+        //      i++) {  // TODO This should be increased to the number of channels to be read in
+        //     raw_data.sensors[i] = HAL_ADC_GetValue(hadc);
+        //     // if (raw_data.sensors[i] != 0) {
+        //     utility::io::debug.out("Data found! Channel [%d] : %d\n", i, raw_data.sensors[i]);
+        //     // }
+        // }
+        // lock.release();
+    }
+
+    void ADC_IO::FillSensors2(uint16_t value, int offset) {
+        // raw_data.sensors[offset] = value;
+        // utility::io::debug.out("Data found! Channel [%d] : %d\n", offset, raw_data.sensors[offset]);
+        utility::io::debug.out("Data found! %d\n", value);
     }
 
     uint16_t ADC_IO::GetSensors(int port) {

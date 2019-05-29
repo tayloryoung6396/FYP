@@ -13,6 +13,14 @@ void MX_GPIO_Init(void) {
     __HAL_RCC_GPIOG_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
 
+    HAL_GPIO_WritePin(
+        GPIOE,
+        GPIO_PIN_2 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_10 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15,
+        GPIO_PIN_RESET);
+
+    // Configure GPIO pin Output Level
+    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_RESET);
+
     // Configure GPIO pin Output Level
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1 | GPIO_PIN_3, GPIO_PIN_RESET);
 

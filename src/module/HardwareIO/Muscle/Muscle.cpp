@@ -29,28 +29,28 @@ namespace HardwareIO {
         double position = linear_pot.GetPosition();
 
         // // Decide how we want to act
-        // double value   = position;
-        // double control = pid.Compute(set_point, value);
+        double value   = position;
+        double control = pid.Compute(set_point, value);
 
         // utility::io::debug.out("Control %lf\n", control);
 
         // // From the control point decide how to act on the valve to reach a required state
-        // if (control > 0) {
-        //     valve = true;
-        //     // TODO This should also set the time horizon variables
-        //     utility::io::gpio::led2 = true;
-        //     utility::io::gpio::led3 = false;
-        // }
-        // else if (control < 0) {
-        //     valve = false;
-        //     // TODO This should also set the time horizon variables
-        //     utility::io::gpio::led2 = false;
-        //     utility::io::gpio::led3 = true;
-        // }
-        // else {
-        //     utility::io::gpio::led2 = true;
-        //     utility::io::gpio::led3 = true;
-        // }
+        if (control > 0) {
+            //     valve = true;
+            //     // TODO This should also set the time horizon variables
+            utility::io::gpio::led2 = true;
+            utility::io::gpio::led3 = false;
+        }
+        else if (control < 0) {
+            // valve = false;
+            //     // TODO This should also set the time horizon variables
+            utility::io::gpio::led2 = false;
+            utility::io::gpio::led3 = true;
+        }
+        else {
+            utility::io::gpio::led2 = true;
+            utility::io::gpio::led3 = true;
+        }
     }
 
     double Muscle::GetPosition() { return linear_pot.GetPosition(); }
