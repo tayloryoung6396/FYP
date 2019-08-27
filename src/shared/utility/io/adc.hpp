@@ -22,6 +22,7 @@ namespace io {
 
     private:
         ADC_Sensors raw_data;
+        // uint16_t raw_sensors[1];
     };
 
     extern ADC_IO adc_io;
