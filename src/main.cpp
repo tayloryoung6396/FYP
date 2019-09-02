@@ -10,6 +10,7 @@
 #include "HardwareIO/Muscle/Muscle.hpp"
 #include "HardwareIO/Valve/Valve.hpp"
 #include "Input/Controller/Controller.hpp"
+#include "MPC/AdaptiveMPC/AdaptiveMPC.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"

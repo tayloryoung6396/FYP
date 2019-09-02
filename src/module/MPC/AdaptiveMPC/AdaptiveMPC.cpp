@@ -19,6 +19,9 @@
 // }
 
 #include "AdaptiveMPC.hpp"
+#include "Optimizer.hpp"
+
+AdaptiveMPC::AdaptiveMPC() {}
 
 void AdaptiveMPC::Compute() {
 
@@ -30,5 +33,5 @@ void AdaptiveMPC::Compute() {
     // Get our measured state vector
     // std::vector<double> states = TODO
 
-    // void Optimizer::ProcessModel(m, states, setpoint);
+    void Optimizer::FirstLayer(m, states, setpoint);
 }

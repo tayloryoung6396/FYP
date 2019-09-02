@@ -8,6 +8,8 @@ namespace MPC {
     namespace AdaptiveMPC {
         class Optimizer {
         public:
+            Optimizer();
+
             void FirstLayer();
             void AddLayer(int root, std::vector<std::pair<double, double>>& cost);
             void FinalLayer(int root, std::vector<std::pair<double, double>>& cost);
