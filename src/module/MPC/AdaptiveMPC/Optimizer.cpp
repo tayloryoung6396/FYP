@@ -4,11 +4,12 @@
 #include "Optimizer.hpp"
 #include <algorithm>
 #include "MPC/Model/Model.hpp"
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
-        Optimizer optimizer = Optimizer(5, 0, 0);
+        Optimizer optimizer = Optimizer(40, 0, 0);
 
         Optimizer::Optimizer(int ch_max, double state_weight, double input_weight)
             : ch_max(ch_max), state_weight(state_weight), input_weight(input_weight) {
@@ -57,9 +58,8 @@ namespace MPC {
         }
 
         template <typename T>
-        void Optimizer::FirstLayer(const T& model, std::vector<double>& states, double setpoint) {
+        std::pair<bool, bool> Optimizer::FirstLayer(const T& m, std::vector<double>& states, double setpoint) {
             // Increment the depth (control horizon itt)
-            Model::dynamic_model m;
 
             ch_itt = 1;
 
@@ -100,13 +100,23 @@ namespace MPC {
             auto result = *std::min_element(cost_result.cbegin(),
                                             cost_result.cend(),
                                             [](const auto& lhs, const auto& rhs) { return lhs.second < rhs.second; });
-            // std::cout << result.first << " " << result.second << std::endl;
-            // root element => result.first
-            // root cost    => result.second
+
+            if (result.first == 1) {
+                utility::io::debug.out("Optimizer result mode1, %d\n", result.second);
+                return (std::make_pair(true, false));
+            }
+            else if (result.first == 2) {
+                utility::io::debug.out("Optimizer result mode2, %d\n", result.second);
+                return (std::make_pair(false, true));
+            }
+            else if (result.first == 3) {
+                utility::io::debug.out("Optimizer result mode3, %d\n", result.second);
+                return (std::make_pair(false, false));
+            }
         }
 
         template <typename T>
-        void Optimizer::AddLayer(const T& model,
+        void Optimizer::AddLayer(const T& m,
                                  std::vector<double> states,
                                  double setpoint,
                                  int root,
@@ -143,7 +153,7 @@ namespace MPC {
         }
 
         template <typename T>
-        void Optimizer::FinalLayer(const T& model,
+        void Optimizer::FinalLayer(const T& m,
                                    std::vector<double> states,
                                    double setpoint,
                                    int root,

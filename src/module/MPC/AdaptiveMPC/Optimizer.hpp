@@ -19,15 +19,15 @@ namespace MPC {
                                                                 double setpoint,
                                                                 std::vector<double>& output_states);
             template <typename T>
-            void FirstLayer(const T& model, std::vector<double>& states, double setpoint);
+            std::pair<bool, bool> FirstLayer(const T& m, std::vector<double>& states, double setpoint);
             template <typename T>
-            void AddLayer(const T& model,
+            void AddLayer(const T& m,
                           std::vector<double> states,
                           double setpoint,
                           int root,
                           std::vector<std::pair<double, double>>& cost);
             template <typename T>
-            void FinalLayer(const T& model,
+            void FinalLayer(const T& m,
                             std::vector<double> states,
                             double setpoint,
                             int root,

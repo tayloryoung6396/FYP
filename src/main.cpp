@@ -11,6 +11,7 @@
 #include "HardwareIO/Valve/Valve.hpp"
 #include "Input/Controller/Controller.hpp"
 #include "MPC/AdaptiveMPC/AdaptiveMPC.hpp"
+#include "MPC/AdaptiveMPC/Optimizer.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"
@@ -92,15 +93,70 @@ int main() {
     MX_GPIO_Init();
     utility::io::adc_io.initialise();
 
+    auto time_start = NUClear::clock::now();
+
     utility::io::debug.out("Welcome to PNEUbot\n");
 
+    module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
+    module::HardwareIO::muscle_properties_t pm_220 = {0.20, 0.33, 0.02};
+
+    std::vector<module::HardwareIO::muscle_t> muscles;
+
+    module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
+                                            module::Sensors::pressuresensor1,
+                                            module::Sensors::linearpot1,
+                                            shared::utility::pid1,
+                                            pm_280};
+
+    muscles.push_back(muscle1);
+
+    module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
+
+    utility::io::debug.out("Initialisation Finished\n");
+
     utility::io::adc_io.Start();
+
+    double Sampling_time = 10;  // 0.01 T_s
 
     while (1) {
         if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
             Error_Handler();
         }
 
-        HAL_Delay(100);
+        auto now = NUClear::clock::now();
+        HAL_Delay(500);
+        double time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
+
+        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+
+        // This should probably be handled by one controller
+        // Set the value to the position requested
+        // linear_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+
+
+        // TODO
+        // Going to need a Sampling time controller to handle the periodicity of the code
+        if (std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count() >= Sampling_time) {
+            // Time to run our controller again
+        }
     }
 }
+
+
+// TODO I think this is how the system needs to work
+// Joints know about the muscles, a joint contains all of the muscles it needs to perform. Each muscle has knowledge of
+// its respective sensors, pressure, position. A muscle is responsible for reading it's sensors. The joint compute
+// function then calls the appropriate MPC function and arranges the inputs how the MPC expects. Something like this
+
+// void OneAxis::Compute(double theta) {
+//     muscle1.GetPosition();
+//     muscle1.GetPressure();
+//     muscle2.GetPosition();
+//     muscle2.GetPressure();
+
+//     // TODO Calculate the position derivative for velocity
+//     // TODO append these to a state vector in the order required
+
+//     // Call the MPC compute
+//     AdaptiveMPC::Compute(states, theta)
+// }

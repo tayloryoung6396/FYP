@@ -10,7 +10,7 @@ namespace MPC {
         public:
             AdaptiveMPC();
 
-            void Compute();
+            std::pair<bool, bool> Compute(std::vector<double>& states, double theta);
         };
     }  // namespace AdaptiveMPC
 }  // namespace MPC
