@@ -9,6 +9,8 @@ namespace MPC {
         class AdaptiveMPC {
         public:
             AdaptiveMPC();
+
+            void Compute();
         };
     }  // namespace AdaptiveMPC
 }  // namespace MPC

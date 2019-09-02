@@ -19,19 +19,28 @@
 // }
 
 #include "AdaptiveMPC.hpp"
+#include "MPC/Model/Model.hpp"
 #include "Optimizer.hpp"
 
-AdaptiveMPC::AdaptiveMPC() {}
+namespace module {
+namespace MPC {
+    namespace AdaptiveMPC {
+        AdaptiveMPC mpc = AdaptiveMPC();
 
-void AdaptiveMPC::Compute() {
+        AdaptiveMPC::AdaptiveMPC() {}
 
-    dynamic_model m;
+        void AdaptiveMPC::Compute() {
 
-    // Convert the input setpoint to the y length setpoint
-    // setpoint = Model::Something(theta);
+            Model::dynamic_model m;
 
-    // Get our measured state vector
-    // std::vector<double> states = TODO
+            // Convert the input setpoint to the y length setpoint
+            // setpoint = Model::Something(theta);
 
-    void Optimizer::FirstLayer(m, states, setpoint);
-}
+            // Get our measured state vector
+            // std::vector<double> states = TODO
+
+            void Optimizer::FirstLayer(m, states, setpoint);
+        }
+    }  // namespace AdaptiveMPC
+}  // namespace MPC
+}  // namespace module
