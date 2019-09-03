@@ -22,7 +22,7 @@
 #include "stm32f7xx_it.h"
 #include "tim.h"
 #include "usart.h"
-#include "utility/PID/PID.hpp"
+// #include "utility/PID/PID.hpp"
 #include "utility/io/adc.hpp"
 #include "utility/io/uart.hpp"
 
@@ -102,15 +102,12 @@ int main() {
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 
-    module::HardwareIO::muscle_t muscle1 = {module::HardwareIO::valve1,
-                                            module::Sensors::pressuresensor1,
-                                            module::Sensors::linearpot1,
-                                            shared::utility::pid1,
-                                            pm_280};
+    module::HardwareIO::muscle_t muscle1 = {
+        module::HardwareIO::valve1, module::Sensors::pressuresensor1, module::Sensors::linearpot1, pm_280};
 
     muscles.push_back(muscle1);
 
-    module::HardwareIO::joint::LinearAxis linear_muscle(muscles);
+    module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
 
     utility::io::debug.out("Initialisation Finished\n");
 
@@ -129,34 +126,17 @@ int main() {
 
         utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
-        // This should probably be handled by one controller
-        // Set the value to the position requested
-        // linear_muscle.Compute(module::Sensors::linearpot2.GetPosition());
-
-
         // TODO
         // Going to need a Sampling time controller to handle the periodicity of the code
         if (std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count() >= Sampling_time) {
             // Time to run our controller again
+
+            one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
         }
     }
 }
-
 
 // TODO I think this is how the system needs to work
 // Joints know about the muscles, a joint contains all of the muscles it needs to perform. Each muscle has knowledge of
 // its respective sensors, pressure, position. A muscle is responsible for reading it's sensors. The joint compute
 // function then calls the appropriate MPC function and arranges the inputs how the MPC expects. Something like this
-
-// void OneAxis::Compute(double theta) {
-//     muscle1.GetPosition();
-//     muscle1.GetPressure();
-//     muscle2.GetPosition();
-//     muscle2.GetPressure();
-
-//     // TODO Calculate the position derivative for velocity
-//     // TODO append these to a state vector in the order required
-
-//     // Call the MPC compute
-//     AdaptiveMPC::Compute(states, theta)
-// }

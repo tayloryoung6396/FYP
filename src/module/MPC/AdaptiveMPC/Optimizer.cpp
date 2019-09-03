@@ -29,10 +29,10 @@ namespace MPC {
             double Lin_mat[4][4];
 
             // if (P2 / P1 > b) {
-            //     model.A.Linearize(&Lin_mat);
+            //     Lin_mat = model.A1.Linearize();
             // }
             // else {
-            //     model.B.Linearize(&Lin_mat);
+            //     Lin_mat = model.A2.Linearize();
             // }
 
             // Calculate our next states

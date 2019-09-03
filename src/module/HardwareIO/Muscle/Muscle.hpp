@@ -4,7 +4,7 @@
 #include "HardwareIO/Valve/Valve.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
-#include "utility/PID/PID.hpp"
+// #include "utility/PID/PID.hpp"
 
 namespace module {
 namespace HardwareIO {
@@ -19,7 +19,6 @@ namespace HardwareIO {
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;
         Sensors::LinearPot& linear_pot;
-        shared::utility::PID& pid;
         muscle_properties_t properties;
     };
 
@@ -27,7 +26,7 @@ namespace HardwareIO {
     public:
         Muscle(module::HardwareIO::muscle_t muscle);
 
-        void SetPosition(double set_point);
+        void SetValveState(bool state);
 
         double GetPosition();
 
@@ -41,7 +40,6 @@ namespace HardwareIO {
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;
         Sensors::LinearPot& linear_pot;
-        shared::utility::PID& pid;
         muscle_properties_t properties;
     };
 }  // namespace HardwareIO

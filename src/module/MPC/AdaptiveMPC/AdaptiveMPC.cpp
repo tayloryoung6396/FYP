@@ -5,9 +5,8 @@
 namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
-        AdaptiveMPC mpc = AdaptiveMPC();
 
-        AdaptiveMPC::AdaptiveMPC() {}
+        AdaptiveMPC::AdaptiveMPC(Optimizer optimizer) : optimizer(optimizer) {}
 
         std::pair<bool, bool> AdaptiveMPC::Compute(std::vector<double>& states, double theta) {
 
@@ -16,7 +15,7 @@ namespace MPC {
             // Convert the input setpoint to the y length setpoint
             double setpoint = m.radius * theta;
 
-            return (Optimizer::FirstLayer(m, states, setpoint));
+            return (optimizer.FirstLayer(m, states, setpoint));
         }
     }  // namespace AdaptiveMPC
 }  // namespace MPC

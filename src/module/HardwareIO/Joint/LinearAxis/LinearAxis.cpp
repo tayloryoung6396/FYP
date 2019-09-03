@@ -10,7 +10,7 @@ namespace HardwareIO {
 
         void LinearAxis::Compute(double position) {
             // Set each muscle related to the joint to the set position
-            muscle1.SetPosition(position);
+            // muscle1.SetPosition(position);
         }
 
     }  // namespace joint
