@@ -2,6 +2,7 @@
 #define MODULE_ADAPTIVE_MPC_HPP
 
 #include <vector>
+#include "MPC/Model/Model.hpp"
 #include "Optimizer.hpp"
 
 namespace module {
@@ -9,13 +10,15 @@ namespace MPC {
     namespace AdaptiveMPC {
         class AdaptiveMPC {
         public:
-            AdaptiveMPC(Optimizer optimizer);
+            AdaptiveMPC(module::MPC::AdaptiveMPC::Optimizer optimizer);
 
             std::pair<bool, bool> Compute(std::vector<double>& states, double theta);
 
         private:
-            Optimizer& optimizer;
+            module::MPC::AdaptiveMPC::Optimizer optimizer;
         };
+
+        extern AdaptiveMPC mpc;
     }  // namespace AdaptiveMPC
 }  // namespace MPC
 }  // namespace module

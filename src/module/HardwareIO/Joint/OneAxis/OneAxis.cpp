@@ -5,7 +5,9 @@ namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle, double radius, AdaptiveMPC mpc)
+        OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
+                         double radius,
+                         module::MPC::AdaptiveMPC::AdaptiveMPC mpc)
             : muscle1(muscle[0]), muscle2(muscle[1]), radius(radius), mpc(mpc) {}
 
         // TODO I think this is how the system needs to work

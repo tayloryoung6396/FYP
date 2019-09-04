@@ -22,7 +22,6 @@
 #include "stm32f7xx_it.h"
 #include "tim.h"
 #include "usart.h"
-// #include "utility/PID/PID.hpp"
 #include "utility/io/adc.hpp"
 #include "utility/io/uart.hpp"
 
@@ -98,7 +97,6 @@ int main() {
     utility::io::debug.out("Welcome to PNEUbot\n");
 
     module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
-    module::HardwareIO::muscle_properties_t pm_220 = {0.20, 0.33, 0.02};
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 

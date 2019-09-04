@@ -1,10 +1,10 @@
 #include "AdaptiveMPC.hpp"
-#include "MPC/Model/Model.hpp"
-#include "Optimizer.hpp"
 
 namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
+
+        AdaptiveMPC mpc = AdaptiveMPC(optimizer1);
 
         AdaptiveMPC::AdaptiveMPC(Optimizer optimizer) : optimizer(optimizer) {}
 

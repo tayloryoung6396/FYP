@@ -10,7 +10,9 @@ namespace HardwareIO {
     namespace joint {
         class OneAxis {
         public:
-            OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle, double radius, AdaptiveMPC mpc);
+            OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
+                    double radius,
+                    module::MPC::AdaptiveMPC::AdaptiveMPC mpc);
 
             void Compute(double angle);
 

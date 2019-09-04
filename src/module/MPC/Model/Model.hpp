@@ -1,5 +1,5 @@
-#ifndef MODULE_OPTIMIZER_HPP
-#define MODULE_OPTIMIZER_HPP
+#ifndef MODULE_MODEL_HPP
+#define MODULE_MODEL_HPP
 
 #include <vector>
 #include "HardwareIO/Muscle/Muscle.hpp"
@@ -33,4 +33,4 @@ namespace MPC {
 }  // namespace MPC
 }  // namespace module
 
-#endif  // MODULE_OPTIMIZER_HPP
+#endif  // MODULE_MODEL_HPP
