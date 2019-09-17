@@ -4,9 +4,9 @@
 
 namespace module {
 namespace Sensors {
-    PressureSensor pressuresensor1 = PressureSensor(1);
-    // PressureSensor pressuresensor2  = PressureSensor(2);
-    // PressureSensor pressuresensor3  = PressureSensor(3);
+    PressureSensor pressuresensor1 = PressureSensor(4);
+    PressureSensor pressuresensor2 = PressureSensor(6);
+    PressureSensor pressuresensor3 = PressureSensor(8);
     // PressureSensor pressuresensor4  = PressureSensor(4);
     // PressureSensor pressuresensor5  = PressureSensor(5);
     // PressureSensor pressuresensor6  = PressureSensor(6);
@@ -20,15 +20,13 @@ namespace Sensors {
     PressureSensor::PressureSensor(uint32_t gpio) : gpio(gpio) {}
 
     double PressureSensor::GetPressure() {
-        pressure = 10;
-        utility::io::debug.out("Pressure at %lf\n", pressure);
         pressure = ConvertPressure(utility::io::adc_io.GetSensors(gpio));
+        utility::io::debug.out("Pressure at %lf\n", pressure);
         return pressure;
     }
 
     double PressureSensor::ConvertPressure(double Pressure) {
-        Pressure = Pressure;  // TODO Scale by the adc ammount and then the data sheet specification
-        return Pressure;
+        return Pressure;  // TODO Scale by the adc ammount and then the data sheet specification
     }
 }  // namespace Sensors
 }  // namespace module

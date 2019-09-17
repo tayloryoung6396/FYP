@@ -20,8 +20,8 @@ namespace Sensors {
     };
 
     extern PressureSensor pressuresensor1;
-    // extern PressureSensor pressuresensor2;
-    // extern PressureSensor pressuresensor3;
+    extern PressureSensor pressuresensor2;
+    extern PressureSensor pressuresensor3;
     // extern PressureSensor pressuresensor4;
     // extern PressureSensor pressuresensor5;
     // extern PressureSensor pressuresensor6;

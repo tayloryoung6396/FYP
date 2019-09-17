@@ -17,20 +17,20 @@ namespace HardwareIO {
         // expects. Something like this
 
         void OneAxis::Compute(double theta) {
-            muscle1.GetPosition();
-            muscle1.GetPressure();
-            muscle2.GetPosition();
-            muscle2.GetPressure();
+            utility::io::debug.out("Pressure at %lf\n", muscle1.GetPosition());
+            utility::io::debug.out("Pressure at %lf\n", muscle1.GetPressure());
+            utility::io::debug.out("Pressure at %lf\n", muscle2.GetPosition());
+            utility::io::debug.out("Pressure at %lf\n", muscle2.GetPressure());
 
-            // TODO Calculate the position derivative for velocity
-            // TODO append these to a state vector in the order required
-            std::vector<double> states;
+            // // TODO Calculate the position derivative for velocity
+            // // TODO append these to a state vector in the order required
+            // std::vector<double> states;
 
-            // Call the MPC compute
-            std::pair<bool, bool> valve_state = mpc.Compute(states, theta);
+            // // Call the MPC compute
+            // std::pair<bool, bool> valve_state = mpc.Compute(states, theta);
 
-            muscle1.SetValveState(valve_state.first);
-            muscle2.SetValveState(valve_state.second);
+            // muscle1.SetValveState(valve_state.first);
+            // muscle2.SetValveState(valve_state.second);
         }
 
     }  // namespace joint
