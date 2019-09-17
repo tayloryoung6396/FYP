@@ -23,6 +23,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
         utility::io::debug.out("I got an ADC interupt 3\n");
         // utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
     }
+    else {
+        utility::io::debug.out("I got an interupt but i dont know why\n");
+    }
 }
 
 // ADC1 init function
@@ -362,7 +365,7 @@ namespace io {
     void ADC_IO::initialise() {
         MX_ADC1_Init();
         MX_ADC3_Init();
-        utility::io::debug.out("ERROR: Could not initialise acd\n");
+        utility::io::debug.out("initialise ADC\n");
     }
 
     void ADC_IO::Start() {

@@ -17,10 +17,10 @@ namespace HardwareIO {
         // expects. Something like this
 
         void OneAxis::Compute(float theta) {
-            // utility::io::debug.out("Muscle 1 Position -> %lf\n", muscle1.GetPosition());
-            // utility::io::debug.out("Muscle 1 Pressure -> %lf\n", muscle1.GetPressure());
-            // utility::io::debug.out("Muscle 2 Position -> %lf\n", muscle2.GetPosition());
-            // utility::io::debug.out("Muscle 2 Pressure -> %lf\n", muscle2.GetPressure());
+            utility::io::debug.out("Muscle 1 Position -> %lf\n", muscle1.GetPosition());
+            utility::io::debug.out("Muscle 1 Pressure -> %lf\n", muscle1.GetPressure());
+            utility::io::debug.out("Muscle 2 Position -> %lf\n", muscle2.GetPosition());
+            utility::io::debug.out("Muscle 2 Pressure -> %lf\n", muscle2.GetPressure());
 
             // // TODO Calculate the position derivative for velocity
             // // TODO append these to a state vector in the order required
