@@ -362,14 +362,15 @@ namespace io {
     void ADC_IO::initialise() {
         MX_ADC1_Init();
         MX_ADC3_Init();
+        utility::io::debug.out("ERROR: Could not initialise acd\n");
     }
 
     void ADC_IO::Start() {
         if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_sensors, 4) != HAL_OK) {
-            utility::io::debug.out("ERROR: Could not initialise acd1\n");
+            utility::io::debug.out("ERROR: Could not start acd1 dma\n");
         }
         if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_sensors[4], 5) != HAL_OK) {
-            utility::io::debug.out("ERROR: Could not initialise acd1\n");
+            utility::io::debug.out("ERROR: Could not start acd1 dma\n");
         }
         utility::io::debug.out("Started ADC\n");
     }
