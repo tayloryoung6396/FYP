@@ -24,13 +24,13 @@ namespace Sensors {
     float LinearPot::GetPosition() {
         // Read gpio
         float position = ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
-        utility::io::debug.out("Position at %lf\n", position);
+        // utility::io::debug.out("Position gpio %d at %lf\n", gpio, position);
         return position;
     }
 
     float LinearPot::ConvertPotentiometer(float position) {
-        float scale = std::pow(2, 12);
-        position    = position / scale * length;
+        // float scale = std::pow(2, 12);
+        // position    = position / scale * length;
         return position;
     }
 }  // namespace Sensors

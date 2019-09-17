@@ -10,16 +10,18 @@ extern "C" {
 __IO uint16_t uhADCxConvertedValue = 0;
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
     if (AdcHandle == &hadc1) {
+        // HAL_ADC_Stop_DMA(&hadc1);
         // uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
         // utility::io::debug.out("Length %d\n", uhADCxConvertedValue);
         utility::io::debug.out("I got an ADC interupt 1\n");
-        utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
+        // utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
     }
     else if (AdcHandle == &hadc3) {
+        // HAL_ADC_Stop_DMA(&hadc3);
         // uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
         // utility::io::debug.out("Length %d\n", uhADCxConvertedValue);
         utility::io::debug.out("I got an ADC interupt 3\n");
-        utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
+        // utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
     }
 }
 
@@ -37,7 +39,7 @@ void MX_ADC1_Init(void) {
     hadc1.Instance                   = ADC1;
     hadc1.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV4;
     hadc1.Init.Resolution            = ADC_RESOLUTION_12B;
-    hadc1.Init.ScanConvMode          = ADC_SCAN_ENABLE;
+    hadc1.Init.ScanConvMode          = ENABLE;
     hadc1.Init.ContinuousConvMode    = DISABLE;
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;
@@ -45,7 +47,7 @@ void MX_ADC1_Init(void) {
     hadc1.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
     hadc1.Init.NbrOfConversion       = 4;
     hadc1.Init.DMAContinuousRequests = ENABLE;
-    hadc1.Init.EOCSelection          = ADC_EOC_SEQ_CONV;
+    hadc1.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;
     if (HAL_ADC_Init(&hadc1) != HAL_OK) {
         Error_Handler();
     }
@@ -88,7 +90,7 @@ void MX_ADC3_Init(void) {
     hadc3.Instance                   = ADC3;
     hadc3.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV4;
     hadc3.Init.Resolution            = ADC_RESOLUTION_12B;
-    hadc3.Init.ScanConvMode          = ADC_SCAN_ENABLE;
+    hadc3.Init.ScanConvMode          = ENABLE;
     hadc3.Init.ContinuousConvMode    = DISABLE;
     hadc3.Init.DiscontinuousConvMode = DISABLE;
     hadc3.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;
@@ -357,7 +359,10 @@ namespace io {
 
     ADC_IO::ADC_IO() {}
 
-    void ADC_IO::initialise() { MX_ADC1_Init(); }
+    void ADC_IO::initialise() {
+        MX_ADC1_Init();
+        MX_ADC3_Init();
+    }
 
     void ADC_IO::Start() {
         if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_sensors, 4) != HAL_OK) {
@@ -366,6 +371,7 @@ namespace io {
         if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_sensors[4], 5) != HAL_OK) {
             utility::io::debug.out("ERROR: Could not initialise acd1\n");
         }
+        utility::io::debug.out("Started ADC\n");
     }
 
     // void ADC_IO::FillSensors(ADC_HandleTypeDef* hadc, int offset) {
@@ -389,7 +395,7 @@ namespace io {
     uint16_t ADC_IO::GetSensors(int port) {
         NUClear::util::critical_section lock;
         uint16_t data = raw_data.sensors[port];
-        utility::io::debug.out("Getting sensor value: %d\n", data);
+        // utility::io::debug.out("Getting sensor from port %d \tvalue: %d\n", port, data);
         lock.release();
         return (data);
     }

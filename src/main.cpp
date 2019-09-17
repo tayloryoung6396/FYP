@@ -104,6 +104,7 @@ int main() {
         module::HardwareIO::valve1, module::Sensors::pressuresensor1, module::Sensors::linearpot1, pm_280};
 
     muscles.push_back(muscle1);
+    muscles.push_back(muscle1);
 
     module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
 
@@ -114,9 +115,9 @@ int main() {
     double Sampling_time = 10;  // 0.01 T_s
 
     while (1) {
-        if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
-            Error_Handler();
-        }
+        // if (HAL_ADC_Start_IT(&hadc1) != HAL_OK) {
+        //     Error_Handler();
+        // }
 
         auto now = NUClear::clock::now();
         HAL_Delay(500);
@@ -129,7 +130,7 @@ int main() {
         if (std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count() >= Sampling_time) {
             // Time to run our controller again
 
-            one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+            // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
         }
     }
 }
