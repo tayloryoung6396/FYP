@@ -10,9 +10,9 @@ namespace module {
 namespace HardwareIO {
 
     struct muscle_properties_t {
-        double nom_length;
-        double contraction_percent;
-        double diameter;
+        float nom_length;
+        float contraction_percent;
+        float diameter;
     };
 
     struct muscle_t {
@@ -28,14 +28,14 @@ namespace HardwareIO {
 
         void SetValveState(bool state);
 
-        double GetPosition();
+        float GetPosition();
 
-        double GetPressure();
+        float GetPressure();
 
         bool GetValveState();
 
     private:
-        double contraction;
+        float contraction;
 
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;

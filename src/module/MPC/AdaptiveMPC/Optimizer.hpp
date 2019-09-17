@@ -13,20 +13,20 @@ namespace MPC {
     namespace AdaptiveMPC {
         class Optimizer {
         public:
-            Optimizer(int ch_max, double state_weight, double input_weight);
+            Optimizer(int ch_max, float state_weight, float input_weight);
 
             template <typename T>
-            std::pair<std::vector<double>, double> ProcessModel(const T& model,
-                                                                std::vector<double>& states,
-                                                                double setpoint,
-                                                                std::vector<double>& output_states) {
+            std::pair<std::vector<float>, float> ProcessModel(const T& model,
+                                                              std::vector<float>& states,
+                                                              float setpoint,
+                                                              std::vector<float>& output_states) {
 
                 // Given a control action, select the correct model matrix, from that linearize the model about the
                 // current state point. Calculate the next state vector. Call the control error function and return the
                 // errors
 
                 // TODO Find a way to know P1 and P2 values
-                double Lin_mat[4][4];
+                float Lin_mat[4][4];
 
                 // if (P2 / P1 > b) {
                 //     Lin_mat = model.A1.Linearize();
@@ -44,21 +44,21 @@ namespace MPC {
                 return (ControlError(states, setpoint, output_states));
             }
 
-            std::pair<std::vector<double>, double> ControlError(std::vector<double>& states,
-                                                                double setpoint,
-                                                                std::vector<double>& output_states) {
+            std::pair<std::vector<float>, float> ControlError(std::vector<float>& states,
+                                                              float setpoint,
+                                                              std::vector<float>& output_states) {
 
                 // Do the math to find the relative errors (state, input)
-                std::vector<double> state_error = {output_states[0] - states[0],
-                                                   output_states[1] - states[1],
-                                                   output_states[2] - states[2],
-                                                   output_states[2] - states[2]};
-                double input_error              = output_states[0] - setpoint;
+                std::vector<float> state_error = {output_states[0] - states[0],
+                                                  output_states[1] - states[1],
+                                                  output_states[2] - states[2],
+                                                  output_states[2] - states[2]};
+                float input_error              = output_states[0] - setpoint;
                 return (std::make_pair(state_error, input_error));
             }
 
             template <typename T>
-            std::pair<bool, bool> FirstLayer(const T& m, std::vector<double> states, double setpoint) {
+            std::pair<bool, bool> FirstLayer(const T& m, std::vector<float> states, float setpoint) {
                 // Increment the depth (control horizon itt)
 
                 ch_itt = 1;
@@ -67,14 +67,14 @@ namespace MPC {
                 cost_result.clear();
 
                 // Create a cost vector for each root
-                std::vector<std::pair<std::vector<double>, double>> cost_root_1;
-                std::vector<std::pair<std::vector<double>, double>> cost_root_2;
-                std::vector<std::pair<std::vector<double>, double>> cost_root_3;
+                std::vector<std::pair<std::vector<float>, float>> cost_root_1;
+                std::vector<std::pair<std::vector<float>, float>> cost_root_2;
+                std::vector<std::pair<std::vector<float>, float>> cost_root_3;
 
                 // Create a output state vector for each process
-                std::vector<double> output_states_1;
-                std::vector<double> output_states_2;
-                std::vector<double> output_states_3;
+                std::vector<float> output_states_1;
+                std::vector<float> output_states_2;
+                std::vector<float> output_states_3;
 
                 // Calculate the result of performing each action and add the result error to the cost vector
                 cost_root_1.push_back(ProcessModel(m.mode1, states, setpoint, output_states_1));
@@ -120,17 +120,17 @@ namespace MPC {
 
             template <typename T>
             void AddLayer(const T& m,
-                          std::vector<double> states,
-                          double setpoint,
+                          std::vector<float> states,
+                          float setpoint,
                           int root,
-                          std::vector<std::pair<std::vector<double>, double>>& cost) {
+                          std::vector<std::pair<std::vector<float>, float>>& cost) {
                 // We're somewhere in the middle of our recursion
                 ch_itt++;
 
                 // Create a output state vector for each process
-                std::vector<double> output_states_1;
-                std::vector<double> output_states_2;
-                std::vector<double> output_states_3;
+                std::vector<float> output_states_1;
+                std::vector<float> output_states_2;
+                std::vector<float> output_states_3;
 
                 // Calculate the result of performing each action and add the result error to the cost vector
                 cost.push_back(ProcessModel(m.mode1, states, setpoint, output_states_1));
@@ -157,17 +157,17 @@ namespace MPC {
 
             template <typename T>
             void FinalLayer(const T& m,
-                            std::vector<double> states,
-                            double setpoint,
+                            std::vector<float> states,
+                            float setpoint,
                             int root,
-                            std::vector<std::pair<std::vector<double>, double>>& cost) {
+                            std::vector<std::pair<std::vector<float>, float>>& cost) {
                 // We're on or last layer, let's calculate the result append the cost and root
 
                 // TODO This isn't needed on the last layer
                 // Create a output state vector for each process
-                std::vector<double> output_states_1;
-                std::vector<double> output_states_2;
-                std::vector<double> output_states_3;
+                std::vector<float> output_states_1;
+                std::vector<float> output_states_2;
+                std::vector<float> output_states_3;
 
                 // Calculate the result of performing each action
                 cost.push_back(ProcessModel(m.mode1, states, setpoint, output_states_1));
@@ -183,7 +183,7 @@ namespace MPC {
                                                          element.first.begin(),
                                                          state_error_sum,
                                                          std::plus<>(),
-                                                         [](double a, double b) { return a * b * b; });
+                                                         [](float a, float b) { return a * b * b; });
 
                     input_error_sum += input_weight * element.second * element.second;
                 }
@@ -196,9 +196,9 @@ namespace MPC {
         private:
             int ch_itt;
             const int ch_max;
-            std::vector<std::pair<double, double>> cost_result;
-            const std::vector<double> state_weight;
-            const double input_weight;
+            std::vector<std::pair<float, float>> cost_result;
+            const std::vector<float> state_weight;
+            const float input_weight;
         };
 
         extern Optimizer optimizer1;

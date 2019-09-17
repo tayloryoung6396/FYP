@@ -5,22 +5,22 @@ namespace shared {
 namespace utility {
     class PID {
     public:
-        PID(double dt, double max, double min, double Kp, double Kd, double Ki);
+        PID(float dt, float max, float min, float Kp, float Kd, float Ki);
 
-        double Compute(double set_point, double pv);
+        float Compute(float set_point, float pv);
 
     private:
-        //     double proportional;
-        //     double intergral;
-        //     double differential;
-        double dt;
-        double max;
-        double min;
-        double Kp;
-        double Kd;
-        double Ki;
-        double pre_error;
-        double integral;
+        //     float proportional;
+        //     float intergral;
+        //     float differential;
+        float dt;
+        float max;
+        float min;
+        float Kp;
+        float Kd;
+        float Ki;
+        float pre_error;
+        float integral;
     };
 
     extern PID pid1;

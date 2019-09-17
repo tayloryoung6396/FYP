@@ -10,9 +10,9 @@ namespace Sensors {
     public:
         PressureSensor(uint32_t gpio);
 
-        double GetPressure();
+        float GetPressure();
 
-        double ConvertPressure(double Pressure);
+        float ConvertPressure(float Pressure);
 
     private:
         uint32_t gpio;

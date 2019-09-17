@@ -11,7 +11,7 @@ namespace HardwareIO {
         public:
             LinearAxis(std::vector<module::HardwareIO::muscle_t>& muscle);
 
-            void Compute(double position);
+            void Compute(float position);
 
         private:
             module::HardwareIO::Muscle muscle1;

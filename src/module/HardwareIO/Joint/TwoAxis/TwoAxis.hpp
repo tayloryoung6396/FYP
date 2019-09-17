@@ -9,13 +9,13 @@ namespace HardwareIO {
             TwoAxis();
 
         private:
-            double r_1;
-            double r_2;
+            float r_1;
+            float r_2;
 
-            double l_01;
-            double l_02;
-            double l_03;
-            double l_04;
+            float l_01;
+            float l_02;
+            float l_03;
+            float l_04;
         };
     }  // namespace joint
 }  // namespace HardwareIO

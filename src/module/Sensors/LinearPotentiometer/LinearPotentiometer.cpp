@@ -19,18 +19,18 @@ namespace Sensors {
     // LinearPot linearpot11 = LinearPot(11);
     // LinearPot linearpot12 = LinearPot(12);
 
-    LinearPot::LinearPot(uint32_t gpio, double length) : length(length) {}
+    LinearPot::LinearPot(uint32_t gpio, float length) : length(length) {}
 
-    double LinearPot::GetPosition() {
+    float LinearPot::GetPosition() {
         // Read gpio
-        double position = ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
+        float position = ConvertPotentiometer(utility::io::adc_io.GetSensors(gpio));
         utility::io::debug.out("Position at %lf\n", position);
         return position;
     }
 
-    double LinearPot::ConvertPotentiometer(double position) {
-        double scale = std::pow(2, 12);
-        position     = position / scale * length;
+    float LinearPot::ConvertPotentiometer(float position) {
+        float scale = std::pow(2, 12);
+        position    = position / scale * length;
         return position;
     }
 }  // namespace Sensors

@@ -8,15 +8,15 @@ namespace module {
 namespace Sensors {
     class LinearPot {
     public:
-        LinearPot(uint32_t gpio, double length);
+        LinearPot(uint32_t gpio, float length);
 
-        double GetPosition();
+        float GetPosition();
 
-        double ConvertPotentiometer(double position);
+        float ConvertPotentiometer(float position);
 
     private:
         uint32_t gpio;
-        double length;
+        float length;
     };
 
     extern LinearPot linearpot1;

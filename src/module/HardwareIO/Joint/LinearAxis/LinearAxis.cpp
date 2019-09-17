@@ -8,7 +8,7 @@ namespace HardwareIO {
 
         LinearAxis::LinearAxis(std::vector<module::HardwareIO::muscle_t>& muscle) : muscle1(muscle[0]) {}
 
-        void LinearAxis::Compute(double position) {
+        void LinearAxis::Compute(float position) {
             // Set each muscle related to the joint to the set position
             // muscle1.SetPosition(position);
         }

@@ -12,7 +12,7 @@ namespace MPC {
         public:
             AdaptiveMPC(module::MPC::AdaptiveMPC::Optimizer optimizer);
 
-            std::pair<bool, bool> Compute(std::vector<double>& states, double theta);
+            std::pair<bool, bool> Compute(std::vector<float>& states, float theta);
 
         private:
             module::MPC::AdaptiveMPC::Optimizer optimizer;

@@ -6,7 +6,7 @@ namespace HardwareIO {
     namespace joint {
 
         OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
-                         double radius,
+                         float radius,
                          module::MPC::AdaptiveMPC::AdaptiveMPC mpc)
             : muscle1(muscle[0]), muscle2(muscle[1]), radius(radius), mpc(mpc) {}
 
@@ -16,7 +16,7 @@ namespace HardwareIO {
         // The joint compute function then calls the appropriate MPC function and arranges the inputs how the MPC
         // expects. Something like this
 
-        void OneAxis::Compute(double theta) {
+        void OneAxis::Compute(float theta) {
             utility::io::debug.out("Pressure at %lf\n", muscle1.GetPosition());
             utility::io::debug.out("Pressure at %lf\n", muscle1.GetPressure());
             utility::io::debug.out("Pressure at %lf\n", muscle2.GetPosition());
@@ -24,7 +24,7 @@ namespace HardwareIO {
 
             // // TODO Calculate the position derivative for velocity
             // // TODO append these to a state vector in the order required
-            // std::vector<double> states;
+            // std::vector<float> states;
 
             // // Call the MPC compute
             // std::pair<bool, bool> valve_state = mpc.Compute(states, theta);

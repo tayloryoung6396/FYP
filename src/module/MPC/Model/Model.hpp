@@ -9,8 +9,8 @@ namespace MPC {
     namespace Model {
 
         struct mode_t {
-            double A1[4][4];
-            double A2[4][4];
+            float A1[4][4];
+            float A2[4][4];
         };
 
         struct dynamic_model {
@@ -19,14 +19,14 @@ namespace MPC {
             mode_t mode1;
             mode_t mode2;
             mode_t mode3;
-            double radius;
+            float radius;
         };
 
         // struct muscle_properties_t {
-        //     double nom_length;
-        //     double contraction_percent;
-        //     double diameter;
-        //     double a_xx[6][6];
+        //     float nom_length;
+        //     float contraction_percent;
+        //     float diameter;
+        //     float a_xx[6][6];
         // };
 
     }  // namespace Model

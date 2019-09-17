@@ -11,13 +11,13 @@ namespace HardwareIO {
         class OneAxis {
         public:
             OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
-                    double radius,
+                    float radius,
                     module::MPC::AdaptiveMPC::AdaptiveMPC mpc);
 
-            void Compute(double angle);
+            void Compute(float angle);
 
         private:
-            double radius;
+            float radius;
             module::HardwareIO::Muscle muscle1;
             module::HardwareIO::Muscle muscle2;
             module::MPC::AdaptiveMPC::AdaptiveMPC mpc;

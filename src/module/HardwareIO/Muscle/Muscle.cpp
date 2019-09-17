@@ -22,9 +22,9 @@ namespace HardwareIO {
 
     void Muscle::SetValveState(bool state) { valve = state; }
 
-    double Muscle::GetPosition() { return linear_pot.GetPosition(); }
+    float Muscle::GetPosition() { return linear_pot.GetPosition(); }
 
-    double Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
+    float Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
 
     bool Muscle::GetValveState() { return valve; }
 }  // namespace HardwareIO

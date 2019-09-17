@@ -19,13 +19,13 @@ namespace Sensors {
 
     PressureSensor::PressureSensor(uint32_t gpio) : gpio(gpio) {}
 
-    double PressureSensor::GetPressure() {
+    float PressureSensor::GetPressure() {
         pressure = ConvertPressure(utility::io::adc_io.GetSensors(gpio));
         utility::io::debug.out("Pressure at %lf\n", pressure);
         return pressure;
     }
 
-    double PressureSensor::ConvertPressure(double Pressure) {
+    float PressureSensor::ConvertPressure(float Pressure) {
         return Pressure;  // TODO Scale by the adc ammount and then the data sheet specification
     }
 }  // namespace Sensors
