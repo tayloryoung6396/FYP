@@ -15,6 +15,7 @@
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"
+#include "dma.h"
 #include "gpio.h"
 #include "main.h"
 #include "nuclear/src/clock.hpp"
@@ -136,11 +137,10 @@ int main() {
 
     // Configure the system clock
     SystemClock_Config();
+    MX_GPIO_Init();
+    MX_DMA_Init();
     MX_USART6_UART_Init();
     utility::clock::initialise();
-
-    // Initialize all configured peripherals
-    MX_GPIO_Init();
     utility::io::adc_io.initialise();
 
     auto time_start = NUClear::clock::now();
