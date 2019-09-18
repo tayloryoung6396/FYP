@@ -1,31 +1,37 @@
 #include "OneAxis.hpp"
 #include <iostream>
-#include "../../Muscle/Muscle.hpp"
 
 namespace module {
 namespace HardwareIO {
     namespace joint {
 
-        // OneAxis::OneAxis(std::vector<muscle_t> muscle, double r_1) {
-        OneAxis::OneAxis(double r_1) {
+        OneAxis::OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
+                         float radius,
+                         module::MPC::AdaptiveMPC::AdaptiveMPC mpc)
+            : muscle1(muscle[0]), muscle2(muscle[1]), radius(radius), mpc(mpc) {}
 
-            module::HardwareIO::Muscle muscle_1(module::HardwareIO::valve1,
-                                                module::Sensors::pressuresensor1,
-                                                module::Sensors::linearpot1,
-                                                shared::utility::pid1);
-            module::HardwareIO::Muscle muscle_2(module::HardwareIO::valve2,
-                                                module::Sensors::pressuresensor2,
-                                                module::Sensors::linearpot2,
-                                                shared::utility::pid2);
+        // TODO I think this is how the system needs to work
+        // Joints know about the muscles, a joint contains all of the muscles it needs to perform. Each muscle has
+        // knowledge of its respective sensors, pressure, position. A muscle is responsible for reading it's sensors.
+        // The joint compute function then calls the appropriate MPC function and arranges the inputs how the MPC
+        // expects. Something like this
+
+        void OneAxis::Compute(float theta) {
+            utility::io::debug.out("Mus1 Pos %.2f\t", muscle1.GetPosition());
+            utility::io::debug.out("Pres %.2f\t", muscle1.GetPressure());
+            utility::io::debug.out("Mus2 Pos %.2f\t", muscle2.GetPosition());
+            utility::io::debug.out("Pres %.2f\n", muscle2.GetPressure());
+
+            // // TODO Calculate the position derivative for velocity
+            // // TODO append these to a state vector in the order required
+            // std::vector<float> states;
+
+            // // Call the MPC compute
+            // std::pair<bool, bool> valve_state = mpc.Compute(states, theta);
+
+            // muscle1.SetValveState(valve_state.first);
+            // muscle2.SetValveState(valve_state.second);
         }
-
-        // Some sort of initial position, 0
-        // Some sort of initial length for all of the muscles
-
-        // Input position
-
-        // double L_1 = 2 * muscle_1.init_len + muscle_2.init_len - L_2;
-        // double L_2 = (2 * M_PI() * OneAxis::r_1 / 360);
 
     }  // namespace joint
 }  // namespace HardwareIO

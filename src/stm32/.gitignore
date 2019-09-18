@@ -1,0 +1,5 @@
+**/*
+.mxproject
+!.gitignore
+!CMakeLists.txt
+!NUCLEO_F722ZE_TEST.ioc

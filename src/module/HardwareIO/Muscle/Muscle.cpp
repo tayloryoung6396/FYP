@@ -1,32 +1,31 @@
 #include "Muscle.hpp"
+#include <stdint.h>
 #include <iostream>
+#include "utility/io/gpio.hpp"
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace HardwareIO {
 
-    Muscle::Muscle(Valve& valve,
-                   Sensors::PressureSensor& pressure_sensor,
-                   Sensors::LinearPot& linear_pot,
-                   shared::utility::PID& pid)
-        : valve(valve), pressure_sensor(pressure_sensor), linear_pot(linear_pot), pid(pid) {}
+    Muscle::Muscle(module::HardwareIO::muscle_t muscle)
+        : valve(muscle.valve)
+        , pressure_sensor(muscle.pressure_sensor)
+        , linear_pot(muscle.linear_pot)
+        , properties(muscle.properties) {
 
-    void Muscle::SetPosition(double set_point) {
-        std::cout << "Set Point " << set_point << std::endl;
+        utility::io::debug.out("Initialising Muscle\n");
 
-        double pressure = pressure_sensor.GetPressure();
-        double position = linear_pot.GetPosition();
-
-        double value   = position;
-        double control = pid.Compute(set_point, value);
-
-        std::cout << "Control " << control << std::endl;
+        utility::io::debug.out("\tnom_length %lf\n", properties.nom_length);
+        utility::io::debug.out("\tcontraction_percent %lf\n", properties.contraction_percent);
+        utility::io::debug.out("\tdiameter %lf\n", properties.diameter);
     }
 
-    double Muscle::GetPosition() { return linear_pot.GetPosition(); }
+    void Muscle::SetValveState(bool state) { valve = state; }
 
-    double Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
+    float Muscle::GetPosition() { return linear_pot.GetPosition(); }
 
-    bool Muscle::GetValveState() {  // return (valve.bool());
-    }
+    float Muscle::GetPressure() { return pressure_sensor.GetPressure(); }
+
+    bool Muscle::GetValveState() { return valve; }
 }  // namespace HardwareIO
 }  // namespace module

@@ -1,0 +1,1877 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"raw",
+				"raw_sensors"
+			],
+			[
+				"ra",
+				"raw_data"
+			],
+			[
+				"u",
+				"uhADCxConvertedValue"
+			],
+			[
+				"GPIO_",
+				"GPIO_PIN_RESET"
+			],
+			[
+				"GP",
+				"GPIO_PIN_0"
+			],
+			[
+				"HAL",
+				"HAL_GPIO_WritePin"
+			],
+			[
+				"H",
+				"HAL_OK"
+			],
+			[
+				"ADC",
+				"ADC_HandleTypeDef"
+			],
+			[
+				"time",
+				"time_msg"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"export",
+				"export_step"
+			],
+			[
+				"ph",
+				"physicalProperties"
+			],
+			[
+				"ro",
+				"rootComponent"
+			],
+			[
+				"occ",
+				"occurrences"
+			],
+			[
+				"Pa",
+				"parentComponent"
+			],
+			[
+				"Ph",
+				"physicalProperties"
+			],
+			[
+				"r",
+				"radius"
+			],
+			[
+				"Line",
+				"LinearAxis"
+			],
+			[
+				"L",
+				"LinearAxis"
+			],
+			[
+				"mus",
+				"muscle1"
+			],
+			[
+				"Pre",
+				"Pressure"
+			],
+			[
+				"p",
+				"particle"
+			],
+			[
+				"mass",
+				"mass_model"
+			],
+			[
+				"par",
+				"particles"
+			],
+			[
+				"com",
+				"component"
+			],
+			[
+				"root",
+				"rootComp"
+			],
+			[
+				"V_B",
+				"V_B_V_PI"
+			],
+			[
+				"V_O_",
+				"V_O_V_PI"
+			],
+			[
+				"X_",
+				"X_CO"
+			],
+			[
+				"len",
+				"len_f"
+			],
+			[
+				"del",
+				"delta_D"
+			],
+			[
+				"C_A",
+				"C_AC_IN"
+			],
+			[
+				"R_A",
+				"R_AC_IN"
+			],
+			[
+				"R_p",
+				"R_parallel"
+			],
+			[
+				"m",
+				"muscle_t"
+			],
+			[
+				"P",
+				"PressureSensor"
+			],
+			[
+				"N",
+				"NUClear"
+			],
+			[
+				"TIM_CR",
+				"TIM_CR1_UDIS"
+			],
+			[
+				"D",
+				"DynamixelComms"
+			],
+			[
+				"al",
+				"alternate_function"
+			],
+			[
+				"In",
+				"Instance"
+			],
+			[
+				"Err",
+				"Error_Handler"
+			],
+			[
+				"hu",
+				"huart4"
+			],
+			[
+				"st",
+				"start_event"
+			],
+			[
+				"s",
+				"start_event"
+			],
+			[
+				"rx",
+				"rx_fifo_threshold"
+			],
+			[
+				"f",
+				"fifo_mode"
+			],
+			[
+				"pa",
+				"parity"
+			],
+			[
+				"Wo",
+				"word_length"
+			],
+			[
+				"U",
+				"USART1_BASE"
+			],
+			[
+				"sen",
+				"sent_all_the_bytes"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"criti",
+				"critical_section"
+			],
+			[
+				"que",
+				"queue_size"
+			],
+			[
+				"ne",
+				"new_data"
+			],
+			[
+				"clo",
+				"clock_overflow"
+			],
+			[
+				"I",
+				"InterfaceBoard"
+			],
+			[
+				"M",
+				"MPER"
+			],
+			[
+				"buf",
+				"buffer_filled"
+			],
+			[
+				"d",
+				"DynamixelStreamer"
+			],
+			[
+				"Dyn",
+				"DynamixelStream"
+			],
+			[
+				"mpu",
+				"mpu_int_callback"
+			],
+			[
+				"ac",
+				"Accelerometer"
+			],
+			[
+				"write",
+				"write_callback"
+			],
+			[
+				"gpio",
+				"gpio_pin"
+			],
+			[
+				"gpio_",
+				"gpio_bank"
+			],
+			[
+				"i2",
+				"i2c_read_buffer"
+			],
+			[
+				"i2c_h",
+				"i2c_handle"
+			],
+			[
+				"spi",
+				"spi_handle"
+			],
+			[
+				"IM",
+				"IMURawData"
+			],
+			[
+				"re",
+				"read_buffer"
+			],
+			[
+				"IMU",
+				"IMUReader"
+			],
+			[
+				"gp",
+				"gpio_pin"
+			],
+			[
+				"read",
+				"read_data"
+			],
+			[
+				"wri",
+				"write_timeout"
+			],
+			[
+				"im",
+				"imu_mutex"
+			],
+			[
+				"mut",
+				"imu_mutex"
+			],
+			[
+				"cle",
+				"clear_imu_int"
+			],
+			[
+				"SP",
+				"SPI_IT_FLAG"
+			],
+			[
+				"mp",
+				"mpu_data"
+			],
+			[
+				"Fan",
+				"FanPWM_MemAddress"
+			],
+			[
+				"F",
+				"FanPWM_pData"
+			],
+			[
+				"ACCEL",
+				"ACCEL_X"
+			],
+			[
+				"mpu_",
+				"mpu_data"
+			],
+			[
+				"sp",
+				"spi_addr"
+			],
+			[
+				"uin",
+				"uint8_t"
+			],
+			[
+				"BR",
+				"BRANCH_RT"
+			],
+			[
+				"B",
+				"BRANCH_0"
+			],
+			[
+				"BRA",
+				"BRANCH"
+			],
+			[
+				"BRAN",
+				"BRANCH_T"
+			],
+			[
+				"BRANCH",
+				"BRANCH_1"
+			],
+			[
+				"RT",
+				"RT_O"
+			],
+			[
+				"brn",
+				"branch_int_1"
+			],
+			[
+				"bran",
+				"branch_int_0"
+			],
+			[
+				"branch",
+				"branch_int_1"
+			],
+			[
+				"ce",
+				"cell_dist"
+			],
+			[
+				"se",
+				"seg_image_array"
+			],
+			[
+				"obj",
+				"object_cell_m"
+			],
+			[
+				"w_",
+				"w_Tank_Rotation"
+			],
+			[
+				"obje",
+				"objects_found"
+			],
+			[
+				"Grip",
+				"Gripper_angles"
+			],
+			[
+				"Sp",
+				"SpintoWin"
+			],
+			[
+				"hs",
+				"hsv_colour"
+			],
+			[
+				"rg",
+				"rgb_colour"
+			],
+			[
+				"col",
+				"colour"
+			],
+			[
+				"data",
+				"data_mod"
+			],
+			[
+				"cen",
+				"center_y"
+			],
+			[
+				"E",
+				"Enable_BLUE"
+			],
+			[
+				"LED",
+				"LED_RED"
+			],
+			[
+				"the",
+				"theta"
+			],
+			[
+				"a",
+				"arm_len_3"
+			],
+			[
+				"curr",
+				"current_time"
+			],
+			[
+				"Ri",
+				"Right_Position"
+			],
+			[
+				"Lef",
+				"Left_Position"
+			],
+			[
+				"cur",
+				"curr_pos"
+			],
+			[
+				"pr",
+				"prev_pos"
+			],
+			[
+				"Se",
+				"Search_cell"
+			],
+			[
+				"weight",
+				"weighted_map"
+			],
+			[
+				"no",
+				"node_num"
+			],
+			[
+				"G",
+				"Get_G_cost"
+			],
+			[
+				"ope",
+				"open_node"
+			],
+			[
+				"open",
+				"open_nodes"
+			],
+			[
+				"Open",
+				"Open_list"
+			],
+			[
+				"new",
+				"new_node"
+			],
+			[
+				"Goal",
+				"Goal_cell"
+			],
+			[
+				"Ca",
+				"Calculate_H_cost"
+			],
+			[
+				"Con",
+				"Convert_cell_node_num"
+			],
+			[
+				"Cel",
+				"Current_cell"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 3257,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/shared/utility/clock/clock.cpp",
+			"settings":
+			{
+				"buffer_size": 2489,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/shared/utility/io/adc.cpp",
+			"settings":
+			{
+				"buffer_size": 9128,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nSystemVerilog\n-------------\n\n  SystemVerilog 2.21.11 Changelog:\n  \n  ## Bug Fix ##\n    - Module list : \n      * fix regression on file list creation\n      * Handles exception when opening files\n\n  SystemVerilog 2.21.10 Changelog:\n  \n  ## Bug Fix ##\n    - Highlight : Fix issues around extern task/function\n    - Indent : Improve auto-indent with else and property\n    - Module list :\n      * fix issue where the cached infomration woudld not immediately show up if a cache update is ongoing\n      * Save cache in a file to always have a responsive command\n\n  SystemVerilog 2.21.9 Changelog:\n  \n  ## Bug Fix ##\n    - Highlight :\n     * support #1step\n     * support casting\n    - Beautifier :\n      * Fix issue with macro inside if single statement (contribution from Dillan Mills)\n",
+			"settings":
+			{
+				"buffer_size": 832,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "src/stm32/Src/dma.c",
+			"settings":
+			{
+				"buffer_size": 3330,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/stm32/Src/adc.c",
+			"settings":
+			{
+				"buffer_size": 12444,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/stm32/Inc/usart.h",
+			"settings":
+			{
+				"buffer_size": 2980,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/stm32/Inc/tim.h",
+			"settings":
+			{
+				"buffer_size": 3018,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/shared/utility/io/adc.hpp",
+			"settings":
+			{
+				"buffer_size": 632,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 784.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"hex",
+				"HexViewer: Reload Hex View"
+			],
+			[
+				"HEX",
+				"HexViewer: Toggle Hex View"
+			],
+			[
+				"he",
+				"Set Syntax: Hex"
+			],
+			[
+				"Package Control: \t",
+				"Package Control: Install Package"
+			],
+			[
+				"clanf",
+				"Clang Format: Format Selection"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 824.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/fish_/Documents/FYP/FYP",
+		"/C/Users/fish_/Documents/FYP/FYP/src",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src"
+	],
+	"file_history":
+	[
+		"/D/hiddenfile.txt",
+		"/D/HIDFILE.TXT",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/adc.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/dma.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/dma.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.cpp",
+		"/C/Users/fish_/Downloads/citation-328418552.bib",
+		"/C/Users/fish_/Downloads/citation-274698812.bib",
+		"/C/Users/fish_/Desktop/Components.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Include/core_cm0.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/uart.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/clock.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usart.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/LinearPotentiometer/LinearPotentiometer.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.cpp",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/UON Teaching/ELEC3730/Assessments/Assignment 2/Ass-02-c3230100-c3197197.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/critical_section/critical_section.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/tim.c",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/FYP/Code/Version2/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/main.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h",
+		"/C/Users/fish_/STM32Cube/Repository/STM32Cube_FW_F7_V1.14.0/Projects/STM32F722ZE-Nucleo/Examples/ADC/ADC_RegularConversion_Interrupt/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_it.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_it.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/adc.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/SFR.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/stm32f7xx_hal_msp.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Input/Controller/Controller.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/gpio.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Muscle/Muscle.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c",
+		"/C/Users/fish_/Documents/FYP/FYP/Toolchain.cmake",
+		"/C/Users/fish_/Documents/FYP/FYP/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/Makefile",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Valve/Valve.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/main.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/usart.c",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 1/ELEC 3730/Assignment 2/Ass-02-STM32/Src/Ass-02-Q01.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/usb_otg.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/CMakeLists.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Inc/stm32f7xx_hal_conf.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/io/adc.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/Sensors/PressureSensor/PressureSensor.hpp",
+		"/C/Users/fish_/The University Of Newcastle/Alexandra Rendina - Lab 2/Lab_2_Servo_Results/Untitled.m",
+		"/C/Users/fish_/The University Of Newcastle/Alexandra Rendina - Lab 2/lab22redo.m",
+		"/C/Users/fish_/Documents/FYP/FYP/build/PNEUbots.map",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/LinearAxis/LinearAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/DynamicModel/DynamicModel.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/OneAxis/OneAxis.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/module/HardwareIO/Joint/TwoAxis/TwoAxis.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/model/StaticModel/StaticModel.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/src/util/critical_section.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/PID/PID.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/InverseKinematics.cpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/motion/ForwardKinematics.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/nuclear/CMakeLists.txt",
+		"/C/Users/fish_/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/Scripts/Export_Step/Export_Step.py",
+		"/C/Users/fish_/Documents/NUbots/NUbots/doc/Kinematics/Export_Step.py",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Ankle_Block_v4.yaml",
+		"/C/Users/fish_/Desktop/New folder/Igus_Ankle_Block.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Foot_Left_v7.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v10.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Upper_Left_v12.yaml",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/p1(2).sv",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Third Year/Semester 2/ELEC 3720/Assignments/Assignment 1_3/Assignment3.txt",
+		"/C/Users/fish_/The University Of Newcastle/Thomas Bailey - Assignment 2/Combined_SCP.sv",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/extension/hal/UART.hpp",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/Src/i2c.c",
+		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeCache.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/src/stm32/.gitignore",
+		"/C/Users/fish_/Documents/FYP/FYP/build/CMakeFiles/TargetDirectories.txt",
+		"/C/Users/fish_/Documents/FYP/FYP/Src/main.c",
+		"/C/Users/fish_/Documents/FYP/FYP/Inc/main.h",
+		"/C/Users/fish_/Documents/FYP/FYP/src/shared/utility/clock/clock.hpp",
+		"/C/Users/fish_/Desktop/pid.hpp",
+		"/C/Users/fish_/Desktop/pid.cpp",
+		"/C/Users/fish_/Desktop/main.cpp",
+		"/C/Users/fish_/OneDrive - The University Of Newcastle (1)/Bachelor of Electrical Engineering Degree/Fourth Year/Semester_1/ENGG_3440/Labs/Lab 2/Lab_2Gen.m",
+		"/C/Users/fish_/Desktop/Igus_V5/COM.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/COM_Tensor.py",
+		"/C/Users/fish_/Desktop/Igus_V5/mass.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Mass.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Arm_Lower_Left_v8.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v8.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Lower_Left_v6.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Upper_Left_v9.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Hip_Block_v4.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Torso_v13.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v7.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Arm_Upper_Left_v8.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Arm_Lower_Left_v7.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Arm_Upper_Left_v7.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Head_v5.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Leg_Lower_Left_v5.yaml",
+		"/C/Users/fish_/Desktop/Igus_V5/Igus_Torso_v11.yaml",
+		"/C/Users/fish_/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/Scripts/Properties_Save/Properties_Save.py"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 208.0,
+		"where_history":
+		[
+			"",
+			"C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\shared",
+			"C:\\Users\\fish_\\Documents\\FYP\\FYP\\src\\module",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"raw_data",
+			"ADC1",
+			"adc1",
+			"ADC1",
+			"hadc1",
+			"hdma_memtomem_dma2_stream0",
+			"utility::io::ADC_IO::",
+			"raw_data",
+			"led3",
+			"raw_data",
+			"malloc",
+			"/*",
+			"*/",
+			"/**",
+			"*/",
+			"/**",
+			"GPIOB",
+			"PA3",
+			"GPIO_PIN_3",
+			"GPIO_PIN_0",
+			"GPIO_B",
+			"AdcHandle",
+			"adcHandle",
+			"AdcHandle",
+			"HADC1",
+			"AdcHandle",
+			");\n",
+			"BSP_LED_Toggle",
+			"BSP_LED_On",
+			"valve",
+			"hadc1->Lock",
+			"}\n",
+			"utility::io::debug.out(\"ERROR: Could not init ADC\\n\");",
+			"\n\n{",
+			" \n",
+			" ConfigureADC",
+			"SystemCoreClockUpdate",
+			" SystemCoreClockUpdate",
+			"HAL_ADC_IRQHandler",
+			"ADC_IT_EOC",
+			"EOCIE",
+			"hadc == &hadc3",
+			"Initialising ADC",
+			"ADC",
+			"led",
+			"led2",
+			"LD3_Pin",
+			"TIM_SMCR_MSM",
+			"TIM_SMCR_ETPS",
+			"TIM_SMCR_ETP",
+			"TIM_SMCR_ECE",
+			"FALSE",
+			"TRUE",
+			"\"\n",
+			"HAL_GPIO_TogglePin",
+			"            utility::io::debug.out(\"\\n\");",
+			"MODULE_Controller_HPP",
+			"valve",
+			"Valve",
+			"valve",
+			"Valve",
+			"VALVE",
+			"::\n",
+			"};\n",
+			"string",
+			");\n",
+			"HAL_Toggl",
+			"thing",
+			"module/",
+			"shared::utility",
+			"{\n",
+			"'Tachometer Observed (36deg/V)'",
+			"(36deg / V)",
+			"'Tachometer (36deg / V)'",
+			"title",
+			"! ",
+			"V",
+			"'Tachometer Observed'",
+			"'Position 36deg / V Observed'",
+			"'Tachometer'",
+			"'Tachometer",
+			"'Reference 36deg / V'",
+			"'Position 36deg / V'",
+			"'Control",
+			"'Reference",
+			"'Position",
+			"figure",
+			"*",
+			"%",
+			"time_10",
+			"exp1_001",
+			"exp1_003",
+			"utility::",
+			"utility::io::debug",
+			"UTILITY_IO_GPIO",
+			"debug_print",
+			"std::cout",
+			"msg",
+			"Scale",
+			"Position",
+			"Potentiometer",
+			"CoM",
+			"extern \"C\"",
+			"Area",
+			"]\n",
+			"CoM",
+			")))\n",
+			"(",
+			"m_1",
+			"PressureSensor",
+			"muscle",
+			"Valve",
+			"muscle_t",
+			"struct",
+			"test_muscle1",
+			"OneAxis",
+			"_ONE",
+			"OneAxis",
+			"Pressure",
+			"ADC_Common_TypeDef",
+			"TIM5_IRQHandler",
+			"#include \"stm32f722",
+			"APB1LENR",
+			"clock",
+			"util",
+			"HAL_ADC_IRQHandler",
+			"../",
+			"../../../shared/"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"utility::debug"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3031,
+								3031
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/shared/utility/clock/clock.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2489,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								663,
+								663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/shared/utility/io/adc.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7489,
+								7489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2340.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								24
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"default_dir": "D:\\",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/stm32/Src/dma.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/stm32/Src/adc.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2713,
+								2713
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2070.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/stm32/Inc/usart.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/stm32/Inc/tim.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3018,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2906,
+								2906
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/shared/utility/io/adc.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								526,
+								502
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 71.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 295.0
+	},
+	"pinned_build_system": "",
+	"project": "FYP.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"adc",
+				"src\\shared\\utility\\io\\adc.hpp"
+			],
+			[
+				"gpio",
+				"src\\stm32\\Src\\gpio.c"
+			],
+			[
+				"cm",
+				"src\\stm32\\CMakeLists.txt"
+			],
+			[
+				"ad",
+				"src\\stm32\\Src\\adc.c"
+			],
+			[
+				"mai",
+				"src\\stm32\\Src\\main.c"
+			],
+			[
+				"line",
+				"src\\module\\HardwareIO\\Joint\\LinearAxis\\LinearAxis.cpp"
+			],
+			[
+				"mu",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.cpp"
+			],
+			[
+				"mus",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
+			],
+			[
+				"main",
+				"src\\main.cpp"
+			],
+			[
+				"uart",
+				"src\\shared\\utility\\io\\uart.cpp"
+			],
+			[
+				"muscl",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.cpp"
+			],
+			[
+				"cont",
+				"src\\module\\Input\\Controller\\Controller.hpp"
+			],
+			[
+				"ua",
+				"src\\shared\\utility\\io\\uart.cpp"
+			],
+			[
+				"clock",
+				"src\\shared\\utility\\clock\\clock.cpp"
+			],
+			[
+				"stm",
+				"src\\stm32\\Drivers\\STM32F7xx_HAL_Driver\\Src\\stm32f7xx_hal_adc.c"
+			],
+			[
+				"one",
+				"src\\module\\HardwareIO\\Joint\\OneAxis\\OneAxis.hpp"
+			],
+			[
+				"stati",
+				"src\\shared\\utility\\model\\StaticModel\\StaticModel.hpp"
+			],
+			[
+				"stat",
+				"src\\shared\\utility\\model\\StaticModel\\StaticModel.cpp"
+			],
+			[
+				"lin",
+				"src\\module\\Sensors\\LinearPotentiometer\\LinearPotentiometer.hpp"
+			],
+			[
+				"pre",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.cpp"
+			],
+			[
+				"a",
+				"src\\shared\\utility\\io\\adc.cpp"
+			],
+			[
+				"musc",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.hpp"
+			],
+			[
+				"li",
+				"src\\module\\HardwareIO\\Joint\\LinearAxis\\LinearAxis.hpp"
+			],
+			[
+				"muc",
+				"src\\module\\HardwareIO\\Muscle\\Muscle.cpp"
+			],
+			[
+				"val",
+				"src\\module\\HardwareIO\\Valve\\Valve.cpp"
+			],
+			[
+				"cmak",
+				"CMakeLists.txt"
+			],
+			[
+				"gpo",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
+				"gpoi",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
+				"vl",
+				"src\\module\\HardwareIO\\Valve\\Valve.cpp"
+			],
+			[
+				"pr",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.hpp"
+			],
+			[
+				"stm adc",
+				"src\\stm32\\Drivers\\STM32F7xx_HAL_Driver\\Inc\\stm32f7xx_hal_adc.h"
+			],
+			[
+				"pres",
+				"src\\module\\Sensors\\PressureSensor\\PressureSensor.hpp"
+			],
+			[
+				"pid",
+				"src\\shared\\utility\\PID\\PID.cpp"
+			],
+			[
+				"cmake",
+				"src\\nuclear\\CMakeLists.txt"
+			],
+			[
+				"p",
+				"src\\module\\PID\\PID.hpp"
+			],
+			[
+				"mu\t",
+				"src\\module\\Muscle\\Muscle.hpp"
+			],
+			[
+				"int",
+				"src\\module\\InterfaceBoard\\InterfaceBoard.cpp"
+			],
+			[
+				"usb",
+				"src\\module\\USBComms\\USBComms.hpp"
+			],
+			[
+				"usbc",
+				"src\\module\\USBComms\\USBComms.cpp"
+			],
+			[
+				"us",
+				"src\\module\\USBComms\\USBComms.hpp"
+			],
+			[
+				"imu",
+				"src\\module\\IMUReader\\IMUReader.hpp"
+			],
+			[
+				"chron",
+				"src\\nuclear\\src\\extension\\ChronoController.hpp"
+			],
+			[
+				"dy",
+				"src\\module\\DynamixelComms\\DynamixelComms.cpp"
+			],
+			[
+				"stream",
+				"src\\module\\DynamixelComms\\DynamixelStream.hpp"
+			],
+			[
+				"tim",
+				"src\\stm32\\Src\\tim.c"
+			],
+			[
+				"chr",
+				"src\\nuclear\\src\\extension\\ChronoController.hpp"
+			],
+			[
+				"inter",
+				"src\\module\\InterfaceBoard\\InterfaceBoard.cpp"
+			],
+			[
+				"cloc",
+				"src\\shared\\utility\\clock\\clock.cpp"
+			],
+			[
+				"del",
+				"src\\nuclear\\src\\dsl\\word\\emit\\Delay.hpp"
+			],
+			[
+				"eve",
+				"src\\nuclear\\src\\dsl\\word\\Every.hpp"
+			],
+			[
+				"u",
+				"src\\shared\\extension\\hal\\uart\\uart_configuration.hpp"
+			],
+			[
+				"in",
+				"src\\shared\\extension\\hal\\uart\\interrupt.cpp"
+			],
+			[
+				"d",
+				"src\\module\\DynamixelComms\\DynamixelStream.hpp"
+			],
+			[
+				"clo",
+				"src\\nuclear\\src\\clock.hpp"
+			],
+			[
+				"ev",
+				"src\\nuclear\\src\\dsl\\word\\Every.hpp"
+			],
+			[
+				"uar",
+				"src\\shared\\extension\\hal\\uart\\uart_configuration.hpp"
+			],
+			[
+				"usbd_cdc_if",
+				"src\\stm32\\Src\\usbd_cdc_if.c"
+			],
+			[
+				"init",
+				"src\\shared\\extension\\hal\\uart\\initialise.hpp"
+			],
+			[
+				"cl",
+				"src\\nuclear\\src\\clock.hpp"
+			],
+			[
+				"de",
+				"src\\shared\\extension\\hal\\uart\\DeviceMap.hpp"
+			],
+			[
+				"ini",
+				"src\\shared\\extension\\hal\\uart\\initialise.cpp"
+			],
+			[
+				"usa",
+				"src\\stm32\\Src\\usart.c"
+			],
+			[
+				"usar",
+				"src\\stm32\\Src\\usart.c"
+			],
+			[
+				"pow",
+				"src\\nuclear\\src\\PowerPlant.cpp"
+			],
+			[
+				"task",
+				"src\\nuclear\\src\\threading\\TaskScheduler.cpp"
+			],
+			[
+				"type",
+				"src\\nuclear\\src\\util\\TypeMap.hpp"
+			],
+			[
+				"call",
+				"src\\nuclear\\src\\util\\CallbackGenerator.hpp"
+			],
+			[
+				"power",
+				"src\\nuclear\\src\\PowerPlant.ipp"
+			],
+			[
+				"localpointer",
+				"src\\nuclear\\src\\dsl\\store\\LocalPointerStore.hpp"
+			],
+			[
+				"cacheget.hpp",
+				"src\\nuclear\\src\\dsl\\operation\\CacheGet.hpp"
+			],
+			[
+				"direct.hpp",
+				"src\\nuclear\\src\\dsl\\word\\emit\\Direct.hpp"
+			],
+			[
+				"local.hpp",
+				"src\\nuclear\\src\\dsl\\word\\emit\\Local.hpp"
+			],
+			[
+				"chorontask",
+				"src\\nuclear\\src\\dsl\\operation\\ChronoTask.hpp"
+			],
+			[
+				"chornotask",
+				"src\\nuclear\\src\\dsl\\operation\\ChronoTask.hpp"
+			],
+			[
+				"powerplant.ipp",
+				"src\\nuclear\\src\\PowerPlant.ipp"
+			],
+			[
+				"reacto.hpp",
+				"src\\nuclear\\src\\Reactor.hpp"
+			],
+			[
+				"callbackgener",
+				"src\\nuclear\\src\\util\\CallbackGenerator.hpp"
+			],
+			[
+				"ever",
+				"src\\nuclear\\src\\dsl\\word\\Every.hpp"
+			],
+			[
+				"callbac",
+				"src\\nuclear\\src\\util\\CallbackGenerator.hpp"
+			],
+			[
+				"im",
+				"src\\modules\\IMUReader\\IMUReader.cpp"
+			],
+			[
+				"nu",
+				"NUsense changes list.txt"
+			],
+			[
+				"gpi",
+				"src\\shared\\utility\\io\\gpio.cpp"
+			],
+			[
+				"gpio.c",
+				"src\\stm32\\Src\\gpio.c"
+			],
+			[
+				"ba",
+				"src\\module\\BatteryMonitor\\BatteryMonitor.cpp"
+			],
+			[
+				"bat",
+				"src\\module\\BatteryMonitor\\BatteryMonitor.hpp"
+			],
+			[
+				"i2c",
+				"src\\shared\\utility\\io\\i2c.cpp"
+			],
+			[
+				"spi",
+				"src\\shared\\utility\\io\\spi.hpp"
+			],
+			[
+				"gp",
+				"src\\shared\\utility\\io\\gpio.cpp"
+			],
+			[
+				"gpio.hpp",
+				"src\\shared\\utility\\io\\gpio.hpp"
+			],
+			[
+				"gpio.cpp",
+				"src\\shared\\utility\\io\\gpio.cpp"
+			],
+			[
+				"spi.cpp",
+				"src\\shared\\utility\\io\\spi.cpp"
+			],
+			[
+				"spi.hpp",
+				"src\\shared\\utility\\io\\spi.hpp"
+			],
+			[
+				"cal",
+				"src\\shared\\utility\\io\\callback.hpp"
+			],
+			[
+				"uart.hpp",
+				"src\\shared\\utility\\io\\uart.hpp"
+			],
+			[
+				"mx",
+				"src\\stm32\\module\\dynamixel\\MX_64.hpp"
+			],
+			[
+				"mem",
+				"Project2Code\\MemoryAccess.sv"
+			],
+			[
+				"alu",
+				"Project2Code\\ALU.sv"
+			],
+			[
+				"sh",
+				"Project2Code\\Shifter.sv"
+			],
+			[
+				"m",
+				"Project2Code\\MulDiv.sv"
+			],
+			[
+				"ex",
+				"Project2Code\\Execute.sv"
+			],
+			[
+				"imm",
+				"Project2Code\\imm.sv"
+			],
+			[
+				"typ",
+				"Project2Code\\TypeDecoder.sv"
+			],
+			[
+				"op",
+				"Project2Code\\OperationDecoder.sv"
+			],
+			[
+				"deco",
+				"Project2Code\\Decode.sv"
+			],
+			[
+				"t",
+				"Project2Code\\TypeDecoder.sv"
+			],
+			[
+				"pro",
+				"Project2Code\\Program.sv"
+			],
+			[
+				"mach",
+				"Project2Code\\machine_code.txt"
+			],
+			[
+				"fet",
+				"Project2Code\\Fetch.sv"
+			],
+			[
+				"ma",
+				"Project2Code\\machine_code.txt"
+			],
+			[
+				"dec",
+				"Project2Code\\Decode.sv"
+			],
+			[
+				"mul",
+				"Project2Code\\MulDiv.sv"
+			],
+			[
+				"mac",
+				"Assembler\\machine_code.txt"
+			],
+			[
+				"s",
+				"Project2Code\\Shifter.sv"
+			],
+			[
+				"ALU",
+				"Project2Code\\test_progs\\ALU - add unsigned.txt"
+			],
+			[
+				"kin",
+				"modules\\platform\\src\\Kinematics.hpp"
+			],
+			[
+				"lo",
+				"modules\\localisation\\src\\Localisation.cpp"
+			],
+			[
+				"clas",
+				"modules\\vision\\Classifier\\src\\Classifier.cpp"
+			],
+			[
+				"ir",
+				"modules\\vision\\InfraredSensor\\src\\InfraredSensor.cpp"
+			],
+			[
+				"ps3",
+				"modules\\input\\PS3Controller\\src\\v2\\PS3Walk.cpp"
+			],
+			[
+				"cam",
+				"modules\\vision\\Camera\\src\\Camera.hpp"
+			],
+			[
+				"dyn",
+				"modules\\platform\\src\\DynamixelProtocol.cpp"
+			],
+			[
+				"lut",
+				"modules\\vision\\Classifier\\src\\LUT_COlours.txt"
+			],
+			[
+				"loc",
+				"modules\\localisation\\src\\Localisation.cpp"
+			],
+			[
+				"mot",
+				"modules\\motion\\MotorController\\src\\MotorController.cpp"
+			],
+			[
+				"ul",
+				"modules\\vision\\UltrasonicSensor\\src\\UltrasonicSensor.hpp"
+			],
+			[
+				"loca",
+				"modules\\localisation\\src\\Localisation.cpp"
+			],
+			[
+				"fa",
+				"modules\\vision\\Camera\\src\\FakeCamera.cpp"
+			],
+			[
+				"cla",
+				"modules\\vision\\Classifier\\src\\Classifier.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 294.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
