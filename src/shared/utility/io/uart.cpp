@@ -21,3 +21,14 @@ namespace io {
     }
 }  // namespace io
 }  // namespace utility
+
+int __io_putchar(int ch) {
+    HAL_UART_Transmit(&huart6, (uint8_t*) (&ch), 1, HAL_MAX_DELAY);
+    return 1;
+}
+
+int __io_getchar(void) {
+    uint8_t ch;
+    HAL_UART_Receive(&huart6, (uint8_t*) (&ch), 1, HAL_MAX_DELAY);
+    return (int) ch;
+}

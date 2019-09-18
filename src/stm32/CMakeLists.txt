@@ -5,7 +5,6 @@ set(
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c
   # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c
   # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c
-  # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c
   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c
   # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c
   # Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c
@@ -30,7 +29,7 @@ set(
   # Src/gpio.c
   # Src/i2c.c
   Src/usart.c
-  # Src/usb_otg.c
+  Src/dma.c
   # Src/adc.c
   Src/tim.c startup_stm32f722xx.s
 )

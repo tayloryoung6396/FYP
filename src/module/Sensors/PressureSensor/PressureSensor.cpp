@@ -21,7 +21,6 @@ namespace Sensors {
 
     float PressureSensor::GetPressure() {
         pressure = ConvertPressure(utility::io::adc_io.GetSensors(gpio));
-        utility::io::debug.out("Pressure gpio %d at %lf\n", gpio, pressure);
         return pressure;
     }
 

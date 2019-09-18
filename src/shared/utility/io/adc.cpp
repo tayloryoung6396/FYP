@@ -4,24 +4,13 @@
 #include "stm32f7xx.h"
 #include "utility/io/uart.hpp"
 
-uint16_t raw_sensors[1];
-
 extern "C" {
-__IO uint16_t uhADCxConvertedValue = 0;
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
     if (AdcHandle == &hadc1) {
-        // HAL_ADC_Stop_DMA(&hadc1);
-        // uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
-        // utility::io::debug.out("Length %d\n", uhADCxConvertedValue);
-        utility::io::debug.out("I got an ADC interupt 1\n");
-        // utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
+        // TODO Some sort of critical section should be used for these
     }
     else if (AdcHandle == &hadc3) {
-        // HAL_ADC_Stop_DMA(&hadc3);
-        // uhADCxConvertedValue = HAL_ADC_GetValue(AdcHandle);
-        // utility::io::debug.out("Length %d\n", uhADCxConvertedValue);
-        utility::io::debug.out("I got an ADC interupt 3\n");
-        // utility::io::debug.out("Raw sensors value %d\n", raw_sensors[0]);
+        // TODO Some sort of critical section should be used for these
     }
     else {
         utility::io::debug.out("I got an interupt but i dont know why\n");
@@ -369,37 +358,27 @@ namespace io {
     }
 
     void ADC_IO::Start() {
-        if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_sensors, 4) != HAL_OK) {
+        // NUClear::util::critical_section lock;
+        if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_data, 4) != HAL_OK) {
             utility::io::debug.out("ERROR: Could not start acd1 dma\n");
         }
-        if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_sensors[4], 5) != HAL_OK) {
+        if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_data.sensors[4], 5) != HAL_OK) {
             utility::io::debug.out("ERROR: Could not start acd1 dma\n");
         }
-        utility::io::debug.out("Started ADC\n");
+        // lock.release();
     }
 
-    // void ADC_IO::FillSensors(ADC_HandleTypeDef* hadc, int offset) {
-    //     // NUClear::util::critical_section lock;
-    //     // for (int i = offset; i < offset + 2;
-    //     //      i++) {  // TODO This should be increased to the number of channels to be read in
-    //     //     raw_data.sensors[i] = HAL_ADC_GetValue(hadc);
-    //     //     // if (raw_data.sensors[i] != 0) {
-    //     //     utility::io::debug.out("Data found! Channel [%d] : %d\n", i, raw_data.sensors[i]);
-    //     //     // }
-    //     // }
-    //     // lock.release();
-    // }
-
-    // void ADC_IO::FillSensors2(uint16_t value, int offset) {
-    //     // raw_data.sensors[offset] = value;
-    //     // utility::io::debug.out("Data found! Channel [%d] : %d\n", offset, raw_data.sensors[offset]);
-    //     // utility::io::debug.out("Data found! %d\n", value);
-    // }
+    void ADC_IO::PrintSensors() {
+        utility::io::debug.out("Raw sensors value %d\t%d\t%d\t%d\n",
+                               raw_data.sensors[0],
+                               raw_data.sensors[1],
+                               raw_data.sensors[2],
+                               raw_data.sensors[3]);
+    }
 
     uint16_t ADC_IO::GetSensors(int port) {
         NUClear::util::critical_section lock;
         uint16_t data = raw_data.sensors[port];
-        // utility::io::debug.out("Getting sensor from port %d \tvalue: %d\n", port, data);
         lock.release();
         return (data);
     }

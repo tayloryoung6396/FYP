@@ -17,8 +17,7 @@ namespace io {
         void initialise();
         void Start();
         uint16_t GetSensors(int port);
-        // void FillSensors(ADC_HandleTypeDef* hadc, int offset);
-        // void FillSensors2(uint16_t value, int offset);
+        void PrintSensors();
 
     private:
         ADC_Sensors raw_data;
