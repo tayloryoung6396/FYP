@@ -105,8 +105,11 @@ int main() {
     module::HardwareIO::muscle_t muscle1 = {
         module::HardwareIO::valve1, module::Sensors::pressuresensor1, module::Sensors::linearpot1, pm_280};
 
+    module::HardwareIO::muscle_t muscle2 = {
+        module::HardwareIO::valve2, module::Sensors::pressuresensor2, module::Sensors::linearpot2, pm_280};
+
     muscles.push_back(muscle1);
-    muscles.push_back(muscle1);
+    muscles.push_back(muscle2);
 
     module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
 
@@ -130,6 +133,7 @@ int main() {
             // Time to run our controller again
 
             one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+            utility::io::adc_io.Start();
         }
     }
 }
