@@ -82,7 +82,9 @@ void Error_Handler(void) {
 }
 
 int main() {
-
+    /*******************************************************************************************************************
+    ********************************************** System Initialisation ***********************************************
+    *******************************************************************************************************************/
     // Initialise the HAL driver
     HAL_Init();
 
@@ -94,10 +96,17 @@ int main() {
     utility::clock::initialise();
     utility::io::adc_io.initialise();
 
+    /*******************************************************************************************************************
+    ************************************************* Muscles & Joints *************************************************
+    *******************************************************************************************************************/
     auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("Welcome to PNEUbot\n");
 
+    // We need our setpoint potentiometer
+    module::Input::controller Setpoint_input;
+
+    // Declare our muscle parameters and populate a vector of muscles
     module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
 
     std::vector<module::HardwareIO::muscle_t> muscles;
@@ -111,12 +120,18 @@ int main() {
     muscles.push_back(muscle1);
     muscles.push_back(muscle2);
 
+    // Make our joints with the previously declared muscles
     module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
 
+    // Start our ADC DMA
+    utility::io::adc_io.Start();
     utility::io::debug.out("Initialisation Finished\n");
 
-    utility::io::adc_io.Start();
-
+    /*******************************************************************************************************************
+    **************************************************** Controller ****************************************************
+    *******************************************************************************************************************/
+    // This is where our 'controller' starts
+    // Declare how often we run our loop (Sampling Time)
     float Sampling_time = 10;  // 0.01 T_s
 
     while (1) {

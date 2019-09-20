@@ -1,22 +1,24 @@
 #ifndef MODULE_CONTROLLER_HPP
 #define MODULE_CONTROLLER_HPP
 
+#include <stdint.h>
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
+#include "utility/io/adc.hpp"
 
 namespace module {
 namespace Input {
 
-    struct input_t {
-        Sensors::LinearPot& linear_pot;
-    };
-
     class Controller {
     public:
-        Controller();
-    };
+        Controller(uint32_t gpio, float length);
 
-    extern Controller Controller1;
+        float GetPosition();
+
+        float ConvertPotentiometer(float position);
+
+    private:
+        uint32_t gpio;
+
+        extern Controller Controller1;
+    }  // namespace Input
 }  // namespace Input
-}  // namespace module
-
-#endif  // MODULE_CONTROLLER_HPP
