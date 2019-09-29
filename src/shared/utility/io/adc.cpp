@@ -8,9 +8,11 @@ extern "C" {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
     if (AdcHandle == &hadc1) {
         // TODO Some sort of critical section should be used for these maybe?
+        utility::io::debug.out("ADC1\n");
     }
     else if (AdcHandle == &hadc3) {
         // TODO Some sort of critical section should be used for these maybe?
+        utility::io::debug.out("ADC3\n");
     }
     else {
         utility::io::debug.out("I got an interupt but i dont know why\n");
@@ -326,21 +328,48 @@ namespace io {
 
     void ADC_IO::Start() {
         // NUClear::util::critical_section lock;
-        if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_data, 4) != HAL_OK) {
+        if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_data.sensors[0], 4) != HAL_OK) {
             utility::io::debug.out("ERROR: Could not start acd1 dma\n");
         }
-        if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_data.sensors[4], 5) != HAL_OK) {
-            utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+        else {
+            utility::io::debug.out("Started acd1 dma\n");
         }
+
+        // if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_data.sensors[4], 5) != HAL_OK) {
+        //     utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+        // }
         // lock.release();
     }
 
+    // void ADC_IO::StartADC1() {
+    //     if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &raw_data.sensors[0], 4) != HAL_OK) {
+    //         utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+    //     }
+    //     else {
+    //         utility::io::debug.out("Started acd1 dma\n");
+    //     }
+    // }
+
+    // void ADC_IO::StartADC3() {
+    //     if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &raw_data.sensors[4], 5) != HAL_OK) {
+    //         utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+    //     }
+    //     else {
+    //         utility::io::debug.out("Started acd1 dma\n");
+    //     }
+    // }
+
     void ADC_IO::PrintSensors() {
-        utility::io::debug.out("Raw sensors value %d\t%d\t%d\t%d\n",
+        utility::io::debug.out("Raw sensors value\n%d\t%d\t%d\t%d\n%d\t%d\t%d\t%d\t%d\n",
                                raw_data.sensors[0],
                                raw_data.sensors[1],
                                raw_data.sensors[2],
-                               raw_data.sensors[3]);
+                               raw_data.sensors[3],
+                               raw_data.sensors[4],
+                               raw_data.sensors[5],
+                               raw_data.sensors[6],
+                               raw_data.sensors[7],
+                               raw_data.sensors[8]);
     }
 
     uint16_t ADC_IO::GetSensors(int port) {

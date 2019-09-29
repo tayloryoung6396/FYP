@@ -132,24 +132,25 @@ int main() {
     *******************************************************************************************************************/
     // This is where our 'controller' starts
     // Declare how often we run our loop (Sampling Time)
-    float Sampling_time = 500;  // 0.01 T_s
+    float Sampling_time = 10;  // 0.01 T_s
 
     while (1) {
 
         auto now = NUClear::clock::now();
-        HAL_Delay(10);
+        HAL_Delay(1000);
         float time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
 
-        // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
         // TODO
         // Going to need a Sampling time controller to handle the periodicity of the code
-        if (std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count() >= Sampling_time) {
-            // Time to run our controller again
+        // if (time >= Sampling_time) {
+        // Time to run our controller again
 
-            one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
-            utility::io::adc_io.Start();
-        }
+        // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+        utility::io::adc_io.PrintSensors();
+        utility::io::adc_io.Start();
+        // }
     }
 }
 
