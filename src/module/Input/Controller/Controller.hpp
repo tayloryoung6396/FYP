@@ -18,7 +18,10 @@ namespace Input {
 
     private:
         uint32_t gpio;
-
-        extern Controller Controller1;
-    }  // namespace Input
+        float length;
+    };
+    extern Controller controller;
 }  // namespace Input
+}  // namespace module
+
+#endif  // MODULE_CONTROLLER_HPP

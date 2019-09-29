@@ -5,9 +5,9 @@
 namespace module {
 namespace Input {
 
-    Controller controller = Controller(0);
+    Controller controller = Controller(0, 0.1);
 
-    Controller::Controller(uint32_t gpio) {}
+    Controller::Controller(uint32_t gpio, float length) : length(length) {}
 
     float Controller::GetPosition() {
         // Read gpio

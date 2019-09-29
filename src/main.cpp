@@ -104,7 +104,7 @@ int main() {
     utility::io::debug.out("Welcome to PNEUbot\n");
 
     // We need our setpoint potentiometer
-    module::Input::controller Setpoint_input;
+    // module::Input::controller Setpoint_input;
 
     // Declare our muscle parameters and populate a vector of muscles
     module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
@@ -132,7 +132,7 @@ int main() {
     *******************************************************************************************************************/
     // This is where our 'controller' starts
     // Declare how often we run our loop (Sampling Time)
-    float Sampling_time = 10;  // 0.01 T_s
+    float Sampling_time = 500;  // 0.01 T_s
 
     while (1) {
 
@@ -140,7 +140,7 @@ int main() {
         HAL_Delay(10);
         float time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
 
-        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+        // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
         // TODO
         // Going to need a Sampling time controller to handle the periodicity of the code
