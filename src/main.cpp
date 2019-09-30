@@ -24,6 +24,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "utility/io/adc.hpp"
+#include "utility/io/gpio.hpp"
 #include "utility/io/uart.hpp"
 
 extern "C" {
@@ -75,8 +76,9 @@ void SystemClock_Config(void) {
 }
 
 void Error_Handler(void) {
+    utility::io::debug.out("ERROR\n");
+    utility::io::gpio::led3 = true;
     while (1) {
-        utility::io::debug.out("ERROR\n");
     }
 }
 }
@@ -133,23 +135,30 @@ int main() {
     // This is where our 'controller' starts
     // Declare how often we run our loop (Sampling Time)
     float Sampling_time = 10;  // 0.01 T_s
+    auto prev_now       = NUClear::clock::now();
 
     while (1) {
 
         auto now = NUClear::clock::now();
-        HAL_Delay(1000);
-        float time = std::chrono::duration_cast<std::chrono::milliseconds>(now - time_start).count();
+        // HAL_Delay(1000);
+        float time = std::chrono::duration_cast<std::chrono::milliseconds>(NUClear::clock::now() - prev_now).count();
 
-        utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
+        // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
-        // TODO
-        // Going to need a Sampling time controller to handle the periodicity of the code
-        // if (time >= Sampling_time) {
-        // Time to run our controller again
+        // Sampling time controller to handle the periodicity of the code
+        if (time >= Sampling_time) {
+            utility::io::gpio::led2 = !utility::io::gpio::led2;
+            prev_now                = NUClear::clock::now();
+            // Time to run our controller again
 
-        // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
-        utility::io::adc_io.PrintSensors();
-        // }
+            // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+
+            utility::io::adc_io.Start();
+
+            utility::io::debug.out("%lf ->\t", time);
+
+            utility::io::adc_io.PrintSensors();
+        }
     }
 }
 

@@ -30,7 +30,7 @@ set(
   # Src/i2c.c
   Src/usart.c
   Src/dma.c
-  # Src/adc.c
+  Src/adc.c
   Src/tim.c startup_stm32f722xx.s
 )
 
