@@ -23,6 +23,7 @@ namespace io {
 
     private:
         ADC_Sensors raw_data;
+        ADC_Sensors safe_data;
     };
 
     extern ADC_IO adc_io;

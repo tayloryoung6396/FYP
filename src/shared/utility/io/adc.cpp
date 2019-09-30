@@ -45,14 +45,17 @@ namespace io {
     }
 
     void ADC_IO::Start() {
-        if (ADC_interrupt_1) {
+        if (ADC_interrupt_1 && ADC_interrupt_3) {
+            // TODO This isn't very good for larger structs. Used to prevent the ADC locking up from race conditions
+            safe_data = raw_data;
+            HAL_Delay(1);
+
             if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &(raw_data.sensors[0]), 4) != HAL_OK) {
                 utility::io::debug.out("ERROR: Could not start acd1 dma\n");
                 Error_Handler();
             }
             ADC_interrupt_1 = false;
-        }
-        if (ADC_interrupt_3) {
+
             if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &(raw_data.sensors[4]), 5) != HAL_OK) {
                 utility::io::debug.out("ERROR: Could not start acd1 dma\n");
                 Error_Handler();
@@ -77,20 +80,20 @@ namespace io {
 
     void ADC_IO::PrintSensors() {
         utility::io::debug.out("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n",
-                               raw_data.sensors[0],
-                               raw_data.sensors[1],
-                               raw_data.sensors[2],
-                               raw_data.sensors[3],
-                               raw_data.sensors[4],
-                               raw_data.sensors[5],
-                               raw_data.sensors[6],
-                               raw_data.sensors[7],
-                               raw_data.sensors[8]);
+                               safe_data.sensors[0],
+                               safe_data.sensors[1],
+                               safe_data.sensors[2],
+                               safe_data.sensors[3],
+                               safe_data.sensors[4],
+                               safe_data.sensors[5],
+                               safe_data.sensors[6],
+                               safe_data.sensors[7],
+                               safe_data.sensors[8]);
     }
 
     uint16_t ADC_IO::GetSensors(int port) {
         NUClear::util::critical_section lock;
-        uint16_t data = raw_data.sensors[port];
+        uint16_t data = safe_data.sensors[port];
         lock.release();
         return (data);
     }

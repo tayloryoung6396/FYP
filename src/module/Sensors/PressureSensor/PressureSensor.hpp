@@ -22,15 +22,6 @@ namespace Sensors {
     extern PressureSensor pressuresensor1;
     extern PressureSensor pressuresensor2;
     extern PressureSensor pressuresensor3;
-    // extern PressureSensor pressuresensor4;
-    // extern PressureSensor pressuresensor5;
-    // extern PressureSensor pressuresensor6;
-    // extern PressureSensor pressuresensor7;
-    // extern PressureSensor pressuresensor8;
-    // extern PressureSensor pressuresensor9;
-    // extern PressureSensor pressuresensor10;
-    // extern PressureSensor pressuresensor11;
-    // extern PressureSensor pressuresensor12;
 }  // namespace Sensors
 }  // namespace module
 

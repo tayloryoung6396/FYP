@@ -7,7 +7,7 @@ namespace Input {
 
     Controller controller = Controller(0, 0.1);
 
-    Controller::Controller(uint32_t gpio, float length) : length(length) {}
+    Controller::Controller(uint32_t gpio, float length) : gpio(gpio), length(length) {}
 
     float Controller::GetPosition() {
         // Read gpio

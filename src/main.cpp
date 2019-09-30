@@ -106,7 +106,7 @@ int main() {
     utility::io::debug.out("Welcome to PNEUbot\n");
 
     // We need our setpoint potentiometer
-    // module::Input::controller Setpoint_input;
+    auto Setpoint = module::Input::controller.GetPosition();
 
     // Declare our muscle parameters and populate a vector of muscles
     module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
@@ -122,6 +122,7 @@ int main() {
     muscles.push_back(muscle1);
     muscles.push_back(muscle2);
 
+
     // Make our joints with the previously declared muscles
     module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
 
@@ -134,7 +135,7 @@ int main() {
     *******************************************************************************************************************/
     // This is where our 'controller' starts
     // Declare how often we run our loop (Sampling Time)
-    float Sampling_time = 10;  // 0.01 T_s
+    float Sampling_time = 50;  // 0.01 T_s
     auto prev_now       = NUClear::clock::now();
 
     while (1) {
@@ -151,13 +152,15 @@ int main() {
             prev_now                = NUClear::clock::now();
             // Time to run our controller again
 
-            // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+            utility::io::debug.out("SP %.2f\t", module::Input::controller.GetPosition());
+
+            one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
 
             utility::io::adc_io.Start();
 
-            utility::io::debug.out("%lf ->\t", time);
+            // utility::io::debug.out("%lf ->\t", time);
 
-            utility::io::adc_io.PrintSensors();
+            // utility::io::adc_io.PrintSensors();
         }
     }
 }

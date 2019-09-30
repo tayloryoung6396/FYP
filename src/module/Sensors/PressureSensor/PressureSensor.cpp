@@ -7,15 +7,6 @@ namespace Sensors {
     PressureSensor pressuresensor1 = PressureSensor(4);
     PressureSensor pressuresensor2 = PressureSensor(6);
     PressureSensor pressuresensor3 = PressureSensor(8);
-    // PressureSensor pressuresensor4  = PressureSensor(4);
-    // PressureSensor pressuresensor5  = PressureSensor(5);
-    // PressureSensor pressuresensor6  = PressureSensor(6);
-    // PressureSensor pressuresensor7  = PressureSensor(7);
-    // PressureSensor pressuresensor8  = PressureSensor(8);
-    // PressureSensor pressuresensor9  = PressureSensor(9);
-    // PressureSensor pressuresensor10 = PressureSensor(10);
-    // PressureSensor pressuresensor11 = PressureSensor(11);
-    // PressureSensor pressuresensor12 = PressureSensor(12);
 
     PressureSensor::PressureSensor(uint32_t gpio) : gpio(gpio) {}
 
