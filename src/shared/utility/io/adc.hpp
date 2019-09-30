@@ -16,6 +16,8 @@ namespace io {
 
         void initialise();
         void Start();
+        void StartADC1();
+        void StartADC3();
         uint16_t GetSensors(int port);
         void PrintSensors();
 

@@ -149,7 +149,6 @@ int main() {
 
         // one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
         utility::io::adc_io.PrintSensors();
-        utility::io::adc_io.Start();
         // }
     }
 }
