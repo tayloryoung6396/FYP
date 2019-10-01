@@ -2,7 +2,6 @@
 // Once a leg is complete, append to the cost list the cost value and the root action of the leg
 
 #include "Optimizer.hpp"
-#include "MPC/Model/Model.hpp"
 #include "utility/io/uart.hpp"
 
 namespace module {

@@ -2,7 +2,6 @@
 #define MODULE_ADAPTIVE_MPC_HPP
 
 #include <vector>
-#include "MPC/Model/Model.hpp"
 #include "Optimizer.hpp"
 
 namespace module {
@@ -12,7 +11,14 @@ namespace MPC {
         public:
             AdaptiveMPC(module::MPC::AdaptiveMPC::Optimizer optimizer);
 
-            std::pair<bool, bool> Compute(std::vector<float>& states, float theta);
+            template <typename T>
+            std::pair<bool, bool> Compute(const T& model, std::vector<float>& states, float theta) {
+
+                // Convert the input setpoint to the y length setpoint
+                float setpoint = model.radius * theta;
+
+                return (optimizer.FirstLayer(model, states, setpoint));
+            }
 
         private:
             module::MPC::AdaptiveMPC::Optimizer optimizer;

@@ -108,8 +108,32 @@ int main() {
     // We need our setpoint potentiometer
     auto Setpoint = module::Input::controller.GetPosition();
 
+
     // Declare our muscle parameters and populate a vector of muscles
-    module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.02};
+    // float nom_length;
+    // float contraction_percent;
+    // float critical_ratio;
+    // float sonic_conductance;
+    // float T_0;
+    // float T_1;
+    // float damping_coefficient;
+    // float muscle_coefficients[4];
+    // float F_ce[6][6];
+
+    module::HardwareIO::muscle_properties_t pm_280 = {0.28,
+                                                      0.33,
+                                                      0.433,
+                                                      2.6167 * std::pow(10, 9),
+                                                      25,
+                                                      25,
+                                                      1,
+                                                      {1, 1, 1, 1},
+                                                      {{1, 1, 1, 1, 1, 1},
+                                                       {1, 1, 1, 1, 1, 0},
+                                                       {1, 1, 1, 1, 0, 0},
+                                                       {1, 1, 1, 0, 0, 0},
+                                                       {1, 1, 0, 0, 0, 0},
+                                                       {1, 0, 0, 0, 0, 0}}};
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 
@@ -122,9 +146,8 @@ int main() {
     muscles.push_back(muscle1);
     muscles.push_back(muscle2);
 
-
     // Make our joints with the previously declared muscles
-    module::HardwareIO::joint::OneAxis one_axis_muscle(muscles, 0.47, module::MPC::AdaptiveMPC::mpc);
+    module::HardwareIO::joint::OneAxis one_axis_joint(muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc);
 
     // Start our ADC DMA
     utility::io::adc_io.Start();
@@ -146,6 +169,7 @@ int main() {
 
         // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
+        one_axis_joint.UpdateVelocity();
         // Sampling time controller to handle the periodicity of the code
         if (time >= Sampling_time) {
             utility::io::gpio::led2 = !utility::io::gpio::led2;
@@ -154,7 +178,7 @@ int main() {
 
             utility::io::debug.out("SP %.2f\t", module::Input::controller.GetPosition());
 
-            one_axis_muscle.Compute(module::Sensors::linearpot2.GetPosition());
+            one_axis_joint.Compute(module::Sensors::linearpot2.GetPosition());
 
             utility::io::adc_io.Start();
 

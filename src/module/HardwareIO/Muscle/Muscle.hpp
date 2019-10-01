@@ -1,10 +1,10 @@
 #ifndef MODULE_MUSCLE_HPP
 #define MODULE_MUSCLE_HPP
 
+#include <vector>
 #include "HardwareIO/Valve/Valve.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
-// #include "utility/PID/PID.hpp"
 
 namespace module {
 namespace HardwareIO {
@@ -12,7 +12,13 @@ namespace HardwareIO {
     struct muscle_properties_t {
         float nom_length;
         float contraction_percent;
-        float diameter;
+        float critical_ratio;
+        float sonic_conductance;
+        float T_0;
+        float T_1;
+        float damping_coefficient;
+        float muscle_coefficients[4];
+        float F_ce[6][6];
     };
 
     struct muscle_t {
@@ -26,16 +32,16 @@ namespace HardwareIO {
     public:
         Muscle(module::HardwareIO::muscle_t muscle);
 
-        void SetValveState(bool state);
 
         float GetPosition();
-
+        void UpdateVelocity();
+        float GetVelocity();
         float GetPressure();
-
+        void SetValveState(bool state);
         bool GetValveState();
 
     private:
-        float contraction;
+        std::vector<float> prev_position;
 
         Valve& valve;
         Sensors::PressureSensor& pressure_sensor;
