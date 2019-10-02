@@ -13,6 +13,8 @@ namespace HardwareIO {
             float mass;
             float radius;
             float P_a;
+            float P_t;
+            std::pair<float, float> limits;
             module::HardwareIO::muscle_properties_t muscle1;
             module::HardwareIO::muscle_properties_t muscle2;
         };

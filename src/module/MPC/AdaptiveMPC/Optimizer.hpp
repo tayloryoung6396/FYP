@@ -1,6 +1,7 @@
 #ifndef MODULE_OPTIMIZER_HPP
 #define MODULE_OPTIMIZER_HPP
 
+#include <Eigen/Core>
 #include <algorithm>
 #include <cmath>
 #include <functional>
@@ -14,7 +15,7 @@ namespace MPC {
     namespace AdaptiveMPC {
         class Optimizer {
         public:
-            Optimizer(int ch_max, float state_weight, float input_weight);
+            Optimizer(int ch_max, std::vector<float> state_weight, float input_weight);
 
             template <typename T>
             std::pair<std::vector<float>, float> ProcessModel(const T& model,
@@ -31,24 +32,24 @@ namespace MPC {
                               states,
                               setpoint,
                               output_states,
-                              VolumeAir(states[1], model.P_a, model.muscle1),
-                              VolumeAir(states[5], states[3], model.muscle2));
+                              VolumeAir(states[2], model.P_a, model.muscle1),
+                              VolumeAir(model.P_t, states[5], model.muscle2));
                 }
                 else if (mode == 2) {
                     Linearise(model,
                               states,
                               setpoint,
                               output_states,
-                              VolumeAir(states[5], states[1], model.muscle1),
-                              VolumeAir(states[3], model.P_a, model.muscle2));
+                              VolumeAir(model.P_t, states[2], model.muscle1),
+                              VolumeAir(states[5], model.P_a, model.muscle2));
                 }
                 else if (mode == 3) {
                     Linearise(model,
                               states,
                               setpoint,
                               output_states,
-                              VolumeAir(states[5], states[1], model.muscle1),
-                              VolumeAir(states[5], states[3], model.muscle2));
+                              VolumeAir(model.P_t, states[2], model.muscle1),
+                              VolumeAir(states[6], states[5], model.muscle2));
                 }
                 else {
                     Error_Handler();
@@ -67,7 +68,7 @@ namespace MPC {
             }
 
             template <typename T>
-            void Linearise(const T& model,
+            void Linearise(const T& m,
                            std::vector<float>& states,
                            float setpoint,
                            std::vector<float>& output_states,
@@ -77,28 +78,180 @@ namespace MPC {
                 // TODO Populate these with the relevant functions
                 // TODO NOTE None of this will work until i figure out the relevant states, the VolumeAIr state and
                 // outputstate/cost might need to update
-                float Lin_mat_0_0 = 0;
+                float L_10    = m.muscle1.L_0;
+                float L_20    = m.muscle2.L_0;
+                float k_10    = m.muscle1.K_0;
+                float k_20    = m.muscle2.K_0;
+                float y       = states[0];
+                float dy      = states[1];
+                float P_m1    = states[2];
+                float P_m2    = states[3];
+                float P_a     = m.P_a;
+                float a1      = m.muscle1.muscle_coefficients[0];
+                float b1      = m.muscle1.muscle_coefficients[1];
+                float c1      = m.muscle1.muscle_coefficients[2];
+                float d1      = m.muscle1.muscle_coefficients[3];
+                float a2      = m.muscle2.muscle_coefficients[0];
+                float b2      = m.muscle2.muscle_coefficients[1];
+                float c2      = m.muscle2.muscle_coefficients[2];
+                float d2      = m.muscle2.muscle_coefficients[3];
+                float dV_A1dt = V_a1;
+                float dV_A2dt = V_a2;
+                float a_1_    = m.muscle1.F_ce;  // TODO Make these eigen matrices
+                float a_2_    = m.muscle2.F_ce;  // TODO Make these eigen matrices
+                float R1      = m.muscle1.damping_coefficient;
+                float R2      = m.muscle2.damping_coefficient;
+                float mass    = m.mass;
+
+                // Column 1
+                float Lin_mat_0_0 = y;
                 float Lin_mat_1_0 = 0;
                 float Lin_mat_2_0 = 0;
                 float Lin_mat_3_0 = 0;
-                float Lin_mat_0_1 = 0;
+
+                // Column 2
+                // Lin_mat_0_1
+                // Calculate our first spring force
+                P_ce1    = {1,
+                         P_m1,
+                         P_m1 * P_m1,
+                         P_m1 * P_m1 * P_m1,
+                         P_m1 * P_m1 * P_m1 * P_m1,
+                         P_m1 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
+                lam1     = k_10 + y / L_10;
+                k_ce1[6] = {0,
+                            1 / L_10,
+                            2 * lam1 / L_10,
+                            3 * lam1 * lam1 / L_10,
+                            4 * lam1 * lam1 * lam1 / L_10,
+                            5 * lam1 * lam1 * lam1 * lam1 / L_10};
+                F_s1     = k_ce1 * F_ce1 * P_ce1;
+
+                // Calculate our second spring force
+                P_ce2    = {1,
+                         P_m2,
+                         P_m2 * P_m2,
+                         P_m2 * P_m2 * P_m2,
+                         P_m2 * P_m2 * P_m2 * P_m2,
+                         P_m2 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
+                lam2     = k_20 - y / L_20;
+                k_ce2[6] = -{0,
+                             1 / L_20,
+                             2 * lam2 / L_20,
+                             3 * lam2 * lam2 / L_20,
+                             4 * lam2 * lam2 * lam2 / L_20,
+                             5 * lam2 * lam2 * lam2 * lam2 / L_20};
+                F_s2     = k_ce2 * F_ce2 * P_ce2;
+
+                float Lin_mat_0_1 = (F_s2 - F_s1) / mass;
+
                 float Lin_mat_1_1 = 0;
-                float Lin_mat_2_1 = 0;
-                float Lin_mat_3_1 = 0;
-                float Lin_mat_0_2 = 0;
+
+                // Lin_mat_2_1
+                // Calculate our first spring force
+                P_ce1    = {0,
+                         1,
+                         2 * P_m1,
+                         3 * P_m1 * P_m1,
+                         4 * P_m1 * P_m1 * P_m1,
+                         5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
+                lam1     = k_10 + y / L_10;
+                k_ce1[6] = {1,
+                            lam1,
+                            lam1 * lam1,
+                            lam1 * lam1 * lam1,
+                            lam1 * lam1 * lam1 * lam1,
+                            lam1 * lam1 * lam1 * lam1 * lam1};
+                F_s1     = k_ce1 * F_ce1 * P_ce1;
+
+                // Calculate our second spring force
+                P_ce2    = {0,
+                         1,
+                         2 * P_m2,
+                         3 * P_m2 * P_m2,
+                         4 * P_m2 * P_m2 * P_m2,
+                         5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
+                lam2     = k_20 - y / L_20;
+                k_ce2[6] = {1,
+                            lam2,
+                            lam2 * lam2,
+                            lam2 * lam2 * lam2,
+                            lam2 * lam2 * lam2 * lam2,
+                            lam2 * lam2 * lam2 * lam2 * lam2};
+                F_s2     = k_ce2 * F_ce2 * P_ce2;
+
+                F_d1 = -R1 / L_10;
+
+                float Lin_mat_2_1 = (F_s2 - F_s1 - F_d1) / mass;
+
+                // Lin_mat_3_1
+                // Calculate our first spring force
+                P_ce1    = {0,
+                         1,
+                         2 * P_m1,
+                         3 * P_m1 * P_m1,
+                         4 * P_m1 * P_m1 * P_m1,
+                         5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
+                lam1     = k_10 + y / L_10;
+                k_ce1[6] = {1,
+                            lam1,
+                            lam1 * lam1,
+                            lam1 * lam1 * lam1,
+                            lam1 * lam1 * lam1 * lam1,
+                            lam1 * lam1 * lam1 * lam1 * lam1};
+                F_s1     = k_ce1 * F_ce1 * P_ce1;
+
+                // Calculate our second spring force
+                P_ce2    = {0,
+                         1,
+                         2 * P_m2,
+                         3 * P_m2 * P_m2,
+                         4 * P_m2 * P_m2 * P_m2,
+                         5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
+                lam2     = k_20 - y / L_20;
+                k_ce2[6] = {1,
+                            lam2,
+                            lam2 * lam2,
+                            lam2 * lam2 * lam2,
+                            lam2 * lam2 * lam2 * lam2,
+                            lam2 * lam2 * lam2 * lam2 * lam2};
+                F_s2     = k_ce2 * F_ce2 * P_ce2;
+
+                F_d2 = -R2 / L_20;
+
+                float Lin_mat_3_1 = (F_s2 - F_s1 + F_d2) / mass;
+
+                // Column 3
+                // Lin_mat_0_2
+                lam1  = k_10 + y / L_10;
+                dV_m1 = 2 * b1 / (L_10 * L_10) + c1 / L_10 + 6 * a1 * lam1 / (L_10 * L_10);
+                V_m1  = c1 / L_10 + 3 * a1 * lam1 * lam1 / L_10 + 2 * b1 * lam1 / L_10;
+                V_a1  = V_m1 * P_m1 * P_a;
+
+                float Lin_mat_0_2 = (P_a * dV_a1) / V_m1 - (P_m1 * dV_m1) / V_a1;
+
                 float Lin_mat_1_2 = 0;
                 float Lin_mat_2_2 = 0;
                 float Lin_mat_3_2 = 0;
-                float Lin_mat_0_3 = 0;
+
+                // Column 4
+                // Lin_mat_0_3
+                lam2  = k_20 - y / L_20;
+                dV_m2 = 2 * b2 / (L_20 * L_20) + c2 / L_20 + 6 * a2 * lam2 / (L_20 * L_20);
+                V_m2  = c2 / L_20 + 3 * a2 * lam2 * lam2 / L_20 + 2 * b2 * lam2 / L_20;
+                V_a2  = V_m2 * P_m2 * P_a;
+
+                float Lin_mat_0_3 = (P_a * dV_a2) / V_m2 - (P_m2 * dV_m2) / V_a2;
+
                 float Lin_mat_1_3 = 0;
                 float Lin_mat_2_3 = 0;
                 float Lin_mat_3_3 = 0;
 
                 // Calculate our next states
-                output_states.push_back((Lin_mat_0_0 + Lin_mat_1_0 + Lin_mat_2_0 + Lin_mat_3_0) * states[0]);
-                output_states.push_back((Lin_mat_0_1 + Lin_mat_1_1 + Lin_mat_2_1 + Lin_mat_3_1) * states[1]);
-                output_states.push_back((Lin_mat_0_2 + Lin_mat_1_2 + Lin_mat_2_2 + Lin_mat_3_2) * states[2]);
-                output_states.push_back((Lin_mat_0_3 + Lin_mat_1_3 + Lin_mat_2_3 + Lin_mat_3_3) * states[3]);
+                output_states.push_back((Lin_mat_0_0 + Lin_mat_1_0 + Lin_mat_2_0 + Lin_mat_3_0) * y);
+                output_states.push_back((Lin_mat_0_1 + Lin_mat_1_1 + Lin_mat_2_1 + Lin_mat_3_1) * dy);
+                output_states.push_back((Lin_mat_0_2 + Lin_mat_1_2 + Lin_mat_2_2 + Lin_mat_3_2) * P_m1);
+                output_states.push_back((Lin_mat_0_3 + Lin_mat_1_3 + Lin_mat_2_3 + Lin_mat_3_3) * P_m2);
             }
 
             std::pair<std::vector<float>, float> ControlError(std::vector<float>& states,
@@ -264,3 +417,145 @@ namespace MPC {
 }  // namespace module
 
 #endif  // MODULE_OPTIMIZER_HPP
+
+// float L_10       = m.muscle1.L_0;
+// float L_20       = m.muscle2.L_0;
+// float k1_0       = m.muscle1.L_0;
+// float k2_0       = m.muscle2.L_0;
+// float y          = states[0];
+// float vel        = states[1];
+// float P_m1       = states[2];
+// float P_m2       = states[3];
+// float P_a        = m.P_a;
+// float a1         = m.muscle1.muscle_coefficients[0];
+// float b1         = m.muscle1.muscle_coefficients[1];
+// float c1         = m.muscle1.muscle_coefficients[2];
+// float d1         = m.muscle1.muscle_coefficients[3];
+// float a2         = m.muscle2.muscle_coefficients[0];
+// float b2         = m.muscle2.muscle_coefficients[1];
+// float c2         = m.muscle2.muscle_coefficients[2];
+// float d2         = m.muscle2.muscle_coefficients[3];
+// float dV_A1dt    = V_a1;
+// float dV_A2dt    = V_a2;
+// float a_1_[6][6] = m.muscle1.F_ce;
+// float a_2_[6][6] = m.muscle2.F_ce;
+// float R1         = m.muscle1.damping_coefficient;
+// float R2         = m.muscle2.damping_coefficient;
+// float mass       = m.mass;
+
+// // clang-format off
+// float Lin_mat_0_0 = y;
+// float Lin_mat_1_0 =
+//     -(P_m1
+//           * (a_1_[1][1] / L_10 + (2 * a_1_[2][1] * (y + L_10 * k1_0)) / std::pow(L_10, 2)
+//              + (3 * a_1_[3][1] * std::pow((y + L_10 * k1_0), 2)) / std::pow(L_10, 3)
+//              + (4 * a_1_[4][1] * std::pow((y + L_10 * k1_0), 3)) / std::pow(L_10, 4))
+//       + P_m2
+//             * (a_2_[1][1] / L_20 - (2 * a_2_[2][1] * (y - L_20 * k2_0)) / std::pow(L_20, 2)
+//                + (3 * a_2_[3][1] * std::pow((y - L_20 * k2_0), 2)) / std::pow(L_20, 3)
+//                - (4 * a_2_[4][1] * std::pow((y - L_20 * k2_0), 3)) / std::pow(L_20, 4))
+//       + a_1_[1][0] / L_10 + a_2_[1][0] / L_20 + (std::pow(P_m1, 4) * a_1_[1][4]) / L_10
+//       + (std::pow(P_m2, 4) * a_2_[1][4]) / L_20
+//       + (2 * a_1_[2][0] * (y + L_10 * k1_0)) / std::pow(L_10, 2)
+//       - (2 * a_2_[2][0] * (y - L_20 * k2_0)) / std::pow(L_20, 2)
+//       + (std::pow(P_m1, 2)
+//          * (3 * a_1_[3][2] * std::pow(L_10, 2) * std::pow(k1_0, 2)
+//             + 2 * a_1_[2][2] * std::pow(L_10, 2) * k1_0 + a_1_[1][2] * std::pow(L_10, 2)
+//             + 6 * a_1_[3][2] * L_10 * k1_0 * y + 2 * a_1_[2][2] * L_10 * y
+//             + 3 * a_1_[3][2] * std::pow(y, 2)))
+//             / std::pow(L_10, 3)
+//       + (std::pow(P_m2, 2)
+//          * (3 * a_2_[3][2] * std::pow(L_20, 2) * std::pow(k2_0, 2)
+//             + 2 * a_2_[2][2] * std::pow(L_20, 2) * k2_0 + a_2_[1][2] * std::pow(L_20, 2)
+//             - 6 * a_2_[3][2] * L_20 * k2_0 * y - 2 * a_2_[2][2] * L_20 * y
+//             + 3 * a_2_[3][2] * std::pow(y, 2)))
+//             / std::pow(L_20, 3)
+//       + (3 * a_1_[3][0] * std::pow((y + L_10 * k1_0), 2)) / std::pow(L_10, 3)
+//       + (4 * a_1_[4][0] * std::pow((y + L_10 * k1_0), 3)) / std::pow(L_10, 4)
+//       + (5 * a_1_[5][0] * std::pow((y + L_10 * k1_0), 4)) / std::pow(L_10, 5)
+//       + (3 * a_2_[3][0] * std::pow((y - L_20 * k2_0), 2)) / std::pow(L_20, 3)
+//       - (4 * a_2_[4][0] * std::pow((y - L_20 * k2_0), 3)) / std::pow(L_20, 4)
+//       + (5 * a_2_[5][0] * std::pow((y - L_20 * k2_0), 4)) / std::pow(L_20, 5)
+//       + (std::pow(P_m1, 3) * (L_10 * a_1_[1][3] + 2 * a_1_[2][3] * y + 2 * L_10 * a_1_[2][3] * k1_0))
+//             / std::pow(L_10, 2)
+//       + (std::pow(P_m2, 3) * (L_20 * a_2_[1][3] - 2 * a_2_[2][3] * y + 2 * L_20 * a_2_[2][3] * k2_0))
+//             / std::pow(L_20, 2))
+//     / mass;
+// float Lin_mat_2_0 =
+//     (P_a
+//      * (c1 * (k1_0 + y / L_10) + (3 * a1 * std::pow((k1_0 + y / L_10), 2)) / L_10
+//         + (2 * b1 * (k1_0 + y / L_10)) / L_10)
+//      * (c1 / L_10 + (3 * a1 * std::pow((k1_0 + y / L_10), 2)) / L_10
+//         + (2 * b1 * (k1_0 + y / L_10)) / L_10))
+//         / std::pow((d1 + c1 * (k1_0 + y / L_10) + a1 * std::pow((k1_0 + y / L_10), 3)
+//                     + b1 * std::pow((k1_0 + y / L_10), 2)),
+//                    2)
+//     - (P_a
+//        * ((2 * b1) / std::pow(L_10, 2) + c1 / L_10 + (6 * a1 * (k1_0 + y / L_10)) / std::pow(L_10,
+//        2)))
+//           / (d1 + c1 * (k1_0 + y / L_10) + a1 * std::pow((k1_0 + y / L_10), 3)
+//              + b1 * std::pow((k1_0 + y / L_10), 2))
+//     - (P_a * dV_A1dt
+//        * (c1 / L_10 + (3 * a1 * std::pow((k1_0 + y / L_10), 2)) / L_10
+//           + (2 * b1 * (k1_0 + y / L_10)) / L_10))
+//           / std::pow((d1 + c1 * (k1_0 + y / L_10) + a1 * std::pow((k1_0 + y / L_10), 3)
+//                       + b1 * std::pow((k1_0 + y / L_10), 2)),
+//                      2);
+// float Lin_mat_3_0 =
+//     (P_a
+//      * ((2 * b2) / std::pow(L_20, 2) + c2 / L_20 + (6 * a2 * (k2_0 - y / L_20)) / std::pow(L_20, 2)))
+//         / (d2 + c2 * (k2_0 - y / L_20) + a2 * std::pow((k2_0 - y / L_20), 3)
+//            + b2 * std::pow((k2_0 - y / L_20), 2))
+//     - (P_a
+//        * (c2 * (k2_0 - y / L_20) + (3 * a2 * std::pow((k2_0 - y / L_20), 2)) / L_20
+//           + (2 * b2 * (k2_0 - y / L_20)) / L_20)
+//        * (c2 / L_20 + (3 * a2 * std::pow((k2_0 - y / L_20), 2)) / L_20
+//           + (2 * b2 * (k2_0 - y / L_20)) / L_20))
+//           / std::pow((d2 + c2 * (k2_0 - y / L_20) + a2 * std::pow((k2_0 - y / L_20), 3)
+//                       + b2 * std::pow((k2_0 - y / L_20), 2)),
+//                      2)
+//     + (P_a * dV_A2dt
+//        * (c2 / L_20 + (3 * a2 * std::pow((k2_0 - y / L_20), 2)) / L_20
+//           + (2 * b2 * (k2_0 - y / L_20)) / L_20))
+//           / std::pow((d2 + c2 * (k2_0 - y / L_20) + a2 * std::pow((k2_0 - y / L_20), 3)
+//                       + b2 * std::pow((k2_0 - y / L_20), 2)),
+//                      2);
+// float Lin_mat_0_1 = 0;
+// float Lin_mat_1_1 = 0;
+// float Lin_mat_2_1 = 0;
+// float Lin_mat_3_1 = 0;
+// float Lin_mat_0_2 = 0;
+// float Lin_mat_1_2 =
+//     -(a_1_[0][1] + a_1_[1][1] * (k1_0 + y / L_10)
+//       + 3 * std::pow(P_m1, 2)
+//             * (a_1_[0][3] + a_1_[1][3] * (k1_0 + y / L_10)
+//                + a_1_[2][3] * std::pow((k1_0 + y / L_10), 2))
+//       - R1 / L_10
+//       + 2 * P_m1
+//             * (a_1_[0][2] + a_1_[1][2] * (k1_0 + y / L_10) + a_1_[2][2] * std::pow((k1_0 + y / L_10),
+//             2)
+//                + a_1_[3][2] * std::pow((k1_0 + y / L_10), 3))
+//       + a_1_[2][1] * std::pow((k1_0 + y / L_10), 2) + a_1_[3][1] * std::pow((k1_0 + y / L_10), 3)
+//       + a_1_[4][1] * std::pow((k1_0 + y / L_10), 4) + 5 * std::pow(P_m1, 4) * a_1_[0][5]
+//       + 4 * std::pow(P_m1, 3) * (a_1_[0][4] + a_1_[1][4] * (k1_0 + y / L_10)))
+//     / mass;
+// float Lin_mat_2_2 = 0;
+// float Lin_mat_3_2 = 0;
+// float Lin_mat_0_3 = 0;
+// float Lin_mat_1_3 =
+//     (a_2_[0][1] + a_2_[1][1] * (k2_0 - y / L_20)
+//      + 3 * std::pow(P_m2, 2)
+//            * (a_2_[0][3] + a_2_[1][3] * (k2_0 - y / L_20) + a_2_[2][3] * std::pow((k2_0 - y / L_20),
+//            2))
+//      - R2 / L_20
+//      + 2 * P_m2
+//            * (a_2_[0][2] + a_2_[1][2] * (k2_0 - y / L_20) + a_2_[2][2] * std::pow((k2_0 - y / L_20),
+//            2)
+//               + a_2_[3][2] * std::pow((k2_0 - y / L_20), 3))
+//      + a_2_[2][1] * std::pow((k2_0 - y / L_20), 2) + a_2_[3][1] * std::pow((k2_0 - y / L_20), 3)
+//      + a_2_[4][1] * std::pow((k2_0 - y / L_20), 4) + 5 * std::pow(P_m2, 4) * a_2_[0][5]
+//      + 4 * std::pow(P_m2, 3) * (a_2_[0][4] + a_2_[1][4] * (k2_0 - y / L_20)))
+//     / mass;
+// float Lin_mat_2_3 = 0;
+// float Lin_mat_3_3 = 0;
+// clang-format on

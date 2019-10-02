@@ -7,9 +7,9 @@
 namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
-        Optimizer optimizer1 = Optimizer(40, 0, 0);
+        Optimizer optimizer1 = Optimizer(40, {1, 1, 1, 1}, 1);
 
-        Optimizer::Optimizer(int ch_max, float state_weight, float input_weight)
+        Optimizer::Optimizer(int ch_max, std::vector<float> state_weight, float input_weight)
             : ch_max(ch_max), state_weight(state_weight), input_weight(input_weight) {}
     }  // namespace AdaptiveMPC
 }  // namespace MPC

@@ -10,8 +10,8 @@ namespace module {
 namespace HardwareIO {
 
     struct muscle_properties_t {
-        float nom_length;
-        float contraction_percent;
+        float L_0;
+        float K_0;
         float critical_ratio;
         float sonic_conductance;
         float T_0;
