@@ -22,6 +22,8 @@ if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
   add_compile_options(-gdwarf-2)
 endif()
 
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+
 # Print the debugging in colour
 add_compile_options(-fdiagnostics-color=always)
 
@@ -44,8 +46,7 @@ add_subdirectory(src/module)
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}.elf)
-target_link_libraries(${PROJECT_NAME} stm32 nuclear)
-target_link_libraries(${PROJECT_NAME} stm32 utility module)
+target_link_libraries(${PROJECT_NAME} stm32 nuclear utility module Eigen3::Eigen)
 
 # Create a map and cross reference file for locating where things live on the device
 target_link_options(${PROJECT_NAME} PRIVATE -Wl,-Map=${PROJECT_NAME}.map,--cref)
