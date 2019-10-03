@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include <Eigen/Core>
 #include <chrono>
 #include <cstring>
 #include <iostream>
@@ -120,20 +121,11 @@ int main() {
     // float muscle_coefficients[4];
     // float F_ce[6][6];
 
-    module::HardwareIO::muscle_properties_t pm_280 = {0.28,
-                                                      0.33,
-                                                      0.433,
-                                                      2.6167 * std::pow(10, 9),
-                                                      25,
-                                                      25,
-                                                      1,
-                                                      {1, 1, 1, 1},
-                                                      {{1, 1, 1, 1, 1, 1},
-                                                       {1, 1, 1, 1, 1, 0},
-                                                       {1, 1, 1, 1, 0, 0},
-                                                       {1, 1, 1, 0, 0, 0},
-                                                       {1, 1, 0, 0, 0, 0},
-                                                       {1, 0, 0, 0, 0, 0}}};
+    module::HardwareIO::muscle_properties_t pm_280 = {
+        0.28, 0.33, 0.433, 2.6167e9, 25, 25, 1, {1, 1, 1, 1}, Eigen::Matrix<float, 6, 6>({1, 1, 1, 1, 1, 1, 1, 1, 1,
+                                                                                          1, 1, 0, 1, 1, 1, 1, 0, 0,
+                                                                                          1, 1, 1, 0, 0, 0, 1, 1, 0,
+                                                                                          0, 0, 0, 1, 0, 0, 0, 0, 0})};
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 

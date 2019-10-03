@@ -1,6 +1,7 @@
 #ifndef MODULE_MUSCLE_HPP
 #define MODULE_MUSCLE_HPP
 
+#include <Eigen/Core>
 #include <vector>
 #include "HardwareIO/Valve/Valve.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
@@ -18,7 +19,7 @@ namespace HardwareIO {
         float T_1;
         float damping_coefficient;
         float muscle_coefficients[4];
-        float F_ce[6][6];
+        Eigen::Matrix<float, 6, 6> F_ce;
     };
 
     struct muscle_t {

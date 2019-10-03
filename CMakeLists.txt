@@ -22,6 +22,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
   add_compile_options(-gdwarf-2)
 endif()
 
+set(CMAKE_NO_SYSTEM_FROM_IMPORTED ON)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 # Print the debugging in colour

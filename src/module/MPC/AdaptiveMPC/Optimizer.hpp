@@ -72,36 +72,34 @@ namespace MPC {
                            std::vector<float>& states,
                            float setpoint,
                            std::vector<float>& output_states,
-                           float V_a1,
-                           float V_a2) {
+                           float dV_a1,
+                           float dV_a2) {
 
                 // TODO Populate these with the relevant functions
                 // TODO NOTE None of this will work until i figure out the relevant states, the VolumeAIr state and
                 // outputstate/cost might need to update
-                float L_10    = m.muscle1.L_0;
-                float L_20    = m.muscle2.L_0;
-                float k_10    = m.muscle1.K_0;
-                float k_20    = m.muscle2.K_0;
-                float y       = states[0];
-                float dy      = states[1];
-                float P_m1    = states[2];
-                float P_m2    = states[3];
-                float P_a     = m.P_a;
-                float a1      = m.muscle1.muscle_coefficients[0];
-                float b1      = m.muscle1.muscle_coefficients[1];
-                float c1      = m.muscle1.muscle_coefficients[2];
-                float d1      = m.muscle1.muscle_coefficients[3];
-                float a2      = m.muscle2.muscle_coefficients[0];
-                float b2      = m.muscle2.muscle_coefficients[1];
-                float c2      = m.muscle2.muscle_coefficients[2];
-                float d2      = m.muscle2.muscle_coefficients[3];
-                float dV_A1dt = V_a1;
-                float dV_A2dt = V_a2;
-                float a_1_    = m.muscle1.F_ce;  // TODO Make these eigen matrices
-                float a_2_    = m.muscle2.F_ce;  // TODO Make these eigen matrices
-                float R1      = m.muscle1.damping_coefficient;
-                float R2      = m.muscle2.damping_coefficient;
-                float mass    = m.mass;
+                float L_10 = m.muscle1.L_0;
+                float L_20 = m.muscle2.L_0;
+                float k_10 = m.muscle1.K_0;
+                float k_20 = m.muscle2.K_0;
+                float y    = states[0];
+                float dy   = states[1];
+                float P_m1 = states[2];
+                float P_m2 = states[3];
+                float P_a  = m.P_a;
+                float a1   = m.muscle1.muscle_coefficients[0];
+                float b1   = m.muscle1.muscle_coefficients[1];
+                float c1   = m.muscle1.muscle_coefficients[2];
+                float d1   = m.muscle1.muscle_coefficients[3];
+                float a2   = m.muscle2.muscle_coefficients[0];
+                float b2   = m.muscle2.muscle_coefficients[1];
+                float c2   = m.muscle2.muscle_coefficients[2];
+                float d2   = m.muscle2.muscle_coefficients[3];
+                auto F_ce1 = m.muscle1.F_ce;  // TODO Make these eigen matrices
+                auto F_ce2 = m.muscle2.F_ce;  // TODO Make these eigen matrices
+                float R1   = m.muscle1.damping_coefficient;
+                float R2   = m.muscle2.damping_coefficient;
+                float mass = m.mass;
 
                 // Column 1
                 float Lin_mat_0_0 = y;
@@ -112,140 +110,140 @@ namespace MPC {
                 // Column 2
                 // Lin_mat_0_1
                 // Calculate our first spring force
-                P_ce1    = {1,
-                         P_m1,
-                         P_m1 * P_m1,
-                         P_m1 * P_m1 * P_m1,
-                         P_m1 * P_m1 * P_m1 * P_m1,
-                         P_m1 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
-                lam1     = k_10 + y / L_10;
-                k_ce1[6] = {0,
-                            1 / L_10,
-                            2 * lam1 / L_10,
-                            3 * lam1 * lam1 / L_10,
-                            4 * lam1 * lam1 * lam1 / L_10,
-                            5 * lam1 * lam1 * lam1 * lam1 / L_10};
-                F_s1     = k_ce1 * F_ce1 * P_ce1;
+                Eigen::Matrix<float, 6, 1> P_ce1;
+                P_ce1 << 1, P_m1, P_m1 * P_m1, P_m1 * P_m1 * P_m1, P_m1 * P_m1 * P_m1 * P_m1,
+                    P_m1 * P_m1 * P_m1 * P_m1 * P_m1;
+                float lam1 = k_10 + y / L_10;
+                Eigen::Matrix<float, 1, 6> k_ce1;
+                k_ce1 << 0, 1 / L_10, 2 * lam1 / L_10, 3 * lam1 * lam1 / L_10, 4 * lam1 * lam1 * lam1 / L_10,
+                    5 * lam1 * lam1 * lam1 * lam1 / L_10;
+                float F_s1 = k_ce1 * F_ce1 * P_ce1;
 
                 // Calculate our second spring force
-                P_ce2    = {1,
-                         P_m2,
-                         P_m2 * P_m2,
-                         P_m2 * P_m2 * P_m2,
-                         P_m2 * P_m2 * P_m2 * P_m2,
-                         P_m2 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
-                lam2     = k_20 - y / L_20;
-                k_ce2[6] = -{0,
-                             1 / L_20,
-                             2 * lam2 / L_20,
-                             3 * lam2 * lam2 / L_20,
-                             4 * lam2 * lam2 * lam2 / L_20,
-                             5 * lam2 * lam2 * lam2 * lam2 / L_20};
-                F_s2     = k_ce2 * F_ce2 * P_ce2;
+                Eigen::Matrix<float, 6, 1> P_ce2;
+                P_ce2 << 1, P_m2, P_m2 * P_m2, P_m2 * P_m2 * P_m2, P_m2 * P_m2 * P_m2 * P_m2,
+                    P_m2 * P_m2 * P_m2 * P_m2 * P_m2;
+                float lam2 = k_20 - y / L_20;
+                Eigen::Matrix<float, 1, 6> k_ce2;
+                k_ce2 << 0, -1 / L_20, -2 * lam2 / L_20, -3 * lam2 * lam2 / L_20, -4 * lam2 * lam2 * lam2 / L_20,
+                    -5 * lam2 * lam2 * lam2 * lam2 / L_20;
+                float F_s2 = k_ce2 * F_ce2 * P_ce2;
 
                 float Lin_mat_0_1 = (F_s2 - F_s1) / mass;
 
                 float Lin_mat_1_1 = 0;
 
-                // Lin_mat_2_1
-                // Calculate our first spring force
-                P_ce1    = {0,
-                         1,
-                         2 * P_m1,
-                         3 * P_m1 * P_m1,
-                         4 * P_m1 * P_m1 * P_m1,
-                         5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
-                lam1     = k_10 + y / L_10;
-                k_ce1[6] = {1,
-                            lam1,
-                            lam1 * lam1,
-                            lam1 * lam1 * lam1,
-                            lam1 * lam1 * lam1 * lam1,
-                            lam1 * lam1 * lam1 * lam1 * lam1};
-                F_s1     = k_ce1 * F_ce1 * P_ce1;
 
-                // Calculate our second spring force
-                P_ce2    = {0,
-                         1,
-                         2 * P_m2,
-                         3 * P_m2 * P_m2,
-                         4 * P_m2 * P_m2 * P_m2,
-                         5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
-                lam2     = k_20 - y / L_20;
-                k_ce2[6] = {1,
-                            lam2,
-                            lam2 * lam2,
-                            lam2 * lam2 * lam2,
-                            lam2 * lam2 * lam2 * lam2,
-                            lam2 * lam2 * lam2 * lam2 * lam2};
-                F_s2     = k_ce2 * F_ce2 * P_ce2;
-
-                F_d1 = -R1 / L_10;
-
-                float Lin_mat_2_1 = (F_s2 - F_s1 - F_d1) / mass;
-
-                // Lin_mat_3_1
-                // Calculate our first spring force
-                P_ce1    = {0,
-                         1,
-                         2 * P_m1,
-                         3 * P_m1 * P_m1,
-                         4 * P_m1 * P_m1 * P_m1,
-                         5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
-                lam1     = k_10 + y / L_10;
-                k_ce1[6] = {1,
-                            lam1,
-                            lam1 * lam1,
-                            lam1 * lam1 * lam1,
-                            lam1 * lam1 * lam1 * lam1,
-                            lam1 * lam1 * lam1 * lam1 * lam1};
-                F_s1     = k_ce1 * F_ce1 * P_ce1;
-
-                // Calculate our second spring force
-                P_ce2    = {0,
-                         1,
-                         2 * P_m2,
-                         3 * P_m2 * P_m2,
-                         4 * P_m2 * P_m2 * P_m2,
-                         5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
-                lam2     = k_20 - y / L_20;
-                k_ce2[6] = {1,
-                            lam2,
-                            lam2 * lam2,
-                            lam2 * lam2 * lam2,
-                            lam2 * lam2 * lam2 * lam2,
-                            lam2 * lam2 * lam2 * lam2 * lam2};
-                F_s2     = k_ce2 * F_ce2 * P_ce2;
-
-                F_d2 = -R2 / L_20;
-
-                float Lin_mat_3_1 = (F_s2 - F_s1 + F_d2) / mass;
-
-                // Column 3
-                // Lin_mat_0_2
-                lam1  = k_10 + y / L_10;
-                dV_m1 = 2 * b1 / (L_10 * L_10) + c1 / L_10 + 6 * a1 * lam1 / (L_10 * L_10);
-                V_m1  = c1 / L_10 + 3 * a1 * lam1 * lam1 / L_10 + 2 * b1 * lam1 / L_10;
-                V_a1  = V_m1 * P_m1 * P_a;
-
-                float Lin_mat_0_2 = (P_a * dV_a1) / V_m1 - (P_m1 * dV_m1) / V_a1;
-
+                float Lin_mat_2_1 = 0;
+                float Lin_mat_3_1 = 0;
+                float Lin_mat_0_2 = 0;
                 float Lin_mat_1_2 = 0;
                 float Lin_mat_2_2 = 0;
                 float Lin_mat_3_2 = 0;
-
-                // Column 4
-                // Lin_mat_0_3
-                lam2  = k_20 - y / L_20;
-                dV_m2 = 2 * b2 / (L_20 * L_20) + c2 / L_20 + 6 * a2 * lam2 / (L_20 * L_20);
-                V_m2  = c2 / L_20 + 3 * a2 * lam2 * lam2 / L_20 + 2 * b2 * lam2 / L_20;
-                V_a2  = V_m2 * P_m2 * P_a;
-
-                float Lin_mat_0_3 = (P_a * dV_a2) / V_m2 - (P_m2 * dV_m2) / V_a2;
-
+                float Lin_mat_0_3 = 0;
                 float Lin_mat_1_3 = 0;
                 float Lin_mat_2_3 = 0;
                 float Lin_mat_3_3 = 0;
+
+                // // Lin_mat_2_1
+                // // Calculate our first spring force
+                // P_ce1    = {0,
+                //          1,
+                //          2 * P_m1,
+                //          3 * P_m1 * P_m1,
+                //          4 * P_m1 * P_m1 * P_m1,
+                //          5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
+                // lam1     = k_10 + y / L_10;
+                // k_ce1[6] = {1,
+                //             lam1,
+                //             lam1 * lam1,
+                //             lam1 * lam1 * lam1,
+                //             lam1 * lam1 * lam1 * lam1,
+                //             lam1 * lam1 * lam1 * lam1 * lam1};
+                // F_s1     = k_ce1 * F_ce1 * P_ce1;
+
+                // // Calculate our second spring force
+                // P_ce2    = {0,
+                //          1,
+                //          2 * P_m2,
+                //          3 * P_m2 * P_m2,
+                //          4 * P_m2 * P_m2 * P_m2,
+                //          5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
+                // lam2     = k_20 - y / L_20;
+                // k_ce2[6] = {1,
+                //             lam2,
+                //             lam2 * lam2,
+                //             lam2 * lam2 * lam2,
+                //             lam2 * lam2 * lam2 * lam2,
+                //             lam2 * lam2 * lam2 * lam2 * lam2};
+                // F_s2     = k_ce2 * F_ce2 * P_ce2;
+
+                // float F_d1 = -R1 / L_10;
+
+                // float Lin_mat_2_1 = (F_s2 - F_s1 - F_d1) / mass;
+
+                // // Lin_mat_3_1
+                // // Calculate our first spring force
+                // P_ce1    = {0,
+                //          1,
+                //          2 * P_m1,
+                //          3 * P_m1 * P_m1,
+                //          4 * P_m1 * P_m1 * P_m1,
+                //          5 * P_m1 * P_m1 * P_m1 * P_m1};  // Note this should be transposed
+                // lam1     = k_10 + y / L_10;
+                // k_ce1[6] = {1,
+                //             lam1,
+                //             lam1 * lam1,
+                //             lam1 * lam1 * lam1,
+                //             lam1 * lam1 * lam1 * lam1,
+                //             lam1 * lam1 * lam1 * lam1 * lam1};
+                // F_s1     = k_ce1 * F_ce1 * P_ce1;
+
+                // // Calculate our second spring force
+                // P_ce2    = {0,
+                //          1,
+                //          2 * P_m2,
+                //          3 * P_m2 * P_m2,
+                //          4 * P_m2 * P_m2 * P_m2,
+                //          5 * P_m2 * P_m2 * P_m2 * P_m2};  // Note this should be transposed
+                // lam2     = k_20 - y / L_20;
+                // k_ce2[6] = {1,
+                //             lam2,
+                //             lam2 * lam2,
+                //             lam2 * lam2 * lam2,
+                //             lam2 * lam2 * lam2 * lam2,
+                //             lam2 * lam2 * lam2 * lam2 * lam2};
+                // F_s2     = k_ce2 * F_ce2 * P_ce2;
+
+                // float F_d2 = -R2 / L_20;
+
+                // float Lin_mat_3_1 = (F_s2 - F_s1 + F_d2) / mass;
+
+                // // Column 3
+                // // Lin_mat_0_2
+                // lam1        = k_10 + y / L_10;
+                // float dV_m1 = 2 * b1 / (L_10 * L_10) + c1 / L_10 + 6 * a1 * lam1 / (L_10 * L_10);
+                // float V_m1  = c1 / L_10 + 3 * a1 * lam1 * lam1 / L_10 + 2 * b1 * lam1 / L_10;
+                // float V_a1  = V_m1 * P_m1 * P_a;
+
+                // float Lin_mat_0_2 = (P_a * dV_a1) / V_m1 - (P_m1 * dV_m1) / V_a1;
+
+                // float Lin_mat_1_2 = 0;
+                // float Lin_mat_2_2 = 0;
+                // float Lin_mat_3_2 = 0;
+
+                // // Column 4
+                // // Lin_mat_0_3
+                // lam2        = k_20 - y / L_20;
+                // float dV_m2 = 2 * b2 / (L_20 * L_20) + c2 / L_20 + 6 * a2 * lam2 / (L_20 * L_20);
+                // float V_m2  = c2 / L_20 + 3 * a2 * lam2 * lam2 / L_20 + 2 * b2 * lam2 / L_20;
+                // float V_a2  = V_m2 * P_m2 * P_a;
+
+                // float Lin_mat_0_3 = (P_a * dV_a2) / V_m2 - (P_m2 * dV_m2) / V_a2;
+
+                // float Lin_mat_1_3 = 0;
+                // float Lin_mat_2_3 = 0;
+                // float Lin_mat_3_3 = 0;
 
                 // Calculate our next states
                 output_states.push_back((Lin_mat_0_0 + Lin_mat_1_0 + Lin_mat_2_0 + Lin_mat_3_0) * y);
