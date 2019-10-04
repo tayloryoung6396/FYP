@@ -15,6 +15,8 @@ namespace MPC {
             std::pair<bool, bool> Compute(const T& model, std::vector<float>& states, float theta) {
 
                 // Convert the input setpoint to the y length setpoint
+                theta = 0;  // TODO Remove
+
                 float setpoint = model.radius * theta;
 
                 return (optimizer.FirstLayer(model, states, setpoint));

@@ -18,6 +18,7 @@ namespace HardwareIO {
         for (int i = 0; i < 10; i++) {
             prev_position.push_back(0);
         }
+        utility::io::debug.out("Muscle Initialisation\n");
     }
 
 
@@ -41,6 +42,13 @@ namespace HardwareIO {
         // y3 = med(80, 6, 2) = med(2, 6, 80) = 6,
         // y4 = med(6, 2, 3) = med(2, 3, 6) = 3,
         // i.e. y = (3, 6, 6, 3).
+        // utility::io::debug.out("Previous position vector\n");
+        // for (std::vector<float>::const_iterator i = prev_position.begin(); i != prev_position.end(); ++i) {
+        //     utility::io::debug.out("%f ", *i);
+        // }
+        // utility::io::debug.out("\n");
+
+        // TODO Fix this
 
         const int w = 1;  // This is the window size for the medians either side of the center value
         std::vector<float> velocity;
@@ -59,6 +67,12 @@ namespace HardwareIO {
             position.clear();
         }
 
+        // utility::io::debug.out("Median position vector\n");
+        // for (std::vector<float>::const_iterator i = velocity.begin(); i != velocity.end(); ++i) {
+        //     utility::io::debug.out("%f ", *i);
+        // }
+        // utility::io::debug.out("\n");
+
         // TODO This should be declared somewhere
         int Sampling_time = 50;
 
@@ -67,7 +81,11 @@ namespace HardwareIO {
         for (int v = 1; v < velocity.size(); v++) {
             vel_avg += (velocity[v] - velocity[v - 1]) / Sampling_time;
         }
-        return (vel_avg / (velocity.size() - 1));
+
+        // utility::io::debug.out("Final Velocity %f\n", (vel_avg / (velocity.size() - 1)));
+
+        // return (vel_avg / (velocity.size() - 1));
+        return (0);
     }
 
     float Muscle::GetPressure() { return pressure_sensor.GetPressure(); }

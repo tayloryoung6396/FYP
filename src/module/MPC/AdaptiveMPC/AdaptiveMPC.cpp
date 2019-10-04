@@ -6,7 +6,9 @@ namespace MPC {
 
         AdaptiveMPC mpc = AdaptiveMPC(optimizer1);
 
-        AdaptiveMPC::AdaptiveMPC(Optimizer optimizer) : optimizer(optimizer) {}
+        AdaptiveMPC::AdaptiveMPC(Optimizer optimizer) : optimizer(optimizer) {
+            utility::io::debug.out("Adaptive MPC Initialisation\n");
+        }
 
     }  // namespace AdaptiveMPC
 }  // namespace MPC

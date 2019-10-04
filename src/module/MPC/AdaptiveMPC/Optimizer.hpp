@@ -24,6 +24,8 @@ namespace MPC {
                                                               float setpoint,
                                                               std::vector<float>& output_states) {
 
+                utility::io::debug.out("Process model mode %d\n", mode);
+
                 // Given a control action, select the correct model matrix, from that linearize the model about the
                 // current state point. Calculate the next state vector. Call the control error function and return the
                 // errors
@@ -33,7 +35,7 @@ namespace MPC {
                               setpoint,
                               output_states,
                               VolumeAir(states[2], model.P_a, model.muscle1),
-                              VolumeAir(model.P_t, states[5], model.muscle2));
+                              VolumeAir(model.P_t, states[3], model.muscle2));
                 }
                 else if (mode == 2) {
                     Linearise(model,
@@ -41,7 +43,7 @@ namespace MPC {
                               setpoint,
                               output_states,
                               VolumeAir(model.P_t, states[2], model.muscle1),
-                              VolumeAir(states[5], model.P_a, model.muscle2));
+                              VolumeAir(states[3], model.P_a, model.muscle2));
                 }
                 else if (mode == 3) {
                     Linearise(model,
@@ -49,7 +51,7 @@ namespace MPC {
                               setpoint,
                               output_states,
                               VolumeAir(model.P_t, states[2], model.muscle1),
-                              VolumeAir(states[6], states[5], model.muscle2));
+                              VolumeAir(model.P_t, states[3], model.muscle2));
                 }
                 else {
                     Error_Handler();
@@ -60,10 +62,17 @@ namespace MPC {
 
             template <typename T>
             float VolumeAir(float P_1, float P_2, const T& m) {
+                utility::io::debug.out("V_a calculation P_1 %f, P_2 %f\n", P_1, P_2);
+
                 if (P_2 / P_1 > m.critical_ratio) {
+                    utility::io::debug.out(
+                        "V_a fisrt %f\n",
+                        (P_1 * m.sonic_conductance * std::sqrt(m.T_0 / m.T_1)
+                         * std::sqrt(1 - std::pow((P_2 / P_1 - m.critical_ratio) / (1 - m.critical_ratio), 2))));
                     return (P_1 * m.sonic_conductance * std::sqrt(m.T_0 / m.T_1)
                             * std::sqrt(1 - std::pow((P_2 / P_1 - m.critical_ratio) / (1 - m.critical_ratio), 2)));
                 }
+                utility::io::debug.out("V_a second %f\n", (P_1 * m.sonic_conductance * std::sqrt(m.T_0 / m.T_1)));
                 return (P_1 * m.sonic_conductance * std::sqrt(m.T_0 / m.T_1));
             }
 
@@ -74,6 +83,8 @@ namespace MPC {
                            std::vector<float>& output_states,
                            float dV_a1,
                            float dV_a2) {
+
+                utility::io::debug.out("Linearise\n");
 
                 // TODO Populate these with the relevant functions
                 // TODO NOTE None of this will work until i figure out the relevant states, the VolumeAIr state and
@@ -219,6 +230,21 @@ namespace MPC {
                 float Lin_mat_2_3 = 0;
                 float Lin_mat_3_3 = 0;
 
+                utility::io::debug.out("Linearised mat\n");
+                utility::io::debug.out("%.2f %.2f %.2f %.2f\n", Lin_mat_0_0, Lin_mat_0_1, Lin_mat_0_2, Lin_mat_0_3);
+                utility::io::debug.out("%.2f %.2f %.2f %.2f\n", Lin_mat_1_0, Lin_mat_1_1, Lin_mat_1_2, Lin_mat_1_3);
+                utility::io::debug.out("%.2f %.2f %.2f %.2f\n", Lin_mat_2_0, Lin_mat_2_1, Lin_mat_2_2, Lin_mat_2_3);
+                utility::io::debug.out("%.2f %.2f %.2f %.2f\n", Lin_mat_3_0, Lin_mat_3_1, Lin_mat_3_2, Lin_mat_3_3);
+
+                utility::io::debug.out("Output state y\t %f\n",
+                                       (Lin_mat_0_0 + Lin_mat_1_0 + Lin_mat_2_0 + Lin_mat_3_0) * y);
+                utility::io::debug.out("Output state dy\t %f\n",
+                                       (Lin_mat_0_1 + Lin_mat_1_1 + Lin_mat_2_1 + Lin_mat_3_1) * dy);
+                utility::io::debug.out("Output state P_m1\t %f\n",
+                                       (Lin_mat_0_2 + Lin_mat_1_2 + Lin_mat_2_2 + Lin_mat_3_2) * P_m1);
+                utility::io::debug.out("Output state P_m2\t %f\n",
+                                       (Lin_mat_0_3 + Lin_mat_1_3 + Lin_mat_2_3 + Lin_mat_3_3) * P_m2);
+
                 // Calculate our next states
                 output_states.push_back((Lin_mat_0_0 + Lin_mat_1_0 + Lin_mat_2_0 + Lin_mat_3_0) * y);
                 output_states.push_back((Lin_mat_0_1 + Lin_mat_1_1 + Lin_mat_2_1 + Lin_mat_3_1) * dy);
@@ -236,12 +262,27 @@ namespace MPC {
                                                   output_states[2] - states[2],
                                                   output_states[3] - states[3]};
                 float input_error              = output_states[0] - setpoint;
+
+                utility::io::debug.out("Input Error %f\n", input_error);
+                utility::io::debug.out("State Error\n");
+                for (std::vector<float>::const_iterator i = state_error.begin(); i != state_error.end(); ++i) {
+                    utility::io::debug.out("%f ", *i);
+                }
+                utility::io::debug.out("\n");
+
                 return (std::make_pair(state_error, input_error));
             }
 
             template <typename T>
             std::pair<bool, bool> FirstLayer(const T& m, std::vector<float> states, float setpoint) {
                 // Increment the depth (control horizon itt)
+                utility::io::debug.out("First layer, max layers %d\n", ch_max);
+                utility::io::debug.out("Setpoint %f\n", setpoint);
+                utility::io::debug.out("State vector\n");
+                for (std::vector<float>::const_iterator i = states.begin(); i != states.end(); ++i) {
+                    utility::io::debug.out("%f ", *i);
+                }
+                utility::io::debug.out("\n");
 
                 ch_itt = 1;
 
@@ -307,7 +348,8 @@ namespace MPC {
                           int root,
                           std::vector<std::pair<std::vector<float>, float>>& cost) {
                 // We're somewhere in the middle of our recursion
-                ch_itt++;
+                ch_itt += 1;
+                utility::io::debug.out("Add layer root %d %d\n", root, ch_itt);
 
                 // Create a output state vector for each process
                 std::vector<float> output_states_1;
@@ -322,19 +364,19 @@ namespace MPC {
                 // Decide if the next layer is the last or not
                 if (ch_itt >= ch_max - 1) {
                     // Must be on our last layer
-                    FinalLayer(m, output_states_1, setpoint, 1, cost);
-                    FinalLayer(m, output_states_2, setpoint, 2, cost);
-                    FinalLayer(m, output_states_3, setpoint, 3, cost);
+                    FinalLayer(m, output_states_1, setpoint, root, cost);
+                    FinalLayer(m, output_states_2, setpoint, root, cost);
+                    FinalLayer(m, output_states_3, setpoint, root, cost);
                 }
                 else {
                     // Not our last layer lets add a general layer
-                    AddLayer(m, output_states_1, setpoint, 1, cost);
-                    AddLayer(m, output_states_2, setpoint, 2, cost);
-                    AddLayer(m, output_states_3, setpoint, 3, cost);
+                    AddLayer(m, output_states_1, setpoint, root, cost);
+                    AddLayer(m, output_states_2, setpoint, root, cost);
+                    AddLayer(m, output_states_3, setpoint, root, cost);
                 }
 
                 // As we're leaving a level, decrement the itterator
-                ch_itt--;
+                ch_itt -= 1;
             }
 
             template <typename T>
@@ -343,6 +385,7 @@ namespace MPC {
                             float setpoint,
                             int root,
                             std::vector<std::pair<std::vector<float>, float>>& cost) {
+                utility::io::debug.out("Final layer %d %d\n", root, ch_itt);
                 // We're on or last layer, let's calculate the result append the cost and root
 
                 // TODO This isn't needed on the last layer
@@ -369,6 +412,9 @@ namespace MPC {
 
                     input_error_sum += input_weight * element.second * element.second;
                 }
+
+                utility::io::debug.out("Final State Error %f\n", state_error_sum);
+                utility::io::debug.out("Final Input Error %f\n", input_error_sum);
 
                 cost_result.push_back(std::make_pair(root, state_error_sum + input_error_sum));
                 cost_result.push_back(std::make_pair(root, state_error_sum + input_error_sum));

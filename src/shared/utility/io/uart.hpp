@@ -14,6 +14,8 @@ namespace io {
         UART();
 
         void out(const char* fmt, ...);
+        void error(const char* fmt, ...);
+        void info(const char* fmt, ...);
     };
 
     extern UART debug;

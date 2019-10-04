@@ -1,0 +1,2267 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2019.10.04 13:24:52 =~=~=~=~=~=~=~=~=~=~=~=
+initialise ADC
+Welcome to PNEUbot
+Muscle Initialisation
+Muscle Initialisation
+Adaptive MPC Initialisation
+OneAxis Initialisation
+Initialisation Finished
+First layer, max layers 4
+Setpoint 0.000000
+State vector
+0.050000 0.000000 413685.000000 413685.000000 
+Process model mode 1
+V_a calculation P_1 413685.000000, P_2 0.000000
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 413685.000000
+V_a fisrt 0.000000
+Linearise
+Linearised mat
+0.05 -209195733513467397668864.00 -inf -inf
+0.00 0.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+Output state y 0.002500
+Output state dy -0.000000
+Output state P_m1 -inf
+Output state P_m2 -inf
+Input Error 0.002500
+State Error
+-0.047500 -0.000000 -inf -inf 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 413685.000000
+V_a fisrt 0.000000
+V_a calculation P_1 413685.000000, P_2 0.000000
+V_a second 0.001082
+Linearise
+Linearised mat
+0.05 -209195733513467397668864.00 -inf -inf
+0.00 0.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+Output state y 0.002500
+Output state dy -0.000000
+Output state P_m1 -inf
+Output state P_m2 -inf
+Input Error 0.002500
+State Error
+-0.047500 -0.000000 -inf -inf 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 413685.000000
+V_a fisrt 0.000000
+V_a calculation P_1 413685.000000, P_2 413685.000000
+V_a fisrt 0.000000
+Linearise
+Linearised mat
+0.05 -209195733513467397668864.00 -inf -inf
+0.00 0.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+0.00 -99079191802150912.00 0.00 0.00
+Output state y 0.002500
+Output state dy -0.000000
+Output state P_m1 -inf
+Output state P_m2 -inf
+Input Error 0.002500
+State Error
+-0.047500 -0.000000 -inf -inf 
+Add layer root 1 2
+Process model mode 1
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Add layer root 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 1 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 2 2
+Process model mode 1
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Add layer root 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 2 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 3 2
+Process model mode 1
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 -inf, P_2 0.000000
+V_a second -inf
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 -inf
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000006
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000006
+State Error
+-0.002494 nan nan nan 
+Add layer root 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Add layer root 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000006 nan nan nan 
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Final layer 3 3
+Process model mode 1
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 2
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 nan, P_2 0.000000
+V_a second nan
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Process model mode 3
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+V_a calculation P_1 413685.000000, P_2 nan
+V_a second 0.001082
+Linearise
+Linearised mat
+0.00 nan nan nan
+0.00 0.00 0.00 0.00
+0.00 nan 0.00 0.00
+0.00 nan 0.00 0.00
+Output state y 0.000000
+Output state dy nan
+Output state P_m1 nan
+Output state P_m2 nan
+Input Error 0.000000
+State Error
+-0.000000 nan nan nan 
+Final State Error 0.000000
+Final Input Error 0.000000
+Optimizer result mode1, 0
+ERROR:

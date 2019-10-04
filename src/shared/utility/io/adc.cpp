@@ -19,10 +19,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle) {
 
 void HAL_ADC_ErrorCallback(ADC_HandleTypeDef* hadc) {
     if (hadc == &hadc1) {
-        utility::io::debug.out("ADC Error hadc1\n");
+        utility::io::debug.error("ADC hadc1\n");
     }
     if (hadc == &hadc3) {
-        utility::io::debug.out("ADC Error hadc3\n");
+        utility::io::debug.error("ADC hadc3\n");
     }
 
     Error_Handler();
@@ -51,13 +51,13 @@ namespace io {
             HAL_Delay(1);
 
             if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &(raw_data.sensors[0]), 4) != HAL_OK) {
-                utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+                utility::io::debug.error("Could not start acd1 dma\n");
                 Error_Handler();
             }
             ADC_interrupt_1 = false;
 
             if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &(raw_data.sensors[4]), 5) != HAL_OK) {
-                utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+                utility::io::debug.error("Could not start acd1 dma\n");
                 Error_Handler();
             }
             ADC_interrupt_3 = false;
@@ -66,14 +66,14 @@ namespace io {
 
     void ADC_IO::StartADC1() {
         if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*) &(raw_data.sensors[0]), 4) != HAL_OK) {
-            utility::io::debug.out("ERROR: Could not start acd1 dma\n");
+            utility::io::debug.error("Could not start acd1 dma\n");
             Error_Handler();
         }
     }
 
     void ADC_IO::StartADC3() {
         if (HAL_ADC_Start_DMA(&hadc3, (uint32_t*) &(raw_data.sensors[4]), 5) != HAL_OK) {
-            utility::io::debug.out("ERROR: Could not start acd3 dma\n");
+            utility::io::debug.error("Could not start acd3 dma\n");
             Error_Handler();
         }
     }

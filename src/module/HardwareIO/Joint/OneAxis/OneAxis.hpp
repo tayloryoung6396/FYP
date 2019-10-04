@@ -24,7 +24,8 @@ namespace HardwareIO {
             OneAxis(std::vector<module::HardwareIO::muscle_t>& muscle,
                     float mass,
                     float radius,
-                    module::MPC::AdaptiveMPC::AdaptiveMPC mpc);
+                    module::MPC::AdaptiveMPC::AdaptiveMPC mpc,
+                    module::MPC::AdaptiveMPC::Optimizer optimizer);
 
             void Compute(float angle);
             void UpdateVelocity();

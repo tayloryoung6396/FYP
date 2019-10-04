@@ -18,7 +18,7 @@ namespace Sensors {
     }
 
     float LinearPot::ConvertPotentiometer(float position) {
-        const float scale = std::pow(2, 12);
+        const float scale = 4096;
         position          = position / scale * length;
         return position;
     }

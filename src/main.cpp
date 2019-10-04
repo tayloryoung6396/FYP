@@ -77,7 +77,7 @@ void SystemClock_Config(void) {
 }
 
 void Error_Handler(void) {
-    utility::io::debug.out("ERROR\n");
+    utility::io::debug.error("\n");
     utility::io::gpio::led3 = true;
     while (1) {
     }
@@ -104,6 +104,12 @@ int main() {
     *******************************************************************************************************************/
     auto time_start = NUClear::clock::now();
 
+    utility::io::debug.out("\033[3J");
+    utility::io::debug.out("\014");
+    utility::io::debug.out("\033[3J");
+    utility::io::debug.out("\014");
+    utility::io::debug.out("\e[0m");
+
     utility::io::debug.out("Welcome to PNEUbot\n");
 
     // We need our setpoint potentiometer
@@ -121,11 +127,17 @@ int main() {
     // float muscle_coefficients[4];
     // float F_ce[6][6];
 
-    module::HardwareIO::muscle_properties_t pm_280 = {
-        0.28, 0.33, 0.433, 2.6167e9, 25, 25, 1, {1, 1, 1, 1}, Eigen::Matrix<float, 6, 6>({1, 1, 1, 1, 1, 1, 1, 1, 1,
-                                                                                          1, 1, 0, 1, 1, 1, 1, 0, 0,
-                                                                                          1, 1, 1, 0, 0, 0, 1, 1, 0,
-                                                                                          0, 0, 0, 1, 0, 0, 0, 0, 0})};
+    // clang-format off
+
+    Eigen::Matrix<float, 6, 6> F_ce;
+    F_ce <<  1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 0,
+             1, 1, 1, 1, 0, 0,
+             1, 1, 1, 0, 0, 0,
+             1, 1, 0, 0, 0, 0,
+             1, 0, 0, 0, 0, 0;   
+    const module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.433, 2.6167e-9, 298.15, 298.15, 1, {1, 1, 1, 1}, F_ce};
+    // clang-format on
 
     std::vector<module::HardwareIO::muscle_t> muscles;
 
@@ -139,7 +151,8 @@ int main() {
     muscles.push_back(muscle2);
 
     // Make our joints with the previously declared muscles
-    module::HardwareIO::joint::OneAxis one_axis_joint(muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc);
+    module::HardwareIO::joint::OneAxis one_axis_joint(
+        muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc, module::MPC::AdaptiveMPC::optimizer1);
 
     // Start our ADC DMA
     utility::io::adc_io.Start();
@@ -155,24 +168,25 @@ int main() {
 
     while (1) {
 
-        auto now = NUClear::clock::now();
-        // HAL_Delay(1000);
+        auto now   = NUClear::clock::now();
         float time = std::chrono::duration_cast<std::chrono::milliseconds>(NUClear::clock::now() - prev_now).count();
 
         // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
         one_axis_joint.UpdateVelocity();
+
         // Sampling time controller to handle the periodicity of the code
         if (time >= Sampling_time) {
             utility::io::gpio::led2 = !utility::io::gpio::led2;
-            prev_now                = NUClear::clock::now();
+            // prev_now                = NUClear::clock::now();
             // Time to run our controller again
 
-            utility::io::debug.out("SP %.2f\t", module::Input::controller.GetPosition());
+            // utility::io::debug.out("SP %.2f | ", module::Input::controller.GetPosition());
 
-            one_axis_joint.Compute(module::Sensors::linearpot2.GetPosition());
+            one_axis_joint.Compute(module::Input::controller.GetPosition());
 
             utility::io::adc_io.Start();
+            Error_Handler();
 
             // utility::io::debug.out("%lf ->\t", time);
 
