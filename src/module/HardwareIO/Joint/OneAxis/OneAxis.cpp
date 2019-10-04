@@ -14,7 +14,7 @@ namespace HardwareIO {
             : muscle1(muscle[0]), muscle2(muscle[1]), mpc(optimizer) {
             axis_model.mass    = mass;
             axis_model.radius  = radius;
-            axis_model.P_a     = 0;
+            axis_model.P_a     = 101325;  // 1 atm
             axis_model.muscle1 = muscle[0].properties;
             axis_model.muscle2 = muscle[1].properties;
             axis_model.limits  = std::make_pair(-M_PI / 2.0, M_PI / 2.0);
