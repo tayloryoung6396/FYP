@@ -19,6 +19,9 @@ namespace MPC {
 
                 float setpoint = model.radius * theta;
 
+                setpoint = 0.05;
+                utility::io::debug.out("Running MPC Compute\n");
+
                 return (optimizer.FirstLayer(model, states, setpoint));
             }
 
