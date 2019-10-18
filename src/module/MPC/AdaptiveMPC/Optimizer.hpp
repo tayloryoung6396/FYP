@@ -113,7 +113,7 @@ namespace MPC {
                 float mass = m.mass;
 
                 // Column 1
-                float Lin_mat_0_0 = y;
+                float Lin_mat_0_0 = 1;
                 float Lin_mat_1_0 = 0;
                 float Lin_mat_2_0 = 0;
                 float Lin_mat_3_0 = 0;
