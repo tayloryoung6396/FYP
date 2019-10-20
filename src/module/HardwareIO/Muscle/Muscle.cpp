@@ -34,20 +34,6 @@ namespace HardwareIO {
         // To demonstrate, using a window size of three with one entry immediately preceding and following each entry, a
         // median filter will be applied to the following simple 1D signal:
 
-        // x = (2, 3, 80, 6).
-        // So, the median filtered output signal y will be:
-
-        // y1 = med(2, 3, 80) = 3,
-        // y2 = med(3, 80, 6) = med(3, 6, 80) = 6,
-        // y3 = med(80, 6, 2) = med(2, 6, 80) = 6,
-        // y4 = med(6, 2, 3) = med(2, 3, 6) = 3,
-        // i.e. y = (3, 6, 6, 3).
-        // utility::io::debug.out("Previous position vector\n");
-        // for (std::vector<float>::const_iterator i = prev_position.begin(); i != prev_position.end(); ++i) {
-        //     utility::io::debug.out("%f ", *i);
-        // }
-        // utility::io::debug.out("\n");
-
         // TODO Fix this
 
         const int w = 1;  // This is the window size for the medians either side of the center value
@@ -67,22 +53,14 @@ namespace HardwareIO {
             position.clear();
         }
 
-        // utility::io::debug.out("Median position vector\n");
-        // for (std::vector<float>::const_iterator i = velocity.begin(); i != velocity.end(); ++i) {
-        //     utility::io::debug.out("%f ", *i);
-        // }
-        // utility::io::debug.out("\n");
-
-        // TODO This should be declared somewhere
-        int Sampling_time = 50;
-
         // Now the discrete difference needs to be calculated and returned
+
+        float Sampling_time3 = 50;  // 0.01 T_s
+
         float vel_avg = 0;
         for (int v = 1; v < velocity.size(); v++) {
-            vel_avg += (velocity[v] - velocity[v - 1]) / Sampling_time;
+            vel_avg += (velocity[v] - velocity[v - 1]) / Sampling_time3;
         }
-
-        // utility::io::debug.out("Final Velocity %f\n", (vel_avg / (velocity.size() - 1)));
 
         // return (vel_avg / (velocity.size() - 1));
         return (0);

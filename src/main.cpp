@@ -162,7 +162,6 @@ int main() {
     **************************************************** Controller ****************************************************
     *******************************************************************************************************************/
     // This is where our 'controller' starts
-    // Declare how often we run our loop (Sampling Time)
     float Sampling_time = 50;  // 0.01 T_s
     auto prev_now       = NUClear::clock::now();
 
