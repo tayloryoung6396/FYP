@@ -6,8 +6,8 @@
 
 namespace utility {
 namespace math {
-    template <typename T>
-    T sat(T theta, std::pair<T, T> limits) {
+    template <typename T, typename U>
+    T sat(U theta, std::pair<T, T> limits) {
         if (theta > limits.first) {
             theta = limits.first;
         }

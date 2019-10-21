@@ -39,9 +39,11 @@ namespace io {
     void UART::error(const char* fmt, ...) {
         va_list argp;
         va_start(argp, fmt);
-        char msg[256] = {0};
-        int n         = sprintf(msg, "%sERROR:%s", ERROR_M, DEFAULT_COLOUR_M);
-        if (0 < vsprintf((char*) msg[n + 1], fmt, argp)) {
+        char msg[256]  = {0};
+        char msg2[256] = {0};
+        int n          = sprintf(msg2, "%sERROR:%s", ERROR_M, DEFAULT_COLOUR_M);
+        if (0 < vsprintf((char*) msg, fmt, argp)) {
+            HAL_UART_Transmit(&huart6, (uint8_t*) &msg2, strlen((char*) msg), 0xFFFF);
             HAL_UART_Transmit(&huart6, (uint8_t*) &msg, strlen((char*) msg), 0xFFFF);
         }
         va_end(argp);
@@ -50,9 +52,11 @@ namespace io {
     void UART::info(const char* fmt, ...) {
         va_list argp;
         va_start(argp, fmt);
-        char msg[256] = {0};
-        int n         = sprintf(msg, "%sINFO:%s", SYS_M, DEFAULT_COLOUR_M);
-        if (0 < vsprintf((char*) msg[n + 1], fmt, argp)) {
+        char msg[256]  = {0};
+        char msg2[256] = {0};
+        int n          = sprintf(msg2, "%sINFO:%s", SYS_M, DEFAULT_COLOUR_M);
+        if (0 < vsprintf((char*) msg, fmt, argp)) {
+            HAL_UART_Transmit(&huart6, (uint8_t*) &msg2, strlen((char*) msg), 0xFFFF);
             HAL_UART_Transmit(&huart6, (uint8_t*) &msg, strlen((char*) msg), 0xFFFF);
         }
         va_end(argp);

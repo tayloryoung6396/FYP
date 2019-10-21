@@ -1,6 +1,10 @@
 #ifndef MODULE_ADAPTIVE_MPC_HPP
 #define MODULE_ADAPTIVE_MPC_HPP
 
+#define _USE_MATH_DEFINES
+#define M_PI 3.14
+
+#include <math.h>
 #include <vector>
 #include "Optimizer.hpp"
 
@@ -19,7 +23,9 @@ namespace MPC {
 
                 std::vector<float> setpoint = {model.radius * theta, 0, 0, 0};
 
-                setpoint = {0, 0, 0, 0};
+                setpoint = {M_PI / 4.0, 0, 413685, 413685};
+                utility::io::debug.out(
+                    "Setpoint %f\t, %f\t, %f\t, %f\n", setpoint[0], setpoint[1], setpoint[2], setpoint[3]);
                 utility::io::debug.out("Running MPC Compute\n");
 
                 return (optimizer.FirstLayer(model, states, setpoint));

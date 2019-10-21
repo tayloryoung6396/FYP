@@ -1,5 +1,5 @@
 #include "LinearPotentiometer.hpp"
-#include <cmath>
+#include <math.h>
 #include <iostream>
 #include "utility/io/uart.hpp"
 

@@ -55,7 +55,7 @@ namespace HardwareIO {
 
         // Now the discrete difference needs to be calculated and returned
 
-        float Sampling_time3 = 50;  // 0.01 T_s
+        float Sampling_time3 = 0.05;  // 0.01 T_s
 
         float vel_avg = 0;
         for (int v = 1; v < velocity.size(); v++) {

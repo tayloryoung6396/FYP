@@ -8,15 +8,15 @@ namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
 
-        Optimizer optimizer1 = Optimizer(1);
+        Optimizer optimizer1 = Optimizer(3);
 
         Optimizer::Optimizer(int ch_max) : ch_max(ch_max) {
             utility::io::debug.out("Optimizer Initialisation\n");
             /* clang-format off */
-            state_weight << 100, 0, 0, 0, 
-            				0,   1, 0, 0, 
-            				0,   0, 1, 0,
-            				0,   0, 0, 1;
+            state_weight << 1000, 0, 0,     0, 
+            				0,    1, 0,     0, 
+            				0,    0, 0.001, 0,
+            				0,    0, 0,     0.001;
             /* clang-format on */
         }
     }  // namespace AdaptiveMPC

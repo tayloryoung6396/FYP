@@ -102,7 +102,7 @@ int main() {
     /*******************************************************************************************************************
     ************************************************* Muscles & Joints *************************************************
     *******************************************************************************************************************/
-    auto time_start = NUClear::clock::now();
+    // auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("\033[3J");
     utility::io::debug.out("\014");
@@ -113,7 +113,7 @@ int main() {
     utility::io::debug.out("Welcome to PNEUbot\n");
 
     // We need our setpoint potentiometer
-    auto Setpoint = module::Input::controller.GetPosition();
+    // auto Setpoint = module::Input::controller.GetPosition();
 
 
     // Declare our muscle parameters and populate a vector of muscles
@@ -127,16 +127,38 @@ int main() {
     // float muscle_coefficients[4];
     // float F_ce[6][6];
 
+    constexpr float p00 = (76.27) * 10e-35;       // (76.25, 76.29)
+    constexpr float p10 = (1.515e+12) * 10e-35;   // (-1.512e+13, 1.815e+13)
+    constexpr float p01 = (-1.515e+12) * 10e-35;  // (-1.815e+13, 1.512e+13)
+    constexpr float p20 = (7.645e+12) * 10e-35;   // (-3.98e+12, 1.927e+13)
+    constexpr float p11 = (-1.984e+13) * 10e-35;  // (-3.816e+13, -1.518e+12)
+    constexpr float p02 = (1.219e+13) * 10e-35;   // (-2.637e+12, 2.702e+13)
+    constexpr float p30 = (-1.535e+13) * 10e-35;  // (-3.118e+13, 4.877e+11)
+    constexpr float p21 = (3.063e+13) * 10e-35;   // (9.519e+12, 5.174e+13)
+    constexpr float p12 = (-1.087e+13) * 10e-35;  // (-3.451e+13, 1.277e+13)
+    constexpr float p03 = (-4.412e+12) * 10e-35;  // (-2.166e+13, 1.284e+13)
+    constexpr float p40 = (2.531e+13) * 10e-35;   // (1.529e+13, 3.532e+13)
+    constexpr float p31 = (-2.712e+13) * 10e-35;  // (-3.913e+13, -1.511e+13)
+    constexpr float p22 = (-1.771e+13) * 10e-35;  // (-2.676e+13, -8.651e+12)
+    constexpr float p13 = (1.455e+13) * 10e-35;   // (9.587e+11, 2.814e+13)
+    constexpr float p04 = (4.974e+12) * 10e-35;   // (-5.777e+12, 1.572e+13)
+    constexpr float p50 = (-1.836e+12) * 10e-35;  // (-4.701e+12, 1.03e+12)
+    constexpr float p41 = (3.682e+12) * 10e-35;   // (1.3e+12, 6.063e+12)
+    constexpr float p32 = (2.06e+12) * 10e-35;    // (-9.788e+11, 5.098e+12)
+    constexpr float p23 = (-6.712e+12) * 10e-35;  // (-9.919e+12, -3.506e+12)
+    constexpr float p14 = (1.642e+12) * 10e-35;   // (-9.098e+11, 4.195e+12)
+    constexpr float p05 = (1.164e+12) * 10e-35;   // (-1.678e+12, 4.006e+12)
+
     // clang-format off
 
     Eigen::Matrix<float, 6, 6> F_ce;
-    F_ce <<  1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 0,
-             1, 1, 1, 1, 0, 0,
-             1, 1, 1, 0, 0, 0,
-             1, 1, 0, 0, 0, 0,
-             1, 0, 0, 0, 0, 0;   
-    const module::HardwareIO::muscle_properties_t pm_280 = {0.28, 0.33, 0.433, 2.6167e-9, 298.15, 298.15, 1, {1, 1, 1, 1}, F_ce};
+    F_ce <<  p00, p01, p02, p03, p04, p05,
+             p10, p11, p12, p13, p14, 0,
+             p20, p21, p22, p23, 0,   0,
+             p30, p31, p32, 0,   0,   0,
+             p40, p41, 0,   0,   0,   0,
+             p50, 0,   0,   0,   0,   0;   
+    const module::HardwareIO::muscle_properties_t pm_280 = {0.25, 0.108, 0.433, 2.6167e-9, 298.15, 298.15, 0.0007, {1.6e-4, -6.4e-4, 5.5e-4, 0.8e-4}, F_ce};
     // clang-format on
 
     std::vector<module::HardwareIO::muscle_t> muscles;
@@ -162,13 +184,13 @@ int main() {
     **************************************************** Controller ****************************************************
     *******************************************************************************************************************/
     // This is where our 'controller' starts
-    float Sampling_time = 50;  // 0.01 T_s
+    float Sampling_time = 0.05;  // 0.01 T_s
     auto prev_now       = NUClear::clock::now();
 
     while (1) {
 
-        auto now   = NUClear::clock::now();
-        float time = std::chrono::duration_cast<std::chrono::milliseconds>(NUClear::clock::now() - prev_now).count();
+        // auto now   = NUClear::clock::now();
+        float time = std::chrono::duration_cast<std::chrono::seconds>(NUClear::clock::now() - prev_now).count();
 
         // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 

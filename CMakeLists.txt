@@ -29,7 +29,7 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 add_compile_options(-fdiagnostics-color=always)
 
 # Suppress warnings about "XXX changed in GCC 7.1"
-add_compile_options(-Wno-psabi)
+add_compile_options(-Wno-psabi -std=c++17)
 
 # Build the STM library
 add_subdirectory(src/stm32)
