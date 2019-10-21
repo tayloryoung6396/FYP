@@ -13,6 +13,8 @@
 #include "Input/Controller/Controller.hpp"
 #include "MPC/AdaptiveMPC/AdaptiveMPC.hpp"
 #include "MPC/AdaptiveMPC/Optimizer.hpp"
+#include "PID/PID.hpp"
+#include "SMC/SMC.hpp"
 #include "Sensors/LinearPotentiometer/LinearPotentiometer.hpp"
 #include "Sensors/PressureSensor/PressureSensor.hpp"
 #include "adc.h"
@@ -173,8 +175,9 @@ int main() {
     muscles.push_back(muscle2);
 
     // Make our joints with the previously declared muscles
-    module::HardwareIO::joint::OneAxis one_axis_joint(
-        muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc, module::MPC::AdaptiveMPC::optimizer1);
+    // module::HardwareIO::joint::OneAxis<module::MPC::AdaptiveMPC::AdaptiveMPC> one_axis_joint(
+    //     muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc, module::MPC::AdaptiveMPC::optimizer1);
+    module::HardwareIO::joint::OneAxis<module::SMC::SMC> one_axis_joint(muscles, 1, 0.47, module::SMC::smc);
 
     // Start our ADC DMA
     utility::io::adc_io.Start();
