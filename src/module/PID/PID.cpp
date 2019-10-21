@@ -1,7 +1,7 @@
 #include "PID.hpp"
 
-namespace shared {
-namespace utility {
+namespace module {
+namespace PID {
 
     PID pid1 = PID(0.1, 100, -100, 0.1, 0.01, 0.5);
     PID pid2 = PID(0.1, 100, -100, 0.1, 0.01, 0.5);
@@ -9,7 +9,7 @@ namespace utility {
     PID::PID(float dt, float max, float min, float Kp, float Kd, float Ki)
         : dt(dt), max(max), min(min), Kp(Kp), Kd(Kd), Ki(Ki), pre_error(0), integral(0) {}
 
-    float PID::Compute(float setpoint, float pv) {
+    std::pair<bool, bool> PID::Compute(float setpoint, float pv) {
 
         // Calculate error
         float error = setpoint - pv;
@@ -39,8 +39,9 @@ namespace utility {
         // Save error to previous error
         pre_error = error;
 
-        return output;
+        // return output;
+        return std::make_pair(false, false);
     }
 
-}  // namespace utility
-}  // namespace shared
+}  // namespace PID
+}  // namespace module
