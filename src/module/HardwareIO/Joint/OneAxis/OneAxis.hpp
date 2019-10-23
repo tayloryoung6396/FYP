@@ -2,7 +2,7 @@
 #define MODULE_ONE_AXIS_HPP
 
 #define _USE_MATH_DEFINES
-#define M_PI 3.14
+#define M_PI 3.14159265358979323846
 
 #include <vector>
 #include "HardwareIO/Muscle/Muscle.hpp"
@@ -64,8 +64,10 @@ namespace HardwareIO {
                 // TODO Measure P_t
                 axis_model.P_t = 413685;  // 60 PSI
 
-                std::vector<float> states = {0.0, 0, 413685, 413685};
-                //{muscle1.GetPosition(), muscle1.GetVelocity(), muscle1.GetPressure(), muscle2.GetPressure()};
+                std::vector<float> states = {
+                    muscle1.GetPosition(), muscle1.GetVelocity(), muscle1.GetPressure(), muscle2.GetPressure()};
+
+                states = {0.0, 0, 413685, 413685};
 
                 // Saturate the input to something sensible
                 theta = utility::math::sat(theta, axis_model.limits);

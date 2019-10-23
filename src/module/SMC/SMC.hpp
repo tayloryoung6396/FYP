@@ -29,16 +29,18 @@ namespace SMC {
 
 
             if (smc_error > epsilon) {
+                // utility::io::debug.out("true, false");
                 return std::make_pair(true, false);
             }
             else if (smc_error < -epsilon) {
+                // utility::io::debug.out("false, true");
                 return std::make_pair(false, true);
             }
-
+            // utility::io::debug.out("false, false");
             return std::make_pair(false, false);
         }
 
-        float lim(float intergral, float e_lim);
+        float lim(float integral, float e_lim);
 
         float CalculateVelocity() {
             float velocity = 0;
