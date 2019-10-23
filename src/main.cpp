@@ -104,7 +104,7 @@ int main() {
     /*******************************************************************************************************************
     ************************************************* Muscles & Joints *************************************************
     *******************************************************************************************************************/
-    // auto time_start = NUClear::clock::now();
+    auto time_start = NUClear::clock::now();
 
     utility::io::debug.out("\033[3J");
     utility::io::debug.out("\014");
@@ -175,9 +175,11 @@ int main() {
     muscles.push_back(muscle2);
 
     // Make our joints with the previously declared muscles
-    // module::HardwareIO::joint::OneAxis<module::MPC::AdaptiveMPC::AdaptiveMPC> one_axis_joint(
-    //     muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc, module::MPC::AdaptiveMPC::optimizer1);
-    module::HardwareIO::joint::OneAxis<module::SMC::SMC> one_axis_joint(muscles, 1, 0.47, module::SMC::smc);
+    // MPC Controller
+    module::HardwareIO::joint::OneAxis<module::MPC::AdaptiveMPC::AdaptiveMPC> one_axis_joint(
+        muscles, 1, 0.47, module::MPC::AdaptiveMPC::mpc, module::MPC::AdaptiveMPC::optimizer1);
+    // SMC Controller
+    // module::HardwareIO::joint::OneAxis<module::SMC::SMC> one_axis_joint(muscles, 1, 0.47, module::SMC::smc);
 
     // Start our ADC DMA
     utility::io::adc_io.Start();
@@ -187,34 +189,45 @@ int main() {
     **************************************************** Controller ****************************************************
     *******************************************************************************************************************/
     // This is where our 'controller' starts
-    float Sampling_time = 0.05;  // 0.01 T_s
+    float Sampling_time = 50;  // 0.01 T_s
+    int i               = 0;
+    time_start          = NUClear::clock::now();  // TODO Remove
     auto prev_now       = NUClear::clock::now();
 
     while (1) {
 
         // auto now   = NUClear::clock::now();
-        float time = std::chrono::duration_cast<std::chrono::seconds>(NUClear::clock::now() - prev_now).count();
+        float time = std::chrono::duration_cast<std::chrono::milliseconds>(NUClear::clock::now() - prev_now).count();
 
         // utility::io::debug.out("PNEUBot is running %lf\n", time / 1000);
 
         one_axis_joint.UpdateVelocity();
 
         // Sampling time controller to handle the periodicity of the code
-        if (time >= Sampling_time) {
+        if (time >= Sampling_time) {  // && time < Sampling_time * 2) {
             utility::io::gpio::led2 = !utility::io::gpio::led2;
-            // prev_now                = NUClear::clock::now();
+            prev_now                = NUClear::clock::now();
             // Time to run our controller again
-
             // utility::io::debug.out("SP %.2f | ", module::Input::controller.GetPosition());
 
             one_axis_joint.Compute(module::Input::controller.GetPosition());
 
             utility::io::adc_io.Start();
-            Error_Handler();
+            // Error_Handler();
 
             // utility::io::debug.out("%lf ->\t", time);
 
             // utility::io::adc_io.PrintSensors();
+            i++;
+        }
+        // else if (time >= Sampling_time) {
+        //     utility::io::debug.out("Too slow %lf\n", time);
+        //     Error_Handler();
+        // }
+        if (i >= 500) {
+            time = std::chrono::duration_cast<std::chrono::milliseconds>(NUClear::clock::now() - time_start).count();
+            utility::io::debug.out("TIME %lf, Avg %lf\n", time, time / 500.0);
+            Error_Handler();
         }
     }
 }

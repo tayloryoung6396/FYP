@@ -8,7 +8,7 @@ namespace module {
 namespace MPC {
     namespace AdaptiveMPC {
 
-        Optimizer optimizer1 = Optimizer(3);
+        Optimizer optimizer1 = Optimizer(9);
 
         Optimizer::Optimizer(int ch_max) : ch_max(ch_max) {
             utility::io::debug.out("Optimizer Initialisation\n");

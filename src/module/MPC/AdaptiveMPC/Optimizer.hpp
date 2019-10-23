@@ -30,7 +30,7 @@ namespace MPC {
                                std::vector<float>& input_states,
                                std::vector<float>& output_states) {
 
-                utility::io::debug.out("Process model mode %d\n", mode);
+                // utility::io::debug.out("Process model mode %d\n", mode);
 
                 // Given a control action, select the correct model matrix, from that linearize the model about the
                 // current state point. Calculate the next state vector. Call the control error function and return the
@@ -71,15 +71,15 @@ namespace MPC {
                     Error_Handler();
                 }
 
-                utility::io::debug.out("A mat\n");
-                utility::io::debug.out(
-                    "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(0, 0), A_mat(0, 1), A_mat(0, 2), A_mat(0, 3));
-                utility::io::debug.out(
-                    "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(1, 0), A_mat(1, 1), A_mat(1, 2), A_mat(1, 3));
-                utility::io::debug.out(
-                    "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(2, 0), A_mat(2, 1), A_mat(2, 2), A_mat(2, 3));
-                utility::io::debug.out(
-                    "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(3, 0), A_mat(3, 1), A_mat(3, 2), A_mat(3, 3));
+                // utility::io::debug.out("A mat\n");
+                // utility::io::debug.out(
+                //     "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(0, 0), A_mat(0, 1), A_mat(0, 2), A_mat(0, 3));
+                // utility::io::debug.out(
+                //     "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(1, 0), A_mat(1, 1), A_mat(1, 2), A_mat(1, 3));
+                // utility::io::debug.out(
+                //     "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(2, 0), A_mat(2, 1), A_mat(2, 2), A_mat(2, 3));
+                // utility::io::debug.out(
+                //     "%.2f\t %.2f\t %.2f\t %.2f\n", A_mat(3, 0), A_mat(3, 1), A_mat(3, 2), A_mat(3, 3));
 
                 float Sampling_time2 = 0.05;  // 0.01 T_s
 
@@ -106,22 +106,22 @@ namespace MPC {
                                                   setpoint[2] - output_states[2],
                                                   setpoint[3] - output_states[3]};
 
-                std::vector<float>::const_iterator i = output_states.begin();
-                std::vector<float>::const_iterator j = setpoint.begin();
-                std::vector<float>::const_iterator k = state_error.begin();
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // std::vector<float>::const_iterator i = output_states.begin();
+                // std::vector<float>::const_iterator j = setpoint.begin();
+                // std::vector<float>::const_iterator k = state_error.begin();
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
                 // TODO Fix
                 Eigen::Matrix<float, 4, 1> x_error(state_error[0], state_error[1], state_error[2], state_error[3]);
                 return (x_error.transpose() * state_weight * x_error);
@@ -428,10 +428,10 @@ namespace MPC {
             template <typename T>
             std::pair<bool, bool> FirstLayer(const T& m, std::vector<float>& states, std::vector<float>& setpoint) {
                 // Increment the depth (control horizon itt)
-                for (std::vector<float>::const_iterator i = states.begin(); i != states.end(); ++i) {
-                    utility::io::debug.out("%f ", *i);
-                }
-                utility::io::debug.out("\n");
+                // for (std::vector<float>::const_iterator i = states.begin(); i != states.end(); ++i) {
+                //     utility::io::debug.out("%f ", *i);
+                // }
+                // utility::io::debug.out("\n");
 
                 ch_itt = 1;
 
@@ -452,21 +452,24 @@ namespace MPC {
                 cost_root_1 = ProcessModel(m, 1, states, setpoint, states, output_states_1);
                 cost_root_2 = ProcessModel(m, 2, states, setpoint, states, output_states_2);
                 cost_root_3 = ProcessModel(m, 3, states, setpoint, states, output_states_3);
-                utility::io::debug.out("output_states_1\n");
-                for (std::vector<float>::const_iterator i = output_states_1.begin(); i != output_states_1.end(); ++i) {
-                    utility::io::debug.out("%f ", *i);
-                }
-                utility::io::debug.out("\n");
-                utility::io::debug.out("output_states_2\n");
-                for (std::vector<float>::const_iterator i = output_states_2.begin(); i != output_states_2.end(); ++i) {
-                    utility::io::debug.out("%f ", *i);
-                }
-                utility::io::debug.out("\n");
-                utility::io::debug.out("output_states_3\n");
-                for (std::vector<float>::const_iterator i = output_states_3.begin(); i != output_states_3.end(); ++i) {
-                    utility::io::debug.out("%f ", *i);
-                }
-                utility::io::debug.out("\n");
+                // utility::io::debug.out("output_states_1\n");
+                // for (std::vector<float>::const_iterator i = output_states_1.begin(); i != output_states_1.end(); ++i)
+                // {
+                //     utility::io::debug.out("%f ", *i);
+                // }
+                // utility::io::debug.out("\n");
+                // utility::io::debug.out("output_states_2\n");
+                // for (std::vector<float>::const_iterator i = output_states_2.begin(); i != output_states_2.end(); ++i)
+                // {
+                //     utility::io::debug.out("%f ", *i);
+                // }
+                // utility::io::debug.out("\n");
+                // utility::io::debug.out("output_states_3\n");
+                // for (std::vector<float>::const_iterator i = output_states_3.begin(); i != output_states_3.end(); ++i)
+                // {
+                //     utility::io::debug.out("%f ", *i);
+                // }
+                // utility::io::debug.out("\n");
 
                 // Decide if the next layer is the last or not
                 if (ch_itt >= ch_max - 1) {
@@ -487,22 +490,22 @@ namespace MPC {
                 auto result = *std::min_element(cost_result.cbegin(),
                                                 cost_result.cend(),
                                                 [](const auto& lhs, const auto& rhs) { return lhs.first < rhs.first; });
-                utility::io::debug.out("Cost results\n");
-                for (const auto& p : cost_result) {
-                    utility::io::debug.out("Mode %d, cost %f\n", p.second, p.first);
-                }
-                utility::io::debug.out("\n");
+                // utility::io::debug.out("Cost results\n");
+                // for (const auto& p : cost_result) {
+                //     utility::io::debug.out("Mode %d, cost %f\n", p.second, p.first);
+                // }
+                // utility::io::debug.out("\n");
 
                 if (result.second == 1) {
-                    utility::io::debug.out("Optimizer result mode1, %f\n", result.first);
+                    // utility::io::debug.out("Optimizer result mode1, %f\n", result.first);
                     return (std::make_pair(true, false));
                 }
                 else if (result.second == 2) {
-                    utility::io::debug.out("Optimizer result mode2, %f\n", result.first);
+                    // utility::io::debug.out("Optimizer result mode2, %f\n", result.first);
                     return (std::make_pair(false, true));
                 }
                 else if (result.second == 3) {
-                    utility::io::debug.out("Optimizer result mode3, %f\n", result.first);
+                    // utility::io::debug.out("Optimizer result mode3, %f\n", result.first);
                     return (std::make_pair(false, false));
                 }
                 utility::io::debug.out("Optimizer failed\n");
@@ -556,11 +559,11 @@ namespace MPC {
                             float cost) {
                 // We're on or last layer, let's calculate the result append the cost and root
 
-                utility::io::debug.out("input_states\n");
-                for (std::vector<float>::const_iterator i = input_states.begin(); i != input_states.end(); ++i) {
-                    utility::io::debug.out("%f ", *i);
-                }
-                utility::io::debug.out("\n");
+                // utility::io::debug.out("input_states\n");
+                // for (std::vector<float>::const_iterator i = input_states.begin(); i != input_states.end(); ++i) {
+                //     utility::io::debug.out("%f ", *i);
+                // }
+                // utility::io::debug.out("\n");
 
                 // TODO This isn't needed on the last layer
                 // Create a output state vector for each process
@@ -573,9 +576,9 @@ namespace MPC {
                 float cost2 = cost + ProcessModel(m, 2, states, setpoint, input_states, output_states_2);
                 float cost3 = cost + ProcessModel(m, 3, states, setpoint, input_states, output_states_3);
 
-                utility::io::debug.out("Final Mode %d, Cost1 %f\n", root, cost1 - cost);
-                utility::io::debug.out("Final Mode %d, Cost2 %f\n", root, cost2 - cost);
-                utility::io::debug.out("Final Mode %d, Cost3 %f\n", root, cost3 - cost);
+                // utility::io::debug.out("Final Mode %d, Cost1 %f\n", root, cost1 - cost);
+                // utility::io::debug.out("Final Mode %d, Cost2 %f\n", root, cost2 - cost);
+                // utility::io::debug.out("Final Mode %d, Cost3 %f\n", root, cost3 - cost);
 
                 // Tally the cost and append it to the cost function list for each final cost
                 cost_result.push_back(std::pair<float, int>(cost1, root));
