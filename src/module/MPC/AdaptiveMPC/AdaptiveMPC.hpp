@@ -23,7 +23,7 @@ namespace MPC {
 
                 std::vector<float> setpoint = {model.radius * theta, 0, 0, 0};
 
-                setpoint = {M_PI / 4.0, 0, 413685, 413685};
+                setpoint = {0, 0, 413685, 413685};
                 // utility::io::debug.out(
                 //     "Setpoint %f\t, %f\t, %f\t, %f\n", setpoint[0], setpoint[1], setpoint[2], setpoint[3]);
                 // utility::io::debug.out("Running MPC Compute\n");

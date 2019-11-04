@@ -213,7 +213,7 @@ int main() {
             one_axis_joint.Compute(module::Input::controller.GetPosition());
 
             utility::io::adc_io.Start();
-            // Error_Handler();
+            Error_Handler();
 
             // utility::io::debug.out("%lf ->\t", time);
 
