@@ -30,7 +30,7 @@ namespace MPC {
                                std::vector<float>& input_states,
                                std::vector<float>& output_states) {
 
-                utility::io::debug.out("Process model mode %d\n", mode);
+                // utility::io::debug.out("\nProcess model mode %d\n", mode);
 
                 // Given a control action, select the correct model matrix, from that linearize the model about the
                 // current state point. Calculate the next state vector. Call the control error function and return the
@@ -49,6 +49,7 @@ namespace MPC {
                 }
                 else if (mode == 2) {
                     // Positive
+
                     Linearise(model,
                               states,
                               dotV_a(model.P_t, states[2], model.muscle1),
@@ -90,7 +91,7 @@ namespace MPC {
 
                 output_states.push_back(
                     utility::math::sat(x_states_update(0, 0), std::make_pair(M_PI / 2.0, -M_PI / 2.0)));
-                output_states.push_back(utility::math::sat(x_states_update(1, 0), std::make_pair(10, -10)));
+                output_states.push_back(utility::math::sat(x_states_update(1, 0), std::make_pair(0.5, -0.5)));
                 output_states.push_back(utility::math::sat(x_states_update(2, 0), std::make_pair(413685, 0)));
                 output_states.push_back(utility::math::sat(x_states_update(3, 0), std::make_pair(413685, 0)));
 
@@ -106,25 +107,29 @@ namespace MPC {
                                                   setpoint[2] - output_states[2],
                                                   setpoint[3] - output_states[3]};
 
-                std::vector<float>::const_iterator i = output_states.begin();
-                std::vector<float>::const_iterator j = setpoint.begin();
-                std::vector<float>::const_iterator k = state_error.begin();
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
-                i++;
-                j++;
-                k++;
-                utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // std::vector<float>::const_iterator i = output_states.begin();
+                // std::vector<float>::const_iterator j = setpoint.begin();
+                // std::vector<float>::const_iterator k = state_error.begin();
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
+                // i++;
+                // j++;
+                // k++;
+                // utility::io::debug.out("%f\t - %f\t = %f\n", *j, *i, *k);
                 // TODO Fix
                 Eigen::Matrix<float, 4, 1> x_error(state_error[0], state_error[1], state_error[2], state_error[3]);
-                return (x_error.transpose() * state_weight * x_error);
+
+                float error = x_error.transpose() * state_weight * x_error;
+                // utility::io::debug.out("Control Error %lf\n", error);
+
+                return (error);
             }
 
             template <typename T>
@@ -390,8 +395,8 @@ namespace MPC {
                 F_s1 = k_ce1 * F_ce1 * dP_ce1;
                 F_d1 = -R1 * dotk1;
 
-                utility::io::debug.out("F_s1 = %f\nk_ce1 = %f\n F_ce1 = %f\n dP_ce1 = %f\n\n", F_s1, k_ce1, F_ce1, dP_ce1);
-                utility::io::debug.out("F_d1 = %f\n -R1 = %f\n dotk1 = %f\n", F_d1, -R1, dotk1);
+                // utility::io::debug.out("F_s1 = %f\nk_ce1 = %f\n F_ce1 = %f\n dP_ce1 = %f\n\n", F_s1, k_ce1, F_ce1, dP_ce1);
+                // utility::io::debug.out("F_d1 = %f\n -R1 = %f\n dotk1 = %f\n", F_d1, -R1, dotk1);
                 
                 // TODO This is incorrect, but i don't know any better
                 float Lin_mat_1_2 = (F_s1 + F_d1) / mass;
@@ -413,8 +418,8 @@ namespace MPC {
                 F_s2 = k_ce2 * F_ce2 * dP_ce2;
                 F_d2 = -R2 * dotk2;
 
-                utility::io::debug.out("F_s2 = %f\nk_ce2 = %f\n F_ce2 = %f\n dP_ce2 = %f\n\n", F_s2, k_ce2, F_ce2, dP_ce2);
-                utility::io::debug.out("F_d2 = %f\n -R2 = %f\n dotk2 = %f\n", F_d2, -R2, dotk2);
+                // utility::io::debug.out("F_s2 = %f\nk_ce2 = %f\n F_ce2 = %f\n dP_ce2 = %f\n\n", F_s2, k_ce2, F_ce2, dP_ce2);
+                // utility::io::debug.out("F_d2 = %f\n -R2 = %f\n dotk2 = %f\n", F_d2, -R2, dotk2);
                 
                 float Lin_mat_1_3 = (-F_s2 - F_d2) / mass;
                 /********************************************* Lin_mat_2_3 ********************************************/
@@ -438,7 +443,7 @@ namespace MPC {
                 // for (std::vector<float>::const_iterator i = states.begin(); i != states.end(); ++i) {
                 //     utility::io::debug.out("%f ", *i);
                 // }
-                // utility::io::debug.out("\n");
+                utility::io::debug.out(".");
 
                 ch_itt = 1;
 
@@ -497,22 +502,25 @@ namespace MPC {
                 auto result = *std::min_element(cost_result.cbegin(),
                                                 cost_result.cend(),
                                                 [](const auto& lhs, const auto& rhs) { return lhs.first < rhs.first; });
-                utility::io::debug.out("Cost results\n");
-                for (const auto& p : cost_result) {
-                    utility::io::debug.out("Mode %d, cost %f\n", p.second, p.first);
-                }
-                utility::io::debug.out("\n");
+                // utility::io::debug.out("\nCost results\n");
+                // for (const auto& p : cost_result) {
+                //     utility::io::debug.out("Mode %d, cost %f\n", p.second, p.first);
+                // }
+                // utility::io::debug.out("\n");
 
                 if (result.second == 1) {
-                    utility::io::debug.out("Optimizer result mode1, %f\n", result.first);
-                    return (std::make_pair(true, false));
-                }
-                else if (result.second == 2) {
-                    utility::io::debug.out("Optimizer result mode2, %f\n", result.first);
+                    // utility::io::debug.out("Optimizer result mode1, %f\n", result.first);
+                    utility::io::debug.out(" o_mode1 ");
                     return (std::make_pair(false, true));
                 }
+                else if (result.second == 2) {
+                    // utility::io::debug.out("Optimizer result mode2, %f\n", result.first);
+                    utility::io::debug.out(" o_mode2 ");
+                    return (std::make_pair(true, false));
+                }
                 else if (result.second == 3) {
-                    utility::io::debug.out("Optimizer result mode3, %f\n", result.first);
+                    // utility::io::debug.out("Optimizer result mode3, %f\n", result.first);
+                    utility::io::debug.out(" o_mode3 ");
                     return (std::make_pair(false, false));
                 }
                 utility::io::debug.out("Optimizer failed\n");
@@ -526,6 +534,7 @@ namespace MPC {
                           std::vector<float>& input_states,
                           int root,
                           float cost) {
+                utility::io::debug.out(".");
                 // We're somewhere in the middle of our recursion
                 ch_itt += 1;
 
@@ -564,6 +573,7 @@ namespace MPC {
                             std::vector<float>& input_states,
                             const int& root,
                             float cost) {
+                utility::io::debug.out(".");
                 // We're on or last layer, let's calculate the result append the cost and root
 
                 // utility::io::debug.out("input_states\n");
@@ -579,9 +589,27 @@ namespace MPC {
                 std::vector<float> output_states_3;
 
                 // Calculate the result of performing each action and add the result error to the cost vector
-                float cost1 = cost + ProcessModel(m, 1, states, setpoint, input_states, output_states_1);
-                float cost2 = cost + ProcessModel(m, 2, states, setpoint, input_states, output_states_2);
-                float cost3 = cost + ProcessModel(m, 3, states, setpoint, input_states, output_states_3);
+                float cost1 = ProcessModel(
+                    m,
+                    1,
+                    states,
+                    setpoint,
+                    input_states,
+                    output_states_1);  // cost + ProcessModel(m, 1, states, setpoint, input_states, output_states_1);
+                float cost2 = ProcessModel(
+                    m,
+                    2,
+                    states,
+                    setpoint,
+                    input_states,
+                    output_states_2);  // cost + ProcessModel(m, 2, states, setpoint, input_states, output_states_2);
+                float cost3 = ProcessModel(
+                    m,
+                    3,
+                    states,
+                    setpoint,
+                    input_states,
+                    output_states_3);  // cost + ProcessModel(m, 3, states, setpoint, input_states, output_states_3);
 
                 // utility::io::debug.out("Final Mode %d, Cost1 %f\n", root, cost1 - cost);
                 // utility::io::debug.out("Final Mode %d, Cost2 %f\n", root, cost2 - cost);

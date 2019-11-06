@@ -7,14 +7,17 @@ namespace module {
 namespace PID {
     class PID {
     public:
-        PID(float dt, float max, float min, float Kp, float Kd, float Ki);
+        PID(float dt, float Kp, float Kd, float Ki);
 
         std::pair<bool, bool> Compute(float set_point, float pv);
 
+        template <typename T>
+        std::pair<bool, bool> Compute(const T& m, std::vector<float>& states, float setpoint) {
+            return (Compute(m.radius * setpoint, states[0]));
+        }
+
     private:
         float dt;
-        float max;
-        float min;
         float Kp;
         float Kd;
         float Ki;
@@ -22,8 +25,7 @@ namespace PID {
         float integral;
     };
 
-    extern PID pid1;
-    extern PID pid2;
+    extern PID pid;
 }  // namespace PID
 }  // namespace module
 

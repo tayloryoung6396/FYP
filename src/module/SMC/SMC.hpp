@@ -2,6 +2,7 @@
 #define MODULE_SMC_HPP
 
 #include <vector>
+#include "utility/io/uart.hpp"
 
 namespace module {
 namespace SMC {
@@ -29,14 +30,14 @@ namespace SMC {
 
 
             if (smc_error > epsilon) {
-                // utility::io::debug.out("true, false");
+                utility::io::debug.out("true, false");
                 return std::make_pair(true, false);
             }
             else if (smc_error < -epsilon) {
-                // utility::io::debug.out("false, true");
+                utility::io::debug.out("false, true");
                 return std::make_pair(false, true);
             }
-            // utility::io::debug.out("false, false");
+            utility::io::debug.out("false, false");
             return std::make_pair(false, false);
         }
 

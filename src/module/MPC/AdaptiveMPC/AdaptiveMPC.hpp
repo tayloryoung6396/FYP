@@ -19,11 +19,10 @@ namespace MPC {
             std::pair<bool, bool> Compute(const T& model, std::vector<float>& states, float theta) {
 
                 // Convert the input setpoint to the y length setpoint
-                theta = 0;  // TODO Remove
 
                 std::vector<float> setpoint = {model.radius * theta, 0, 0, 0};
 
-                setpoint = {0, 0, 413685, 413685};
+                setpoint = {model.radius * theta, 0, 413685, 413685};
                 // utility::io::debug.out(
                 //     "Setpoint %f\t, %f\t, %f\t, %f\n", setpoint[0], setpoint[1], setpoint[2], setpoint[3]);
                 // utility::io::debug.out("Running MPC Compute\n");
